@@ -46,8 +46,7 @@ struct AladinAPI {
         let baseParams = [
             "ttbkey": AladinConfig.ttbKey,
             "output": "js",
-            "Version": AladinConfig.aladinVersion,
-            "Cover": "Big"
+            "Version": AladinConfig.aladinVersion
         ]
         
         for (key, value) in baseParams {
