@@ -78,6 +78,10 @@ extension SearchBookListViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if let bookList = self.bookList {
+            
+            tableView.rowHeight = UITableViewAutomaticDimension
+            tableView.estimatedRowHeight = 120
+            
             return bookList.count
         } else {
             return 0
@@ -119,8 +123,7 @@ extension SearchBookListViewController: UITableViewDelegate, UITableViewDataSour
                 
                 return AladinAPI.aladinApiURL(method: .itemLookUp,
                                               parameters: ["itemIdType": "ISBN13",
-                                                           "itemId": isbnString,
-                                                           "Cover": "Big"])
+                                                           "itemId": isbnString])
             }
             
             self.store.fetchBook(url: bookLookUpURL) {

@@ -89,4 +89,21 @@ class BookDetailViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func addAction(_ sender: UIButton) {
+        
+        if !(self.book.bookStateEnum == .reading) {
+            
+            self.book.bookStateEnum = .reading
+            
+            try! realm.write {
+                realm.add(self.book, update: true)
+            }
+            
+            navigationController!.popToRootViewController(animated: true)
+        }
+    }
+    
 }

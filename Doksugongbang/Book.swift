@@ -14,6 +14,11 @@ enum BookState: String {
     case reading
     case unread
     case read
+    
+    static let allValues = [none,
+                            reading,
+                            unread,
+                            read]
 }
 
 class Book: Object {
@@ -51,6 +56,10 @@ class Book: Object {
             bookState = newValue.rawValue
         }
     }
+    
+    // 책 시간
+    dynamic var dateUpdatedFavorite: Date = Date()
+    dynamic var dateUpdatedBookState: Date = Date()
     
     // MARK: - Methods
     

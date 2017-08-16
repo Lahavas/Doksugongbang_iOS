@@ -33,9 +33,6 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Barcode Camera View Config
-        setUpSessionConfiguration()
-        
         self.searchTextField.delegate = self
         
         self.quickSearchTableView.delegate = self
@@ -45,7 +42,11 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Barcode Camera View Config
+        setUpSessionConfiguration()
+        
         self.tabBarController?.tabBar.isHidden = true
+        self.barcodeCameraView.isHidden = false
         self.quickSearchTableView.isHidden = true
         
         self.sessionQueue.async {
@@ -70,6 +71,8 @@ class SearchViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         self.tabBarController?.tabBar.isHidden = false
+        
+        self.searchTextField.text = ""
         
         self.sessionQueue.async {
             self.session.stopRunning()
@@ -172,8 +175,7 @@ extension SearchViewController: AVCaptureMetadataOutputObjectsDelegate {
                     
                     return AladinAPI.aladinApiURL(method: .itemLookUp,
                                                   parameters: ["itemIdType": "ISBN13",
-                                                               "itemId": isbnString,
-                                                               "Cover": "Big"])
+                                                               "itemId": isbnString])
                 }
                 
                 self.store.fetchBook(url: bookLookUpURL) {
