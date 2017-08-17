@@ -287,6 +287,14 @@
                                     <action selector="addAction:" destination="ZW8-L0-hcX" eventType="touchUpInside" id="M4f-xW-abV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qS7-mm-bGK">
+                                <rect key="frame" x="266" y="242" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Fav"/>
+                                <connections>
+                                    <action selector="favoriteAction:" destination="ZW8-L0-hcX" eventType="touchUpInside" id="UfM-Ju-DtO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -316,7 +324,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFd-cQ-aF6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4737" y="793"/>
+            <point key="canvasLocation" x="4935" y="793"/>
         </scene>
         <!--My Page View Controller-->
         <scene sceneID="bu4-d1-9Nw">
@@ -349,7 +357,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="9h4-uX-nzb">
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="9h4-uX-nzb">
                                             <rect key="frame" x="46" y="51" width="20" height="20"/>
                                         </activityIndicatorView>
                                     </subviews>
@@ -407,6 +415,7 @@
                     <connections>
                         <outlet property="bookCollectionView" destination="EK9-Dg-3JQ" id="6dp-lh-hzN"/>
                         <segue destination="3VF-TJ-MuV" kind="show" identifier="ShowSection" id="pnK-yV-qy5"/>
+                        <segue destination="ZW8-L0-hcX" kind="show" identifier="ShowDetail" id="iV3-H5-v40"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eem-GP-be4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -422,7 +431,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9cn-XW-7Z3">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="113" height="163"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -444,7 +453,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="PjD-VO-Vas">
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="PjD-VO-Vas">
                                             <rect key="frame" x="46" y="51" width="20" height="20"/>
                                         </activityIndicatorView>
                                     </subviews>
@@ -470,11 +479,12 @@
                     </collectionView>
                     <connections>
                         <outlet property="bookCollectionView" destination="TKU-Ij-mto" id="Lse-35-xJy"/>
+                        <segue destination="ZW8-L0-hcX" kind="show" identifier="ShowDetail" id="CQW-8x-nZ2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="si7-Hw-xWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4150" y="1594"/>
+            <point key="canvasLocation" x="3390" y="1743"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="T9s-T7-Z9a">
@@ -483,6 +493,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="1B8-oa-Gby"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="8Gg-M3-UJ4">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
@@ -535,6 +546,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="luG-n0-7sV"/>
+        <segue reference="CQW-8x-nZ2"/>
     </inferredMetricsTieBreakers>
 </document>

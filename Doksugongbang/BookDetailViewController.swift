@@ -96,9 +96,8 @@ class BookDetailViewController: UIViewController {
         
         if !(self.book.bookStateEnum == .reading) {
             
-            self.book.bookStateEnum = .reading
-            
             try! realm.write {
+                self.book.bookStateEnum = .reading
                 realm.add(self.book, update: true)
             }
             
@@ -106,4 +105,16 @@ class BookDetailViewController: UIViewController {
         }
     }
     
+    @IBAction func favoriteAction(_ sender: UIButton) {
+        
+        if self.book.isFavorite == false {
+            
+            try! realm.write {
+                self.book.isFavorite = true
+                realm.add(self.book, update: true)
+            }
+            
+            navigationController!.popToRootViewController(animated: true)
+        }
+    }
 }

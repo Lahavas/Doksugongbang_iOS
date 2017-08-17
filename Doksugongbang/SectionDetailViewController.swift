@@ -20,6 +20,8 @@ class SectionDetailViewController: UIViewController {
     let store = BookStore.shared
     
     var selectedSection: String?
+    
+    var book: Book!
     var bookList: [Book]!
     
     // MARK: - View Life Cycle
@@ -42,13 +44,13 @@ class SectionDetailViewController: UIViewController {
             bookList = realm
                 .objects(Book.self)
                 .filter("isFavorite = True")
-                .sorted(byKeyPath: "dateUpdatedFavorite")
+                .sorted(byKeyPath: "dateUpdatedFavorite", ascending: false)
                 .toArray()
         } else {
             bookList = realm
                 .objects(Book.self)
                 .filter("bookState = '\(sectionString)'")
-                .sorted(byKeyPath: "dateUpdatedBookState")
+                .sorted(byKeyPath: "dateUpdatedBookState", ascending: false)
                 .toArray()
         }
         
@@ -59,6 +61,23 @@ class SectionDetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: self)
+        
+        switch segue.identifier ?? "" {
+        case "ShowDetail":
+            guard let bookDetailViewController = segue.destination as? BookDetailViewController else {
+                preconditionFailure("Unexpected destination: \(segue.destination)")
+            }
+            
+            bookDetailViewController.book = self.book
+        default:
+            preconditionFailure("Unexpected Segue Identifier")
+        }
     }
 }
 
@@ -88,6 +107,13 @@ extension SectionDetailViewController: UICollectionViewDelegate, UICollectionVie
                 cell.update(with: image)
             }
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        self.book = self.bookList[indexPath.row]
+        
+        self.performSegue(withIdentifier: "ShowDetail", sender: self)
     }
     
     // MARK: - Collection View Data Source

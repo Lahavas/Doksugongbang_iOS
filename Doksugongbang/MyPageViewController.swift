@@ -19,8 +19,9 @@ class MyPageViewController: UIViewController {
     
     let store = BookStore.shared
     
-    var detailBookList: [Book]!
     var bookList: [[Book]] = Array(repeating: Array(repeating: Book(), count:0), count: 4)
+    var book: Book!
+    
     var sections: [String] = [ "favorite", "reading", "read", "unread" ]
     var selectedSection: String?
     
@@ -58,25 +59,25 @@ class MyPageViewController: UIViewController {
                 bookList[section] = realm
                     .objects(Book.self)
                     .filter("isFavorite = True")
-                    .sorted(byKeyPath: "dateUpdatedFavorite")
+                    .sorted(byKeyPath: "dateUpdatedFavorite", ascending: false)
                     .toArray()
             case 1:
                 bookList[section] = realm
                     .objects(Book.self)
                     .filter("bookState = 'reading'")
-                    .sorted(byKeyPath: "dateUpdatedBookState")
+                    .sorted(byKeyPath: "dateUpdatedBookState", ascending: false)
                     .toArray()
             case 2:
                 bookList[section] = realm
                     .objects(Book.self)
                     .filter("bookState = 'read'")
-                    .sorted(byKeyPath: "dateUpdatedBookState")
+                    .sorted(byKeyPath: "dateUpdatedBookState", ascending: false)
                     .toArray()
             case 3:
                 bookList[section] = realm
                     .objects(Book.self)
                     .filter("bookState = 'unread'")
-                    .sorted(byKeyPath: "dateUpdatedBookState")
+                    .sorted(byKeyPath: "dateUpdatedBookState", ascending: false)
                     .toArray()
             default:
                 preconditionFailure("Index out of range")
@@ -95,20 +96,20 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         
-        self.detailBookList = bookList[indexPath.section]
-        let book = self.detailBookList[indexPath.row]
+        let detailBookList = bookList[indexPath.section]
+        let showingBook = detailBookList[indexPath.row]
         
-        store.fetchImage(for: book) {
+        store.fetchImage(for: showingBook) {
             (result) -> Void in
             
-            guard let bookIndex = self.detailBookList.index(of: book),
+            guard let bookIndex = detailBookList.index(of: showingBook),
                 case let .success(image) = result else {
                     return
             }
             let bookIndexPath = IndexPath(item: bookIndex, section: indexPath.section)
             
             if let cell = self.bookCollectionView.cellForItem(at: bookIndexPath) as? BookCollectionViewCell {
-                cell.titleLabel.text = book.title
+                cell.titleLabel.text = showingBook.title
                 cell.update(with: image)
             }
         }
@@ -126,14 +127,28 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
             }
     
             supplementaryView.sectionTitleLabel.text = sections[indexPath.section]
+            
+            if bookList[indexPath.section].count <= 3 {
+                supplementaryView.showSectionButton.isHidden = true
+            } else {
+                supplementaryView.showSectionButton.isHidden = false
+            }
             supplementaryView.showSectionButton.tag = indexPath.section
             supplementaryView.showSectionButton.addTarget(self,
                                                           action: #selector(self.showBookListInSection(_:)),
                                                           for: .touchUpInside)
             return supplementaryView
         default:
-            assert(false, "Unexpected element kind")
+            preconditionFailure("Unexpected element kind")
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let detailBookList = bookList[indexPath.section]
+        self.book = detailBookList[indexPath.row]
+        
+        self.performSegue(withIdentifier: "ShowDetail", sender: self)
     }
     
     // MARK: - Collection View Data Source
@@ -175,6 +190,12 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
             }
             
             sectionDetailViewController.selectedSection = self.selectedSection
+        case "ShowDetail":
+            guard let bookDetailViewController = segue.destination as? BookDetailViewController else {
+                preconditionFailure("Unexpected destination: \(segue.destination)")
+            }
+            
+            bookDetailViewController.book = self.book
         default:
             preconditionFailure("Unexpected Segue Identifier")
         }
