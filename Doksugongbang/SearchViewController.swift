@@ -36,6 +36,8 @@ class SearchViewController: UIViewController {
     var book: Book!
     var bookList: [Book]!
     
+    var searchText: String!
+    
     // MARK: Session
     
     let session = AVCaptureSession()
@@ -57,14 +59,15 @@ class SearchViewController: UIViewController {
         
         self.navigationController?.isNavigationBarHidden = true
         
-        setUpSessionConfiguration()
-        toggleSearchViewState(.barcodeSearching)
+        self.setUpSessionConfiguration()
+        self.toggleSearchViewState(.barcodeSearching)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        toggleSearchViewState(.typingSearchingStart)
+        self.searchBar.text = ""
+        self.toggleSearchViewState(.typingSearchingStart)
     }
 
     // MARK: - Memory Management
@@ -91,7 +94,8 @@ class SearchViewController: UIViewController {
                 preconditionFailure("Unexpected destination: \(segue.destination)")
             }
             
-            searchBookListViewController.bookList = bookList
+            searchBookListViewController.searchText = self.searchText
+            searchBookListViewController.bookList = self.bookList
         default:
             preconditionFailure("Unexpected Segue Identifier")
         }
@@ -147,7 +151,6 @@ class SearchViewController: UIViewController {
                 self.session.stopRunning()
             }
             
-            self.searchBar.text = ""
             self.barcodeCameraView.isHidden = true
             self.quickSearchTableView.isHidden = false
         case .showQuickSearch:
@@ -248,13 +251,15 @@ extension SearchViewController: UISearchBarDelegate {
         
         let replacementSearchFieldNumber = updatedString.characters.count
         
-        if replacementSearchFieldNumber > 0 && session.isRunning {
+        if replacementSearchFieldNumber > 0 && self.session.isRunning {
             self.toggleSearchViewState(.typingSearchingStart)
         }
         
         if replacementSearchFieldNumber > 1 {
             
             var bookSearchURL: URL {
+                
+                self.searchText = updatedString
                 
                 return AladinAPI.aladinApiURL(method: .itemSearch,
                                               parameters: ["Query": updatedString,
@@ -323,6 +328,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         let book = self.bookList[indexPath.row]
         
         var bookSearchURL: URL {
+            
+            self.searchText = book.title
             
             return AladinAPI.aladinApiURL(method: .itemSearch,
                                           parameters: ["Query": book.title])

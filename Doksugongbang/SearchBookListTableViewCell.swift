@@ -13,21 +13,35 @@ class SearchBookListTableViewCell: UITableViewCell {
     // MARK: - Properties
     
     @IBOutlet var coverImageView: UIImageView!
+    @IBOutlet var spinner: UIActivityIndicatorView!
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
-    
     
     // MARK: - View Life Cycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        update(with: nil)
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        update(with: nil)
+    }
+    
+    // MARK: - Methods
+    
+    func update(with image: UIImage?) {
+        
+        if let imageToDisplay = image {
+            self.spinner.stopAnimating()
+            self.coverImageView.image = imageToDisplay
+        } else {
+            self.spinner.startAnimating()
+            self.coverImageView.image = nil
+        }
     }
 }

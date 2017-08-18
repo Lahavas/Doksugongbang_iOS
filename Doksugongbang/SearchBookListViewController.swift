@@ -23,6 +23,16 @@ class SearchBookListViewController: UIViewController {
     var book: Book!
     var bookList: [Book]!
     
+    var searchText: String! {
+        didSet {
+            guard let searchText = self.searchText else {
+                preconditionFailure("Unexpected search text")
+            }
+            
+            self.navigationItem.title = "검색어: \(searchText)"
+        }
+    }
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -32,6 +42,9 @@ class SearchBookListViewController: UIViewController {
         
         self.searchBookListTableView.delegate = self
         self.searchBookListTableView.dataSource = self
+        
+        self.searchBookListTableView.rowHeight = UITableViewAutomaticDimension
+        self.searchBookListTableView.estimatedRowHeight = 160
     }
     
     // MARK: - Memory Management
@@ -72,10 +85,6 @@ extension SearchBookListViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if let bookList = self.bookList {
-            
-            tableView.rowHeight = UITableViewAutomaticDimension
-            tableView.estimatedRowHeight = 120
-            
             return bookList.count
         } else {
             return 0
@@ -99,7 +108,7 @@ extension SearchBookListViewController: UITableViewDelegate, UITableViewDataSour
             
             switch result {
             case let .success(image):
-                cell.coverImageView.image = image
+                cell.update(with: image)
             case let .failure(error):
                 print("Error fetching image for photo: \(error)")
             }

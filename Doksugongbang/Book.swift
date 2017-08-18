@@ -30,7 +30,6 @@ class Book: Object {
     
     // 책 정보
     dynamic var title: String = ""
-    dynamic var subtitle: String? = nil
     dynamic var author: String = ""
     dynamic var publisher: String = ""
     dynamic var pubdate: Date = Date()
@@ -65,5 +64,17 @@ class Book: Object {
     
     override static func primaryKey() -> String? {
         return "isbn"
+    }
+    
+    static func isExist(book: Book) -> Book? {
+        
+        let realm = try! Realm()
+        
+        if let bookIsbn = book.isbn,
+            let existingBook = realm.object(ofType: Book.self, forPrimaryKey: bookIsbn) {
+            return existingBook
+        } else {
+            return nil
+        }
     }
 }

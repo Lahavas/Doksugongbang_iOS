@@ -16,9 +16,9 @@ class BookDetailViewController: UIViewController {
     // MARK: Outlets
     
     @IBOutlet var coverImageView: UIImageView!
+    @IBOutlet var spinner: UIActivityIndicatorView!
     
     @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var subtitleLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
     
     @IBOutlet var publisherLabel: UILabel!
@@ -33,11 +33,13 @@ class BookDetailViewController: UIViewController {
     
     let store: BookStore = BookStore.shared
     
+    // MARK: Extra
+    
     let realm = try! Realm()
     
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd"
+        dateFormatter.dateFormat = "yyyy-MM-dd"
         return dateFormatter
     }()
     
@@ -47,46 +49,12 @@ class BookDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.isNavigationBarHidden = false
-
-        if let bookIsbn = self.book.isbn,
-            let book = realm.object(ofType: Book.self, forPrimaryKey: bookIsbn) {
-            self.book = book
+        
+        if let existingBook = Book.isExist(book: self.book) {
+            self.book = existingBook
         }
         
-        if let book = self.book {
-            
-            self.titleLabel.text = book.title
-            self.subtitleLabel.text = book.subtitle
-            self.authorLabel.text = book.author
-            self.publisherLabel.text = book.publisher
-            self.pubdateLabel.text = dateFormatter.string(from: book.pubdate)
-            self.pageLabel.text = String(book.page)
-            self.categoryLabel.text = book.category
-            self.descriptionLabel.text = book.bookDescription
-            
-            self.store.fetchImage(for: book) {
-                (result) -> Void in
-                
-                switch result {
-                case let .success(image):
-                    self.coverImageView.image = image
-                case let .failure(error):
-                    print("Error fetching image for photo: \(error)")
-                }
-            }
-        }
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.tabBarController?.tabBar.isHidden = false
+        self.setUpBookDetailView()
     }
     
     // MARK: - Memory Management
@@ -121,6 +89,44 @@ class BookDetailViewController: UIViewController {
             }
             
             navigationController!.popToRootViewController(animated: true)
+        }
+    }
+    
+    // MARK: - Methods
+    
+    func setUpBookDetailView() {
+        
+        if let book = self.book {
+            
+            self.titleLabel.text = book.title
+            self.authorLabel.text = book.author
+            self.publisherLabel.text = book.publisher
+            self.pubdateLabel.text = dateFormatter.string(from: book.pubdate)
+            self.pageLabel.text = "\(String(book.page))p"
+            self.categoryLabel.text = book.category
+            self.descriptionLabel.text = book.bookDescription
+            
+            self.store.fetchImage(for: book) {
+                (result) -> Void in
+                
+                switch result {
+                case let .success(image):
+                    self.update(with: image)
+                case let .failure(error):
+                    print("Error fetching image for photo: \(error)")
+                }
+            }
+        }
+    }
+    
+    func update(with image: UIImage?) {
+        
+        if let imageToDisplay = image {
+            self.spinner.stopAnimating()
+            self.coverImageView.image = imageToDisplay
+        } else {
+            self.spinner.startAnimating()
+            self.coverImageView.image = nil
         }
     }
 }

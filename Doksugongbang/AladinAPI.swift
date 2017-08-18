@@ -79,7 +79,6 @@ struct AladinAPI {
             let bookInfoJson = json["subInfo"] as? [String: Any],
             let bookIsbn = json["isbn13"] as? String,
             let bookTitle = json["title"] as? String,
-            let bookSubtitle = bookInfoJson["subTitle"] as? String,
             let bookAuthor = json["author"] as? String,
             let bookPublisher = json["publisher"] as? String,
             let bookPubdateString = json["pubDate"] as? String,
@@ -101,7 +100,6 @@ struct AladinAPI {
         
         // 책 정보
         book.title = bookTitle
-        book.subtitle = bookSubtitle
         book.author = bookAuthor
         book.publisher = bookPublisher
         book.pubdate = bookPubdate
