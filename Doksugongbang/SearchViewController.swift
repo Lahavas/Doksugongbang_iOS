@@ -61,6 +61,7 @@ class SearchViewController: UIViewController {
         
         self.setUpSessionConfiguration()
         self.toggleSearchViewState(.barcodeSearching)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

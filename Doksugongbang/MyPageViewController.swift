@@ -48,11 +48,43 @@ class MyPageViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: self)
+        
+        switch segue.identifier ?? "" {
+        case "ShowSection":
+            guard let sectionDetailViewController = segue.destination as? SectionDetailViewController else {
+                preconditionFailure("Unexpected destination: \(segue.destination)")
+            }
+            
+            sectionDetailViewController.selectedSection = self.selectedSection
+        case "ShowDetail":
+            guard let bookDetailViewController = segue.destination as? BookDetailViewController else {
+                preconditionFailure("Unexpected destination: \(segue.destination)")
+            }
+            
+            bookDetailViewController.book = self.book
+        default:
+            preconditionFailure("Unexpected Segue Identifier")
+        }
+    }
+    
+    // MARK: - Section Action
+    
+    func showBookListInSection(_ sender: UIButton) {
+        
+        self.selectedSection = self.sections[sender.tag]
+        
+        self.performSegue(withIdentifier: "ShowSection", sender: self)
+    }
+    
     // MARK: - Private Methods
     
     private func setUpBookList() {
         
-        for section in 0..<4 {
+        for section in 0..<sections.count {
             
             switch section {
             case 0:
@@ -176,38 +208,5 @@ extension MyPageViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
         
         return cell
-    }
-    
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: self)
-        
-        switch segue.identifier ?? "" {
-        case "ShowSection":
-            guard let sectionDetailViewController = segue.destination as? SectionDetailViewController else {
-                preconditionFailure("Unexpected destination: \(segue.destination)")
-            }
-            
-            sectionDetailViewController.selectedSection = self.selectedSection
-        case "ShowDetail":
-            guard let bookDetailViewController = segue.destination as? BookDetailViewController else {
-                preconditionFailure("Unexpected destination: \(segue.destination)")
-            }
-            
-            bookDetailViewController.book = self.book
-        default:
-            preconditionFailure("Unexpected Segue Identifier")
-        }
-
-    }
-    
-    // MARK: - Section Action
-    
-    func showBookListInSection(_ sender: UIButton) {
-        
-        self.selectedSection = self.sections[sender.tag]
-        
-        self.performSegue(withIdentifier: "ShowSection", sender: self)
     }
 }

@@ -27,6 +27,9 @@ class BookDetailViewController: UIViewController {
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     
+    @IBOutlet var likeButton: UIButton!
+    @IBOutlet var starButton: UIButton!
+    
     // MARK: Model
     
     var book: Book!
@@ -54,6 +57,7 @@ class BookDetailViewController: UIViewController {
             self.book = existingBook
         }
         
+        self.setUpImageButton()
         self.setUpBookDetailView()
     }
     
@@ -66,25 +70,31 @@ class BookDetailViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func addAction(_ sender: UIButton) {
-        
-        if !(self.book.bookStateEnum == .reading) {
-            
-            try! realm.write {
-                self.book.bookStateEnum = .reading
-                realm.add(self.book, update: true)
-            }
-            
-            navigationController!.popToRootViewController(animated: true)
-        }
-    }
-    
-    @IBAction func favoriteAction(_ sender: UIButton) {
+    @IBAction func likeButtonAction(_ sender: UIButton) {
         
         if self.book.isFavorite == false {
             
             try! realm.write {
                 self.book.isFavorite = true
+                realm.add(self.book, update: true)
+                self.likeButton.isSelected = true
+            }
+        } else {
+            
+            try! realm.write {
+                self.book.isFavorite = false
+                realm.add(self.book, update: true)
+                self.likeButton.isSelected = false
+            }
+        }
+    }
+    
+    @IBAction func starButtonAction(_ sender: UIButton) {
+        
+        if !(self.book.bookStateEnum == .reading) {
+            
+            try! realm.write {
+                self.book.bookStateEnum = .reading
                 realm.add(self.book, update: true)
             }
             
@@ -116,6 +126,43 @@ class BookDetailViewController: UIViewController {
                     print("Error fetching image for photo: \(error)")
                 }
             }
+        }
+    }
+    
+    func setUpImageButton() {
+        
+        let bundle = Bundle(for: type(of: self))
+        
+        let emptyStar = UIImage(named: "emptyStar", in: bundle, compatibleWith: self.traitCollection)
+        let selectedStar = UIImage(named: "selectedStar", in: bundle, compatibleWith: self.traitCollection)
+        
+        let emptyLike = UIImage(named: "emptyLike", in: bundle, compatibleWith: self.traitCollection)
+        let selectedLike = UIImage(named: "selectedLike", in: bundle, compatibleWith: self.traitCollection)
+        
+        self.starButton.setImage(emptyStar, for: .normal)
+        self.starButton.setImage(selectedStar, for: .selected)
+        
+        self.likeButton.setImage(emptyLike, for: .normal)
+        self.likeButton.setImage(selectedLike, for: .selected)
+        
+        self.starButton.translatesAutoresizingMaskIntoConstraints = false
+        self.starButton.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+        self.starButton.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
+
+        self.likeButton.translatesAutoresizingMaskIntoConstraints = false
+        self.likeButton.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+        self.likeButton.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
+        
+        if self.book.isFavorite == false {
+            self.likeButton.isSelected = false
+        } else {
+            self.likeButton.isSelected = true
+        }
+        
+        if self.book.bookStateEnum == .none {
+            self.starButton.isSelected = false
+        } else {
+            self.starButton.isSelected = true
         }
     }
     
