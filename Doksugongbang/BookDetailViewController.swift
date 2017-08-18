@@ -13,17 +13,7 @@ class BookDetailViewController: UIViewController {
 
     // MARK: - Properties
     
-    let store: BookStore = BookStore.shared
-    
-    let realm = try! Realm()
-    
-    private let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyyMMdd"
-        return dateFormatter
-    }()
-    
-    var book: Book!
+    // MARK: Outlets
     
     @IBOutlet var coverImageView: UIImageView!
     
@@ -37,10 +27,26 @@ class BookDetailViewController: UIViewController {
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     
+    // MARK: Model
+    
+    var book: Book!
+    
+    let store: BookStore = BookStore.shared
+    
+    let realm = try! Realm()
+    
+    private let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        return dateFormatter
+    }()
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.isNavigationBarHidden = false
 
         if let bookIsbn = self.book.isbn,
             let book = realm.object(ofType: Book.self, forPrimaryKey: bookIsbn) {

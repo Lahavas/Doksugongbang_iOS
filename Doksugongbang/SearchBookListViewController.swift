@@ -12,32 +12,26 @@ class SearchBookListViewController: UIViewController {
 
     // MARK: - Properties
     
+    // MARK: Outlets
+    
+    @IBOutlet var searchBookListTableView: UITableView!
+    
+    // MARK: Model
+    
     let store: BookStore = BookStore.shared
     
     var book: Book!
     var bookList: [Book]!
-    
-    @IBOutlet var searchBookListTableView: UITableView!
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.isNavigationBarHidden = false
+        
         self.searchBookListTableView.delegate = self
         self.searchBookListTableView.dataSource = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.tabBarController?.tabBar.isHidden = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.tabBarController?.tabBar.isHidden = false
     }
     
     // MARK: - Memory Management

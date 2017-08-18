@@ -9,21 +9,34 @@
 import UIKit
 import AVFoundation
 
+// MARK: -
+
+enum SearchViewState {
+    case barcodeSearching
+    case typingSearchingStart
+    case showQuickSearch
+}
+
+// MARK: -
+
 class SearchViewController: UIViewController {
 
     // MARK: - Properties
     
+    // MARK: Outlets
+
     @IBOutlet var barcodeCameraView: BarcodeCameraView!
-    
-    @IBOutlet var searchTextField: UITextField!
-    @IBOutlet var toolbarBottomConstraint: NSLayoutConstraint!
-    
+    @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var quickSearchTableView: UITableView!
+
+    // MARK: Model
     
     let store: BookStore = BookStore.shared
     
     var book: Book!
     var bookList: [Book]!
+    
+    // MARK: Session
     
     let session = AVCaptureSession()
     let sessionQueue = DispatchQueue(label: AVCaptureSession.self.description(), attributes: [], target: nil)
@@ -33,7 +46,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.searchTextField.delegate = self
+        self.searchBar.delegate = self
         
         self.quickSearchTableView.delegate = self
         self.quickSearchTableView.dataSource = self
@@ -42,41 +55,16 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Barcode Camera View Config
+        self.navigationController?.isNavigationBarHidden = true
+        
         setUpSessionConfiguration()
-        
-        self.tabBarController?.tabBar.isHidden = true
-        self.barcodeCameraView.isHidden = false
-        self.quickSearchTableView.isHidden = true
-        
-        self.sessionQueue.async {
-            self.session.startRunning()
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if (self.searchTextField.canBecomeFirstResponder) {
-            self.searchTextField.becomeFirstResponder()
-            
-            NotificationCenter.default.addObserver(self,
-                                                   selector: #selector(keyboardDidChangeFrame(_:)),
-                                                   name: NSNotification.Name.UIKeyboardDidChangeFrame,
-                                                   object: nil)
-        }
+        toggleSearchViewState(.barcodeSearching)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        self.tabBarController?.tabBar.isHidden = false
-        
-        self.searchTextField.text = ""
-        
-        self.sessionQueue.async {
-            self.session.stopRunning()
-        }
+        toggleSearchViewState(.typingSearchingStart)
     }
 
     // MARK: - Memory Management
@@ -109,9 +97,9 @@ class SearchViewController: UIViewController {
         }
     }
 
-    // MARK: - Private Methods
+    // MARK: - Methods
     
-    private func setUpSessionConfiguration() {
+    func setUpSessionConfiguration() {
         
         self.session.beginConfiguration()
         
@@ -142,11 +130,33 @@ class SearchViewController: UIViewController {
         self.barcodeCameraView.layer.videoGravity = AVLayerVideoGravityResize
     }
     
-    func keyboardDidChangeFrame(_ notification: Notification) {
+    func toggleSearchViewState(_ state: SearchViewState) {
         
-        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardHeight = keyboardFrame.cgRectValue.height
-            self.toolbarBottomConstraint.constant = keyboardHeight
+        switch state {
+        case .barcodeSearching:
+            self.sessionQueue.async {
+                self.session.startRunning()
+            }
+            
+            self.barcodeCameraView.isHidden = false
+            self.quickSearchTableView.isHidden = true
+            
+            self.view.endEditing(true)
+        case .typingSearchingStart:
+            self.sessionQueue.async {
+                self.session.stopRunning()
+            }
+            
+            self.searchBar.text = ""
+            self.barcodeCameraView.isHidden = true
+            self.quickSearchTableView.isHidden = false
+        case .showQuickSearch:
+            self.sessionQueue.async {
+                self.session.stopRunning()
+            }
+            
+            self.barcodeCameraView.isHidden = true
+            self.quickSearchTableView.isHidden = false
         }
     }
 }
@@ -196,18 +206,14 @@ extension SearchViewController: AVCaptureMetadataOutputObjectsDelegate {
 
 // MARK: -
 
-extension SearchViewController: UITextFieldDelegate {
+extension SearchViewController: UISearchBarDelegate {
     
-    // MARK: - Text Field Delegate
+    // MARK: - Search Bar Delegate
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        self.sessionQueue.async {
-            self.session.stopRunning()
-        }
-        
-        guard let searchText = textField.text else {
-            return false
+        guard let searchText = searchBar.text else {
+            preconditionFailure("Unexpected Search Text")
         }
         
         var bookSearchURL: URL {
@@ -227,25 +233,23 @@ extension SearchViewController: UITextFieldDelegate {
                 print(error)
             }
         }
-        
-        return true
     }
     
-    func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
-        guard let updatedString = textField.text else {
+        self.toggleSearchViewState(.barcodeSearching)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        guard let updatedString = searchBar.text else {
             return false
         }
         
         let replacementSearchFieldNumber = updatedString.characters.count
         
         if replacementSearchFieldNumber > 0 && session.isRunning {
-            self.sessionQueue.async {
-                self.session.stopRunning()
-            }
-            self.barcodeCameraView.isHidden = true
+            self.toggleSearchViewState(.typingSearchingStart)
         }
         
         if replacementSearchFieldNumber > 1 {
