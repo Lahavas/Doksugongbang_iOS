@@ -375,7 +375,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8sc-9o-8Iy">
-                                <rect key="frame" x="0.0" y="240" width="375" height="383"/>
+                                <rect key="frame" x="0.0" y="232" width="375" height="391"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="27Y-1T-7mA">
                                         <rect key="frame" x="8" y="38.5" width="359" height="82"/>
@@ -423,9 +423,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-Cd-R21">
-                                        <rect key="frame" x="320" y="340" width="49" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-Cd-R21">
+                                        <rect key="frame" x="318" y="353" width="49" height="30"/>
                                         <state key="normal" title="To Link"/>
                                         <connections>
                                             <action selector="openAmazonLink:" destination="ZW8-L0-hcX" eventType="touchUpInside" id="oN5-8S-MNy"/>
@@ -434,12 +433,16 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="ImS-Cd-R21" secondAttribute="bottom" constant="8" id="CZ5-0u-MC8"/>
                                     <constraint firstItem="3be-Mb-NIi" firstAttribute="top" secondItem="8sc-9o-8Iy" secondAttribute="top" constant="8" id="Ijm-Fz-Br9"/>
                                     <constraint firstAttribute="trailing" secondItem="3be-Mb-NIi" secondAttribute="trailing" constant="8" id="NQb-c5-nQi"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="27Y-1T-7mA" secondAttribute="bottom" constant="8" id="Okg-rw-Urx"/>
+                                    <constraint firstItem="ImS-Cd-R21" firstAttribute="top" relation="greaterThanOrEqual" secondItem="27Y-1T-7mA" secondAttribute="bottom" constant="8" id="Yb6-JC-pvR"/>
                                     <constraint firstItem="27Y-1T-7mA" firstAttribute="leading" secondItem="8sc-9o-8Iy" secondAttribute="leading" constant="8" id="b6s-IU-Q30"/>
                                     <constraint firstAttribute="trailing" secondItem="27Y-1T-7mA" secondAttribute="trailing" constant="8" id="h3M-8M-CfC"/>
+                                    <constraint firstAttribute="trailing" secondItem="ImS-Cd-R21" secondAttribute="trailing" constant="8" id="mYO-nd-UuC"/>
                                     <constraint firstItem="27Y-1T-7mA" firstAttribute="top" secondItem="3be-Mb-NIi" secondAttribute="bottom" constant="16" id="uc0-h1-irP"/>
+                                    <constraint firstItem="ImS-Cd-R21" firstAttribute="leading" secondItem="8sc-9o-8Iy" secondAttribute="leading" constant="318" id="unx-91-O2v"/>
                                     <constraint firstItem="3be-Mb-NIi" firstAttribute="leading" secondItem="8sc-9o-8Iy" secondAttribute="leading" constant="8" id="wfq-41-V7O"/>
                                 </constraints>
                             </view>
@@ -447,11 +450,11 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cz1-bv-yS2" firstAttribute="top" secondItem="aDu-4o-iTQ" secondAttribute="bottom" id="2Dh-VM-Skq"/>
-                            <constraint firstItem="8sc-9o-8Iy" firstAttribute="top" secondItem="cz1-bv-yS2" secondAttribute="bottom" constant="16" id="Ewf-v5-Upk"/>
                             <constraint firstAttribute="trailing" secondItem="8sc-9o-8Iy" secondAttribute="trailing" id="QYR-zf-yAg"/>
                             <constraint firstItem="cz1-bv-yS2" firstAttribute="leading" secondItem="m5I-r9-8wA" secondAttribute="leading" id="S01-25-EFW"/>
                             <constraint firstItem="KOE-H1-4qy" firstAttribute="top" secondItem="8sc-9o-8Iy" secondAttribute="bottom" id="WyO-6g-MV6"/>
                             <constraint firstAttribute="trailing" secondItem="cz1-bv-yS2" secondAttribute="trailing" id="cgC-MJ-crF"/>
+                            <constraint firstItem="8sc-9o-8Iy" firstAttribute="top" secondItem="cz1-bv-yS2" secondAttribute="bottom" constant="8" id="oXS-f9-ZHa"/>
                             <constraint firstItem="8sc-9o-8Iy" firstAttribute="leading" secondItem="m5I-r9-8wA" secondAttribute="leading" id="yhT-yN-wlJ"/>
                         </constraints>
                     </view>
