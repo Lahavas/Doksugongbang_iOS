@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SafariServices
 
 class BookDetailViewController: UIViewController {
 
@@ -103,6 +104,15 @@ class BookDetailViewController: UIViewController {
             }
             
             navigationController!.popToRootViewController(animated: true)
+        }
+    }
+    
+    @IBAction func openAmazonLink(_ sender: UIButton) {
+        
+        if let linkUrlString = self.book.bookLinkUrl,
+            let linkUrl = URL(string: linkUrlString) {
+            let safariViewController = SFSafariViewController(url: linkUrl)
+            self.present(safariViewController, animated: true, completion: nil)
         }
     }
     
