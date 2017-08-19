@@ -109,8 +109,10 @@ class HomeViewController: UIViewController {
                     
                     switch bookListResult {
                     case let .success(bookList):
-                        print(bookList)
                         self.bookList[section] = bookList
+                        DispatchQueue.main.async {
+                            self.bookCollectionView.reloadData()
+                        }
                     case let .failure(error):
                         print(error)
                     }
@@ -129,6 +131,9 @@ class HomeViewController: UIViewController {
                     switch bookListResult {
                     case let .success(bookList):
                         self.bookList[section] = bookList
+                        DispatchQueue.main.async {
+                            self.bookCollectionView.reloadData()
+                        }
                     case let .failure(error):
                         print(error)
                     }
@@ -200,9 +205,27 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let detailBookList = bookList[indexPath.section]
-        self.book = detailBookList[indexPath.row]
-        
-        self.performSegue(withIdentifier: "ShowDetail", sender: self)
+        if let isbnString = detailBookList[indexPath.row].isbn {
+            
+            var bookLookUpURL: URL {
+                
+                return AladinAPI.aladinApiURL(method: .itemLookUp,
+                                              parameters: ["itemIdType": "ISBN13",
+                                                           "itemId": isbnString])
+            }
+            
+            self.store.fetchBook(url: bookLookUpURL) {
+                (bookResult) -> Void in
+                
+                switch bookResult {
+                case let .success(book):
+                    self.book = book
+                    self.performSegue(withIdentifier: "ShowDetail", sender: self)
+                case let .failure(error):
+                    print(error)
+                }
+            }
+        }
     }
     
     // MARK: - Collection View Data Source

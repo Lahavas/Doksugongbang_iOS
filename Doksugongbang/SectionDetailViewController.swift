@@ -40,13 +40,56 @@ class SectionDetailViewController: UIViewController {
             preconditionFailure("Unexpected String")
         }
         
-        if sectionString == "favorite" {
+        switch sectionString {
+        case "favorite":
             bookList = realm
                 .objects(Book.self)
                 .filter("isFavorite = True")
                 .sorted(byKeyPath: "dateUpdatedFavorite", ascending: false)
                 .toArray()
-        } else {
+        case "best seller":
+            var bestSellerListURL: URL {
+                
+                return AladinAPI.aladinApiURL(method: .itemList,
+                                              parameters: ["SearchTarget": "Book",
+                                                           "QueryType": "BestSeller"])
+            }
+            
+            self.store.fetchBookList(url: bestSellerListURL) {
+                (bookListResult) -> Void in
+                
+                switch bookListResult {
+                case let .success(bookList):
+                    self.bookList = bookList
+                    DispatchQueue.main.async {
+                        self.bookCollectionView.reloadData()
+                    }
+                case let .failure(error):
+                    print(error)
+                }
+            }
+        case "new books":
+            var itemNewSpecialListURL: URL {
+                
+                return AladinAPI.aladinApiURL(method: .itemList,
+                                              parameters: ["SearchTarget": "Book",
+                                                           "QueryType": "ItemNewSpecial"])
+            }
+            
+            self.store.fetchBookList(url: itemNewSpecialListURL) {
+                (bookListResult) -> Void in
+                
+                switch bookListResult {
+                case let .success(bookList):
+                    self.bookList = bookList
+                    DispatchQueue.main.async {
+                        self.bookCollectionView.reloadData()
+                    }
+                case let .failure(error):
+                    print(error)
+                }
+            }
+        default:
             bookList = realm
                 .objects(Book.self)
                 .filter("bookState = '\(sectionString)'")
@@ -111,9 +154,27 @@ extension SectionDetailViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        self.book = self.bookList[indexPath.row]
-        
-        self.performSegue(withIdentifier: "ShowDetail", sender: self)
+        if let isbnString = self.bookList[indexPath.row].isbn {
+            
+            var bookLookUpURL: URL {
+                
+                return AladinAPI.aladinApiURL(method: .itemLookUp,
+                                              parameters: ["itemIdType": "ISBN13",
+                                                           "itemId": isbnString])
+            }
+            
+            self.store.fetchBook(url: bookLookUpURL) {
+                (bookResult) -> Void in
+                
+                switch bookResult {
+                case let .success(book):
+                    self.book = book
+                    self.performSegue(withIdentifier: "ShowDetail", sender: self)
+                case let .failure(error):
+                    print(error)
+                }
+            }
+        }
     }
     
     // MARK: - Collection View Data Source
@@ -123,7 +184,12 @@ extension SectionDetailViewController: UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return bookList.count
+        
+        if let bookList = self.bookList {
+            return bookList.count
+        } else {
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

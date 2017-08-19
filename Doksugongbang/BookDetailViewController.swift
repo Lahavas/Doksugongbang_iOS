@@ -52,6 +52,10 @@ class BookDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         if let existingBook = Book.isExist(book: self.book) {
             self.book = existingBook
