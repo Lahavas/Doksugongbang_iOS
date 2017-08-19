@@ -24,7 +24,7 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
-Doksugongbang/Configurations/*
+#Doksugongbang/Configurations/*
 
 ### Xcode Patch ###
 #*.xcodeproj/*

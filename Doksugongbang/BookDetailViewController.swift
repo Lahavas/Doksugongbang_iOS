@@ -16,12 +16,19 @@ class BookDetailViewController: UIViewController {
     
     // MARK: Outlets
     
+    // Main View's Outlets
     @IBOutlet var coverImageView: UIImageView!
     @IBOutlet var spinner: UIActivityIndicatorView!
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
     
+    // Reading View's Outlets
+    
+    @IBOutlet var bookCountLabel: UILabel!
+    @IBOutlet var bookLogCountLabel: UILabel!
+    
+    // Description View's Outlets
     @IBOutlet var publisherLabel: UILabel!
     @IBOutlet var pubdateLabel: UILabel!
     @IBOutlet var pageLabel: UILabel!
@@ -29,7 +36,12 @@ class BookDetailViewController: UIViewController {
     @IBOutlet var descriptionLabel: UILabel!
     
     @IBOutlet var likeButton: UIButton!
-    @IBOutlet var starButton: UIButton!
+    @IBOutlet var bookButton: UIButton!
+    
+    // Views
+    @IBOutlet var mainView: UIView!
+    @IBOutlet var readingView: UIView!
+    @IBOutlet var descriptionView: UIView!
     
     // MARK: Model
     
@@ -63,6 +75,7 @@ class BookDetailViewController: UIViewController {
         }
         
         self.setUpImageButton()
+        self.setUpReadingView()
         self.setUpBookDetailView()
     }
     
@@ -94,7 +107,7 @@ class BookDetailViewController: UIViewController {
         }
     }
     
-    @IBAction func starButtonAction(_ sender: UIButton) {
+    @IBAction func bookButtonAction(_ sender: UIButton) {
         
         if !(self.book.bookStateEnum == .reading) {
             
@@ -143,25 +156,48 @@ class BookDetailViewController: UIViewController {
         }
     }
     
+    func setUpReadingView() {
+        
+        if self.book.bookStateEnum == .reading {
+            self.readingView.isHidden = false
+            NSLayoutConstraint(item: descriptionView,
+                               attribute: .top,
+                               relatedBy: .equal,
+                               toItem: readingView,
+                               attribute: .bottom,
+                               multiplier: 1.0,
+                               constant: 8.0).isActive = true
+        } else {
+            self.readingView.isHidden = true
+            NSLayoutConstraint(item: descriptionView,
+                               attribute: .top,
+                               relatedBy: .equal,
+                               toItem: mainView,
+                               attribute: .bottom,
+                               multiplier: 1.0,
+                               constant: 8.0).isActive = true
+        }
+    }
+    
     func setUpImageButton() {
         
         let bundle = Bundle(for: type(of: self))
         
-        let emptyStar = UIImage(named: "emptyStar", in: bundle, compatibleWith: self.traitCollection)
-        let selectedStar = UIImage(named: "selectedStar", in: bundle, compatibleWith: self.traitCollection)
+        let emptyBook = UIImage(named: "emptyBook", in: bundle, compatibleWith: self.traitCollection)
+        let selectedBook = UIImage(named: "selectedBook", in: bundle, compatibleWith: self.traitCollection)
         
         let emptyLike = UIImage(named: "emptyLike", in: bundle, compatibleWith: self.traitCollection)
         let selectedLike = UIImage(named: "selectedLike", in: bundle, compatibleWith: self.traitCollection)
         
-        self.starButton.setImage(emptyStar, for: .normal)
-        self.starButton.setImage(selectedStar, for: .selected)
+        self.bookButton.setImage(emptyBook, for: .normal)
+        self.bookButton.setImage(selectedBook, for: .selected)
         
         self.likeButton.setImage(emptyLike, for: .normal)
         self.likeButton.setImage(selectedLike, for: .selected)
         
-        self.starButton.translatesAutoresizingMaskIntoConstraints = false
-        self.starButton.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
-        self.starButton.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
+        self.bookButton.translatesAutoresizingMaskIntoConstraints = false
+        self.bookButton.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+        self.bookButton.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
 
         self.likeButton.translatesAutoresizingMaskIntoConstraints = false
         self.likeButton.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
@@ -174,9 +210,9 @@ class BookDetailViewController: UIViewController {
         }
         
         if self.book.bookStateEnum == .none {
-            self.starButton.isSelected = false
+            self.bookButton.isSelected = false
         } else {
-            self.starButton.isSelected = true
+            self.bookButton.isSelected = true
         }
     }
     

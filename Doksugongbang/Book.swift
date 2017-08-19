@@ -12,12 +12,10 @@ import RealmSwift
 enum BookState: String {
     case none
     case reading
-    case unread
     case read
     
     static let allValues = [none,
                             reading,
-                            unread,
                             read]
 }
 

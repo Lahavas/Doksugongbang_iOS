@@ -19,10 +19,10 @@ class MyPageViewController: UIViewController {
     
     let store = BookStore.shared
     
-    var bookList: [[Book]] = Array(repeating: Array(repeating: Book(), count:0), count: 4)
+    var bookList: [[Book]] = Array(repeating: Array(repeating: Book(), count:0), count: 3)
     var book: Book!
     
-    var sections: [String] = [ "favorite", "reading", "read", "unread" ]
+    var sections: [String] = [ "favorite", "reading", "read" ]
     var selectedSection: String?
     
     // MARK: - View Life Cycle
@@ -103,12 +103,6 @@ class MyPageViewController: UIViewController {
                 bookList[section] = realm
                     .objects(Book.self)
                     .filter("bookState = 'read'")
-                    .sorted(byKeyPath: "dateUpdatedBookState", ascending: false)
-                    .toArray()
-            case 3:
-                bookList[section] = realm
-                    .objects(Book.self)
-                    .filter("bookState = 'unread'")
                     .sorted(byKeyPath: "dateUpdatedBookState", ascending: false)
                     .toArray()
             default:
