@@ -69,6 +69,8 @@ class HomeViewController: UIViewController {
             }
             
             bookDetailViewController.book = self.book
+        case "AddBookLog":
+            print("add book log")
         default:
             preconditionFailure("Unexpected Segue Identifier")
         }

@@ -11,6 +11,116 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Book Log Detail View Controller-->
+        <scene sceneID="fOB-qW-a2r">
+            <objects>
+                <viewController id="SLR-La-4dC" customClass="BookLogDetailViewController" customModule="Doksugongbang" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="czJ-0P-wGW"/>
+                        <viewControllerLayoutGuide type="bottom" id="zIr-fI-mC6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Arf-7K-IbI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Book Title" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Phf-I7-sAJ">
+                                <rect key="frame" x="201" y="28" width="150" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hiT-Fv-Nux">
+                                <rect key="frame" x="24" y="74" width="327" height="68"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GUI-rc-Teg">
+                                        <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시작 페이지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4K-nw-Gm7">
+                                                <rect key="frame" x="0.0" y="0.0" width="78" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fa7-6n-o4y">
+                                                <rect key="frame" x="86" y="0.0" width="241" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zmk-R7-kjE">
+                                        <rect key="frame" x="0.0" y="38" width="327" height="30"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="끝 페이지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8E-qt-alC">
+                                                <rect key="frame" x="0.0" y="0.0" width="78" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgA-eX-Fr8">
+                                                <rect key="frame" x="86" y="0.0" width="241" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="zgA-eX-Fr8" firstAttribute="leading" secondItem="fa7-6n-o4y" secondAttribute="leading" id="Cia-Lx-1eT"/>
+                                </constraints>
+                            </stackView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="K7M-Rm-3wp">
+                                <rect key="frame" x="24" y="158" width="327" height="463"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8s-kZ-DVT">
+                                <rect key="frame" x="321" y="629" width="30" height="30"/>
+                                <state key="normal" title="등록"/>
+                                <connections>
+                                    <action selector="addBookLog:" destination="SLR-La-4dC" eventType="touchUpInside" id="gtJ-hJ-xR7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="hiT-Fv-Nux" firstAttribute="top" secondItem="Phf-I7-sAJ" secondAttribute="bottom" constant="16" id="8wG-uD-erE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hiT-Fv-Nux" secondAttribute="trailing" constant="8" id="8zk-gt-6JU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Phf-I7-sAJ" secondAttribute="trailing" constant="8" id="DZX-jy-1lX"/>
+                            <constraint firstItem="zIr-fI-mC6" firstAttribute="top" secondItem="c8s-kZ-DVT" secondAttribute="bottom" constant="8" id="S4I-yz-wZ8"/>
+                            <constraint firstItem="K7M-Rm-3wp" firstAttribute="leading" secondItem="Arf-7K-IbI" secondAttribute="leadingMargin" constant="8" id="SB3-IV-lDb"/>
+                            <constraint firstItem="hiT-Fv-Nux" firstAttribute="leading" secondItem="Arf-7K-IbI" secondAttribute="leadingMargin" constant="8" id="VGt-ve-OGQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="c8s-kZ-DVT" secondAttribute="trailing" constant="8" id="YW9-h3-4ni"/>
+                            <constraint firstItem="Phf-I7-sAJ" firstAttribute="top" secondItem="czJ-0P-wGW" secondAttribute="bottom" constant="8" id="dxI-ho-gpw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="K7M-Rm-3wp" secondAttribute="trailing" constant="8" id="qgu-B4-MOr"/>
+                            <constraint firstItem="Phf-I7-sAJ" firstAttribute="width" secondItem="Arf-7K-IbI" secondAttribute="width" multiplier="0.4" id="rky-Za-t1M"/>
+                            <constraint firstItem="K7M-Rm-3wp" firstAttribute="top" secondItem="hiT-Fv-Nux" secondAttribute="bottom" constant="16" id="sf6-o8-aXB"/>
+                            <constraint firstItem="c8s-kZ-DVT" firstAttribute="top" secondItem="K7M-Rm-3wp" secondAttribute="bottom" constant="8" id="uqf-w5-5ir"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ecI-qX-6ob" appends="YES" id="BPl-mV-lzv"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="bookLogTextView" destination="K7M-Rm-3wp" id="hMz-vb-RFU"/>
+                        <outlet property="bookTitleTextField" destination="Phf-I7-sAJ" id="8tm-Oq-x85"/>
+                        <outlet property="endPageTextField" destination="zgA-eX-Fr8" id="ed0-7o-ehB"/>
+                        <outlet property="startPageTextField" destination="fa7-6n-o4y" id="zfc-5q-TLi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dER-EL-vUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="ecI-qX-6ob">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="SLR-La-4dC" id="nRR-In-D1f"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2104.8000000000002" y="2706.2968515742132"/>
+        </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -100,7 +210,13 @@
                         </collectionReusableView>
                     </collectionView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="KXT-eR-jdA"/>
+                    <navigationItem key="navigationItem" id="KXT-eR-jdA">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RPb-jG-HT0">
+                            <connections>
+                                <segue destination="SLR-La-4dC" kind="presentation" identifier="AddBookLog" id="Ssa-z1-V10"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bookCollectionView" destination="bXE-EZ-hO0" id="UOL-7Q-8ey"/>
@@ -285,7 +401,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVL-qf-6k8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4624.8000000000002" y="-125.4872563718141"/>
+            <point key="canvasLocation" x="4662" y="-125"/>
         </scene>
         <!--Book Detail View Controller-->
         <scene sceneID="5m5-OE-bsc">

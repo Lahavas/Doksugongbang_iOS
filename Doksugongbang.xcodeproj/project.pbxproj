@@ -16,6 +16,7 @@
 		2674D7D41F496BF40064E1D7 /* BookReportDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2674D7D31F496BF40064E1D7 /* BookReportDetailViewController.swift */; };
 		2674D7D61F496D200064E1D7 /* BookLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2674D7D51F496D200064E1D7 /* BookLogTableViewCell.swift */; };
 		2674D7D81F4974470064E1D7 /* BookLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2674D7D71F4974470064E1D7 /* BookLog.swift */; };
+		2674D7DB1F49777C0064E1D7 /* BookLogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2674D7DA1F49777C0064E1D7 /* BookLogDetailViewController.swift */; };
 		26C22ED31F440B8600F8C6C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C22ED21F440B8600F8C6C7 /* AppDelegate.swift */; };
 		26C22ED81F440B8600F8C6C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C22ED61F440B8600F8C6C7 /* Main.storyboard */; };
 		26C22EDA1F440B8600F8C6C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C22ED91F440B8600F8C6C7 /* Assets.xcassets */; };
@@ -70,6 +71,7 @@
 		2674D7D31F496BF40064E1D7 /* BookReportDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookReportDetailViewController.swift; sourceTree = "<group>"; };
 		2674D7D51F496D200064E1D7 /* BookLogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookLogTableViewCell.swift; sourceTree = "<group>"; };
 		2674D7D71F4974470064E1D7 /* BookLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookLog.swift; sourceTree = "<group>"; };
+		2674D7DA1F49777C0064E1D7 /* BookLogDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookLogDetailViewController.swift; sourceTree = "<group>"; };
 		26C22ECF1F440B8600F8C6C7 /* Doksugongbang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Doksugongbang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C22ED21F440B8600F8C6C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26C22ED71F440B8600F8C6C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -154,6 +156,14 @@
 				2674D7D31F496BF40064E1D7 /* BookReportDetailViewController.swift */,
 			);
 			name = "Book Cycle";
+			sourceTree = "<group>";
+		};
+		2674D7D91F49751B0064E1D7 /* Book Log */ = {
+			isa = PBXGroup;
+			children = (
+				2674D7DA1F49777C0064E1D7 /* BookLogDetailViewController.swift */,
+			);
+			name = "Book Log";
 			sourceTree = "<group>";
 		};
 		26C22EC61F440B8600F8C6C7 = {
@@ -278,6 +288,7 @@
 		26C22F111F44114800F8C6C7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2674D7D91F49751B0064E1D7 /* Book Log */,
 				2674D7D21F4952E50064E1D7 /* Book Cycle */,
 				266C39C21F46E6BB000F64D7 /* Home */,
 				26C22F241F442DA300F8C6C7 /* MyPage */,
@@ -673,6 +684,7 @@
 				26C22F0D1F44109500F8C6C7 /* BookStore.swift in Sources */,
 				26C22F1B1F4411E000F8C6C7 /* HomeViewController.swift in Sources */,
 				26C22F2F1F45744A00F8C6C7 /* SectionDetailViewController.swift in Sources */,
+				2674D7DB1F49777C0064E1D7 /* BookLogDetailViewController.swift in Sources */,
 				26C22F171F4411B400F8C6C7 /* SearchBookListTableViewCell.swift in Sources */,
 				2674D7D81F4974470064E1D7 /* BookLog.swift in Sources */,
 				2674D7D41F496BF40064E1D7 /* BookReportDetailViewController.swift in Sources */,

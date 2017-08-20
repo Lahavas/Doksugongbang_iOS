@@ -204,8 +204,11 @@ class BookDetailViewController: UIViewController {
             
             if let bookInfo = self.book.bookInfos.filter("bookReadCount = \(self.book.bookReadCount)").first {
                 
-                let progressRating = bookInfo.bookReadingPage / bookInfo.bookTotalPage
-                self.bookReadProgressView.setProgress(Float(progressRating), animated: true)
+                // 이 부분 수정 (하드코딩)
+                let progressRating = Float(bookInfo.bookReadingPage) / Float(bookInfo.bookTotalPage)
+                self.bookReadProgressView.setProgress(progressRating, animated: true)
+                
+                self.bookLogCountLabel.text = "북로그: \(bookInfo.bookLogs.count)개"
             }
         case .read:
             self.bookStateLabel.text = "이미 읽은 책입니다."
