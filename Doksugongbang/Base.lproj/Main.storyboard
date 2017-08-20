@@ -238,17 +238,17 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sle-hD-ATJ">
-                                            <rect key="frame" x="299" y="121.5" width="68" height="30"/>
+                                            <rect key="frame" x="299" y="107.5" width="68" height="44"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Nb-ij-szx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="44"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6OA-39-jnx">
-                                                    <rect key="frame" x="38" y="0.0" width="30" height="30"/>
+                                                    <rect key="frame" x="38" y="0.0" width="30" height="44"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="hrt-3D-dCQ"/>
+                                                <constraint firstAttribute="height" constant="44" id="hrt-3D-dCQ"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>
@@ -259,10 +259,9 @@
                                         <constraint firstItem="gNz-M3-SPE" firstAttribute="top" secondItem="yOH-j8-g0V" secondAttribute="top" constant="8" id="9et-cu-wBT"/>
                                         <constraint firstAttribute="bottom" secondItem="sle-hD-ATJ" secondAttribute="bottom" constant="8" id="AnZ-oQ-UkR"/>
                                         <constraint firstItem="OSn-Eu-YQ8" firstAttribute="top" secondItem="yOH-j8-g0V" secondAttribute="top" constant="10" id="Cf3-bS-UYR"/>
-                                        <constraint firstItem="sle-hD-ATJ" firstAttribute="leading" secondItem="OSn-Eu-YQ8" secondAttribute="trailing" constant="191" id="Ehw-gB-BZC"/>
                                         <constraint firstItem="P9e-AZ-CMA" firstAttribute="leading" secondItem="OSn-Eu-YQ8" secondAttribute="trailing" constant="8" id="KEx-V9-7eV"/>
                                         <constraint firstAttribute="trailing" secondItem="gNz-M3-SPE" secondAttribute="trailing" constant="8" id="RhO-s1-moR"/>
-                                        <constraint firstItem="sle-hD-ATJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="P9e-AZ-CMA" secondAttribute="bottom" id="Yz0-zu-XM0"/>
+                                        <constraint firstItem="sle-hD-ATJ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="P9e-AZ-CMA" secondAttribute="bottom" constant="8" id="Yz0-zu-XM0"/>
                                         <constraint firstItem="l17-NX-wcR" firstAttribute="centerX" secondItem="OSn-Eu-YQ8" secondAttribute="centerX" id="hsY-LH-raS"/>
                                         <constraint firstItem="OSn-Eu-YQ8" firstAttribute="leading" secondItem="yOH-j8-g0V" secondAttribute="leading" constant="8" id="ncr-S1-3SS"/>
                                         <constraint firstAttribute="trailing" secondItem="P9e-AZ-CMA" secondAttribute="trailing" constant="8" id="ura-R3-b0K"/>
@@ -273,9 +272,7 @@
                                 <connections>
                                     <outlet property="authorLabel" destination="P9e-AZ-CMA" id="fxM-tI-oUA"/>
                                     <outlet property="coverImageView" destination="OSn-Eu-YQ8" id="aiz-B2-LTa"/>
-                                    <outlet property="likeButton" destination="0Nb-ij-szx" id="jVx-Xh-mm6"/>
                                     <outlet property="spinner" destination="l17-NX-wcR" id="6LP-6s-WwD"/>
-                                    <outlet property="starButton" destination="6OA-39-jnx" id="RK9-xS-c16"/>
                                     <outlet property="titleLabel" destination="gNz-M3-SPE" id="u62-Y7-jic"/>
                                 </connections>
                             </tableViewCell>
@@ -449,26 +446,26 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N독째" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rV9-cB-Xdf">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0독째" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rV9-cB-Xdf">
                                         <rect key="frame" x="8" y="30.5" width="359" height="14.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="북로그: N개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qz-ss-C8i">
-                                        <rect key="frame" x="8" y="53" width="359" height="14.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="북로그: 0개" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Qz-ss-C8i">
+                                        <rect key="frame" x="8" y="52.5" width="359" height="14.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Txu-sE-Afx">
-                                        <rect key="frame" x="8" y="106" width="150" height="2"/>
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Txu-sE-Afx">
+                                        <rect key="frame" x="8" y="105" width="150" height="2"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="YtM-dw-PgR"/>
                                         </constraints>
                                     </progressView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="달성률" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lC7-Yu-3e0">
-                                        <rect key="frame" x="8" y="75.5" width="359" height="14.5"/>
+                                        <rect key="frame" x="8" y="74.5" width="359" height="14.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -524,10 +521,13 @@
                         <outlet property="bookButton" destination="8jB-Cb-BF9" id="ihr-CE-EtL"/>
                         <outlet property="bookCountLabel" destination="rV9-cB-Xdf" id="oFX-cH-lmb"/>
                         <outlet property="bookLogCountLabel" destination="0Qz-ss-C8i" id="HG5-tc-MX7"/>
+                        <outlet property="bookReadProgressView" destination="Txu-sE-Afx" id="yZR-Oh-NFj"/>
+                        <outlet property="bookStateLabel" destination="9f6-WJ-I3c" id="axH-7b-hmP"/>
                         <outlet property="categoryLabel" destination="iqc-Ff-CuG" id="MQv-mG-NXz"/>
                         <outlet property="coverImageView" destination="VRf-S1-wBj" id="gIa-Lg-jnd"/>
                         <outlet property="descriptionLabel" destination="VBF-Cx-gbz" id="j3x-IB-pKy"/>
                         <outlet property="descriptionView" destination="8sc-9o-8Iy" id="gKM-fH-JcG"/>
+                        <outlet property="detailViewButton" destination="nwU-1U-YkR" id="wJx-OP-K2T"/>
                         <outlet property="likeButton" destination="gl7-K5-LLh" id="4Ch-g3-ZU1"/>
                         <outlet property="mainView" destination="cz1-bv-yS2" id="qYp-vh-OHe"/>
                         <outlet property="pageLabel" destination="Rb6-3E-dBW" id="5Xu-EK-S9n"/>
@@ -619,7 +619,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9g7-fe-KQq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="YTb-Ha-fqJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5578" y="793"/>
+            <point key="canvasLocation" x="4625" y="1743"/>
         </scene>
         <!--Report After Read View Controller-->
         <scene sceneID="yJY-so-LR5">
@@ -713,7 +713,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcA-D2-i3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="l7J-PF-S8W" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5576.8000000000002" y="1502.6986506746628"/>
+            <point key="canvasLocation" x="5890" y="1743"/>
         </scene>
         <!--My Page View Controller-->
         <scene sceneID="bu4-d1-9Nw">
@@ -965,7 +965,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="luG-n0-7sV"/>
+        <segue reference="rPQ-0f-OnM"/>
         <segue reference="PXh-Jv-Mbk"/>
     </inferredMetricsTieBreakers>
 </document>

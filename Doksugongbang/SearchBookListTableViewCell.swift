@@ -18,9 +18,6 @@ class SearchBookListTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
     
-    @IBOutlet var likeButton: UIButton!
-    @IBOutlet var starButton: UIButton!
-    
     // MARK: - View Life Cycle
     
     override func awakeFromNib() {

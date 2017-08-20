@@ -23,10 +23,16 @@ class BookDetailViewController: UIViewController {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
     
-    // Reading View's Outlets
+    @IBOutlet var likeButton: UIButton!
+    @IBOutlet var bookButton: UIButton!
     
+    // Reading View's Outlets
+    @IBOutlet var bookStateLabel: UILabel!
     @IBOutlet var bookCountLabel: UILabel!
     @IBOutlet var bookLogCountLabel: UILabel!
+    @IBOutlet var bookReadProgressView: UIProgressView!
+    
+    @IBOutlet var detailViewButton: UIButton!
     
     // Description View's Outlets
     @IBOutlet var publisherLabel: UILabel!
@@ -34,9 +40,6 @@ class BookDetailViewController: UIViewController {
     @IBOutlet var pageLabel: UILabel!
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
-    
-    @IBOutlet var likeButton: UIButton!
-    @IBOutlet var bookButton: UIButton!
     
     // Views
     @IBOutlet var mainView: UIView!
@@ -186,27 +189,48 @@ class BookDetailViewController: UIViewController {
     
     func setUpReadingView() {
         
-        if self.book.bookStateEnum == .reading {
-            self.readingView.isHidden = false
-            self.bookButton.isSelected = true
-            NSLayoutConstraint(item: descriptionView,
-                               attribute: .top,
-                               relatedBy: .equal,
-                               toItem: readingView,
-                               attribute: .bottom,
-                               multiplier: 1.0,
-                               constant: 8.0).isActive = true
-        } else {
-            self.readingView.isHidden = true
-            self.bookButton.isSelected = false
-            NSLayoutConstraint(item: descriptionView,
-                               attribute: .top,
-                               relatedBy: .equal,
-                               toItem: mainView,
-                               attribute: .bottom,
-                               multiplier: 1.0,
-                               constant: 8.0).isActive = true
+        self.bookCountLabel.text = "\(self.book.bookReadCount)독째"
+        
+        switch self.book.bookStateEnum {
+        case .reading:
+            self.bookStateLabel.text = "읽고 있는 중입니다."
+            
+            if let bookInfo = self.book.bookInfos.filter("bookReadCount = \(self.book.bookReadCount)").first {
+                
+                let progressRating = bookInfo.bookReadingPage / bookInfo.bookTotalPage
+                self.bookReadProgressView.setProgress(Float(progressRating), animated: true)
+            }
+        case .read:
+            self.bookStateLabel.text = "이미 읽은 책입니다."
+            
+            if let bookInfo = self.book.bookInfos.filter("bookReadCount = \(self.book.bookReadCount - 1)").first {
+                
+                let progressRating = bookInfo.bookReadingPage / bookInfo.bookTotalPage
+                self.bookReadProgressView.setProgress(Float(progressRating), animated: true)
+            }
+        case .none:
+            self.bookStateLabel.text = "아직 읽은 적이 없습니다."
         }
+        
+        
+            // readingView 감추기 (보류중)
+//            self.readingView.isHidden = false
+//            NSLayoutConstraint(item: descriptionView,
+//                               attribute: .top,
+//                               relatedBy: .equal,
+//                               toItem: readingView,
+//                               attribute: .bottom,
+//                               multiplier: 1.0,
+//                               constant: 8.0).isActive = true
+            // readingView 감추기 (보류중)
+//            self.readingView.isHidden = true
+//            NSLayoutConstraint(item: descriptionView,
+//                               attribute: .top,
+//                               relatedBy: .equal,
+//                               toItem: mainView,
+//                               attribute: .bottom,
+//                               multiplier: 1.0,
+//                               constant: 8.0).isActive = true
     }
     
     func setUpImageButton() {
@@ -239,10 +263,10 @@ class BookDetailViewController: UIViewController {
             self.likeButton.isSelected = true
         }
         
-        if self.book.bookStateEnum == .none {
-            self.bookButton.isSelected = false
-        } else {
+        if self.book.bookStateEnum == .reading {
             self.bookButton.isSelected = true
+        } else {
+            self.bookButton.isSelected = false
         }
     }
     
