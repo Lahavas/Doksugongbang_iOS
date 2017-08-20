@@ -54,6 +54,7 @@ class ReportBeforeReadViewController: UIViewController {
         try! realm.write {
             self.book.bookStateEnum = .reading
             self.book.dateUpdatedBookState = Date()
+            self.book.bookReadCount += 1
             
             let bookInfo = BookInfo()
             bookInfo.bookReadCount = self.book.bookReadCount

@@ -59,7 +59,6 @@ class ReportAfterReadViewController: UIViewController {
             }
             
             self.book.bookStateEnum = .read
-            self.book.bookReadCount += 1
             self.book.dateUpdatedBookState = Date()
                 
             bookInfo.reportAfterReading = self.reportTextView.text

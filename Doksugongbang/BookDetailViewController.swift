@@ -107,6 +107,12 @@ class BookDetailViewController: UIViewController {
             }
             
             reportAfterReadViewController.book = self.book
+        case "ShowDetail":
+            guard let bookReportDetailViewController = segue.destination as? BookReportDetailViewController else {
+                preconditionFailure("Unexpected Segue Destination")
+            }
+            
+            bookReportDetailViewController.book = self.book
         default:
             preconditionFailure("Unexpected Segue Identifier")
         }
@@ -189,11 +195,12 @@ class BookDetailViewController: UIViewController {
     
     func setUpReadingView() {
         
-        self.bookCountLabel.text = "\(self.book.bookReadCount)독째"
+        self.bookCountLabel.text = "\(self.book.bookReadCount)독차"
         
         switch self.book.bookStateEnum {
         case .reading:
             self.bookStateLabel.text = "읽고 있는 중입니다."
+            self.detailViewButton.isHidden = false
             
             if let bookInfo = self.book.bookInfos.filter("bookReadCount = \(self.book.bookReadCount)").first {
                 
@@ -202,14 +209,16 @@ class BookDetailViewController: UIViewController {
             }
         case .read:
             self.bookStateLabel.text = "이미 읽은 책입니다."
+            self.detailViewButton.isHidden = false
             
-            if let bookInfo = self.book.bookInfos.filter("bookReadCount = \(self.book.bookReadCount - 1)").first {
+            if let bookInfo = self.book.bookInfos.filter("bookReadCount = \(self.book.bookReadCount)").first {
                 
                 let progressRating = bookInfo.bookReadingPage / bookInfo.bookTotalPage
                 self.bookReadProgressView.setProgress(Float(progressRating), animated: true)
             }
         case .none:
             self.bookStateLabel.text = "아직 읽은 적이 없습니다."
+            self.detailViewButton.isHidden = true
         }
         
         

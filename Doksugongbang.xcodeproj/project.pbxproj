@@ -13,6 +13,8 @@
 		266C39C81F492DBC000F64D7 /* ReportBeforeReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C39C71F492DBC000F64D7 /* ReportBeforeReadViewController.swift */; };
 		266C39CC1F4930CC000F64D7 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C39CB1F4930CC000F64D7 /* Animator.swift */; };
 		266C39CE1F494A14000F64D7 /* ReportAfterReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C39CD1F494A14000F64D7 /* ReportAfterReadViewController.swift */; };
+		2674D7D41F496BF40064E1D7 /* BookReportDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2674D7D31F496BF40064E1D7 /* BookReportDetailViewController.swift */; };
+		2674D7D61F496D200064E1D7 /* BookLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2674D7D51F496D200064E1D7 /* BookLogTableViewCell.swift */; };
 		26C22ED31F440B8600F8C6C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C22ED21F440B8600F8C6C7 /* AppDelegate.swift */; };
 		26C22ED81F440B8600F8C6C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C22ED61F440B8600F8C6C7 /* Main.storyboard */; };
 		26C22EDA1F440B8600F8C6C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C22ED91F440B8600F8C6C7 /* Assets.xcassets */; };
@@ -64,6 +66,8 @@
 		266C39C71F492DBC000F64D7 /* ReportBeforeReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportBeforeReadViewController.swift; sourceTree = "<group>"; };
 		266C39CB1F4930CC000F64D7 /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		266C39CD1F494A14000F64D7 /* ReportAfterReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportAfterReadViewController.swift; sourceTree = "<group>"; };
+		2674D7D31F496BF40064E1D7 /* BookReportDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookReportDetailViewController.swift; sourceTree = "<group>"; };
+		2674D7D51F496D200064E1D7 /* BookLogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookLogTableViewCell.swift; sourceTree = "<group>"; };
 		26C22ECF1F440B8600F8C6C7 /* Doksugongbang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Doksugongbang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C22ED21F440B8600F8C6C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26C22ED71F440B8600F8C6C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				26C22F211F44269A00F8C6C7 /* BookDetailViewController.swift */,
 				266C39C71F492DBC000F64D7 /* ReportBeforeReadViewController.swift */,
 				266C39CD1F494A14000F64D7 /* ReportAfterReadViewController.swift */,
+				2674D7D31F496BF40064E1D7 /* BookReportDetailViewController.swift */,
 			);
 			name = "Book Cycle";
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 				26C22F291F4432BD00F8C6C7 /* BookCollectionViewCell.swift */,
 				26C22F2C1F4560B200F8C6C7 /* BookCollectionReusableView.swift */,
 				266C39C01F46C76D000F64D7 /* RatingControl.swift */,
+				2674D7D51F496D200064E1D7 /* BookLogTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -654,6 +660,7 @@
 				26C22F101F4410DF00F8C6C7 /* AladinConfig.swift in Sources */,
 				26C22F1E1F44189B00F8C6C7 /* SearchViewController.swift in Sources */,
 				26C22F091F44105900F8C6C7 /* Book.swift in Sources */,
+				2674D7D61F496D200064E1D7 /* BookLogTableViewCell.swift in Sources */,
 				26C22F2A1F4432BD00F8C6C7 /* BookCollectionViewCell.swift in Sources */,
 				266C39C81F492DBC000F64D7 /* ReportBeforeReadViewController.swift in Sources */,
 				26C22F221F44269A00F8C6C7 /* BookDetailViewController.swift in Sources */,
@@ -664,6 +671,7 @@
 				26C22F1B1F4411E000F8C6C7 /* HomeViewController.swift in Sources */,
 				26C22F2F1F45744A00F8C6C7 /* SectionDetailViewController.swift in Sources */,
 				26C22F171F4411B400F8C6C7 /* SearchBookListTableViewCell.swift in Sources */,
+				2674D7D41F496BF40064E1D7 /* BookReportDetailViewController.swift in Sources */,
 				266C39C11F46C76D000F64D7 /* RatingControl.swift in Sources */,
 				26C22F261F442DCA00F8C6C7 /* MyPageViewController.swift in Sources */,
 				26C22F151F44117600F8C6C7 /* BarcodeCameraView.swift in Sources */,
