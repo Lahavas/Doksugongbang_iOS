@@ -76,7 +76,7 @@ import UIKit
         // Load Button Images
         let bundle = Bundle(for: type(of: self))
         let emptyStar = UIImage(named: "emptyStar", in: bundle, compatibleWith: self.traitCollection)
-        let filledStar = UIImage(named: "filledStar", in: bundle, compatibleWith: self.traitCollection)
+        let selectedStar = UIImage(named: "selectedStar", in: bundle, compatibleWith: self.traitCollection)
         
         for _ in 0..<starCount {
             
@@ -84,7 +84,7 @@ import UIKit
             let button = UIButton()
             
             button.setImage(emptyStar, for: .normal)
-            button.setImage(filledStar, for: .selected)
+            button.setImage(selectedStar, for: .selected)
             
             button.translatesAutoresizingMaskIntoConstraints = false
             button.heightAnchor.constraint(equalToConstant: starSize.height).isActive = true

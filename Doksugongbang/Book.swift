@@ -58,6 +58,9 @@ class Book: Object {
     dynamic var dateUpdatedFavorite: Date = Date()
     dynamic var dateUpdatedBookState: Date = Date()
     
+    // RelationShips
+    let bookInfos = List<BookInfo>()
+    
     // MARK: - Methods
     
     override static func primaryKey() -> String? {

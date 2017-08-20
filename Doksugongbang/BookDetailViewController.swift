@@ -86,6 +86,29 @@ class BookDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Navigations
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        switch segue.identifier ?? "" {
+        case "ReportBeforeRead":
+            guard let reportBeforeReadViewController = segue.destination as? ReportBeforeReadViewController else {
+                preconditionFailure("Unexpected Segue Destination")
+            }
+            
+            reportBeforeReadViewController.book = self.book
+        case "ReportAfterRead":
+            guard let reportAfterReadViewController = segue.destination as? ReportAfterReadViewController else {
+                preconditionFailure("Unexpected Segue Destination")
+            }
+            
+            reportAfterReadViewController.book = self.book
+        default:
+            preconditionFailure("Unexpected Segue Identifier")
+        }
+    }
+    
     // MARK: - Actions
     
     @IBAction func likeButtonAction(_ sender: UIButton) {
@@ -94,6 +117,7 @@ class BookDetailViewController: UIViewController {
             
             try! realm.write {
                 self.book.isFavorite = true
+                self.book.dateUpdatedFavorite = Date()
                 realm.add(self.book, update: true)
                 self.likeButton.isSelected = true
             }
@@ -101,6 +125,7 @@ class BookDetailViewController: UIViewController {
             
             try! realm.write {
                 self.book.isFavorite = false
+                self.book.dateUpdatedFavorite = Date()
                 realm.add(self.book, update: true)
                 self.likeButton.isSelected = false
             }
@@ -109,14 +134,10 @@ class BookDetailViewController: UIViewController {
     
     @IBAction func bookButtonAction(_ sender: UIButton) {
         
-        if !(self.book.bookStateEnum == .reading) {
-            
-            try! realm.write {
-                self.book.bookStateEnum = .reading
-                realm.add(self.book, update: true)
-            }
-            
-            navigationController!.popToRootViewController(animated: true)
+        if self.book.bookStateEnum == .reading {
+            performSegue(withIdentifier: "ReportAfterRead", sender: self)
+        } else {
+            performSegue(withIdentifier: "ReportBeforeRead", sender: self)
         }
     }
     
@@ -126,6 +147,13 @@ class BookDetailViewController: UIViewController {
             let linkUrl = URL(string: linkUrlString) {
             let safariViewController = SFSafariViewController(url: linkUrl)
             self.present(safariViewController, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func unwindToModal(sender: UIStoryboardSegue) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { 
+            self.navigationController?.popToRootViewController(animated: true)
         }
     }
     
@@ -160,6 +188,7 @@ class BookDetailViewController: UIViewController {
         
         if self.book.bookStateEnum == .reading {
             self.readingView.isHidden = false
+            self.bookButton.isSelected = true
             NSLayoutConstraint(item: descriptionView,
                                attribute: .top,
                                relatedBy: .equal,
@@ -169,6 +198,7 @@ class BookDetailViewController: UIViewController {
                                constant: 8.0).isActive = true
         } else {
             self.readingView.isHidden = true
+            self.bookButton.isSelected = false
             NSLayoutConstraint(item: descriptionView,
                                attribute: .top,
                                relatedBy: .equal,

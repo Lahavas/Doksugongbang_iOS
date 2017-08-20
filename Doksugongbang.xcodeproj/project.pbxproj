@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		1B1E95718E8783ADFA8AD9B6 /* Pods_DoksugongbangTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6704F12CC4A353F1EF4B1896 /* Pods_DoksugongbangTests.framework */; };
 		266C39C11F46C76D000F64D7 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C39C01F46C76D000F64D7 /* RatingControl.swift */; };
+		266C39C41F488EE9000F64D7 /* BookInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C39C31F488EE9000F64D7 /* BookInfo.swift */; };
+		266C39C81F492DBC000F64D7 /* ReportBeforeReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C39C71F492DBC000F64D7 /* ReportBeforeReadViewController.swift */; };
+		266C39CC1F4930CC000F64D7 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C39CB1F4930CC000F64D7 /* Animator.swift */; };
+		266C39CE1F494A14000F64D7 /* ReportAfterReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C39CD1F494A14000F64D7 /* ReportAfterReadViewController.swift */; };
 		26C22ED31F440B8600F8C6C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C22ED21F440B8600F8C6C7 /* AppDelegate.swift */; };
 		26C22ED81F440B8600F8C6C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C22ED61F440B8600F8C6C7 /* Main.storyboard */; };
 		26C22EDA1F440B8600F8C6C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C22ED91F440B8600F8C6C7 /* Assets.xcassets */; };
@@ -56,6 +60,10 @@
 /* Begin PBXFileReference section */
 		1896972F0BE9D03A12EAF718 /* Pods-Doksugongbang.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doksugongbang.release.xcconfig"; path = "Pods/Target Support Files/Pods-Doksugongbang/Pods-Doksugongbang.release.xcconfig"; sourceTree = "<group>"; };
 		266C39C01F46C76D000F64D7 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
+		266C39C31F488EE9000F64D7 /* BookInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookInfo.swift; sourceTree = "<group>"; };
+		266C39C71F492DBC000F64D7 /* ReportBeforeReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportBeforeReadViewController.swift; sourceTree = "<group>"; };
+		266C39CB1F4930CC000F64D7 /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		266C39CD1F494A14000F64D7 /* ReportAfterReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportAfterReadViewController.swift; sourceTree = "<group>"; };
 		26C22ECF1F440B8600F8C6C7 /* Doksugongbang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Doksugongbang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C22ED21F440B8600F8C6C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26C22ED71F440B8600F8C6C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -131,6 +139,16 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
+		2674D7D21F4952E50064E1D7 /* Book Cycle */ = {
+			isa = PBXGroup;
+			children = (
+				26C22F211F44269A00F8C6C7 /* BookDetailViewController.swift */,
+				266C39C71F492DBC000F64D7 /* ReportBeforeReadViewController.swift */,
+				266C39CD1F494A14000F64D7 /* ReportAfterReadViewController.swift */,
+			);
+			name = "Book Cycle";
+			sourceTree = "<group>";
+		};
 		26C22EC61F440B8600F8C6C7 = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				26C22F081F44105900F8C6C7 /* Book.swift */,
+				266C39C31F488EE9000F64D7 /* BookInfo.swift */,
 				26C22F0C1F44109500F8C6C7 /* BookStore.swift */,
 				26C22F0A1F44107800F8C6C7 /* ImageStore.swift */,
 			);
@@ -235,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				26C22F061F44103600F8C6C7 /* AladinAPI.swift */,
+				266C39CB1F4930CC000F64D7 /* Animator.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -250,10 +270,10 @@
 		26C22F111F44114800F8C6C7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				2674D7D21F4952E50064E1D7 /* Book Cycle */,
 				266C39C21F46E6BB000F64D7 /* Home */,
 				26C22F241F442DA300F8C6C7 /* MyPage */,
 				26C22F1C1F44172E00F8C6C7 /* Searching */,
-				26C22F211F44269A00F8C6C7 /* BookDetailViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -628,11 +648,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				266C39C41F488EE9000F64D7 /* BookInfo.swift in Sources */,
 				26C22F2D1F4560B200F8C6C7 /* BookCollectionReusableView.swift in Sources */,
+				266C39CE1F494A14000F64D7 /* ReportAfterReadViewController.swift in Sources */,
 				26C22F101F4410DF00F8C6C7 /* AladinConfig.swift in Sources */,
 				26C22F1E1F44189B00F8C6C7 /* SearchViewController.swift in Sources */,
 				26C22F091F44105900F8C6C7 /* Book.swift in Sources */,
 				26C22F2A1F4432BD00F8C6C7 /* BookCollectionViewCell.swift in Sources */,
+				266C39C81F492DBC000F64D7 /* ReportBeforeReadViewController.swift in Sources */,
 				26C22F221F44269A00F8C6C7 /* BookDetailViewController.swift in Sources */,
 				26C22F321F45800700F8C6C7 /* Results.swift in Sources */,
 				26C22F071F44103600F8C6C7 /* AladinAPI.swift in Sources */,
@@ -646,6 +669,7 @@
 				26C22F151F44117600F8C6C7 /* BarcodeCameraView.swift in Sources */,
 				26C22F201F441E6100F8C6C7 /* SearchBookListViewController.swift in Sources */,
 				26C22F0B1F44107800F8C6C7 /* ImageStore.swift in Sources */,
+				266C39CC1F4930CC000F64D7 /* Animator.swift in Sources */,
 				26C22ED31F440B8600F8C6C7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
