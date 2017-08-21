@@ -222,26 +222,6 @@ class BookDetailViewController: UIViewController {
             self.bookStateLabel.text = "아직 읽은 적이 없습니다."
             self.detailViewButton.isHidden = true
         }
-        
-        
-            // readingView 감추기 (보류중)
-//            self.readingView.isHidden = false
-//            NSLayoutConstraint(item: descriptionView,
-//                               attribute: .top,
-//                               relatedBy: .equal,
-//                               toItem: readingView,
-//                               attribute: .bottom,
-//                               multiplier: 1.0,
-//                               constant: 8.0).isActive = true
-            // readingView 감추기 (보류중)
-//            self.readingView.isHidden = true
-//            NSLayoutConstraint(item: descriptionView,
-//                               attribute: .top,
-//                               relatedBy: .equal,
-//                               toItem: mainView,
-//                               attribute: .bottom,
-//                               multiplier: 1.0,
-//                               constant: 8.0).isActive = true
     }
     
     func setUpImageButton() {

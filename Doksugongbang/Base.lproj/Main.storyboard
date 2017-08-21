@@ -24,16 +24,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Book Title" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Phf-I7-sAJ">
-                                <rect key="frame" x="201" y="28" width="150" height="30"/>
+                                <rect key="frame" x="24" y="70" width="187.5" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hiT-Fv-Nux">
-                                <rect key="frame" x="24" y="74" width="327" height="68"/>
+                                <rect key="frame" x="24" y="116" width="187.5" height="68"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GUI-rc-Teg">
-                                        <rect key="frame" x="0.0" y="0.0" width="327" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시작 페이지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4K-nw-Gm7">
                                                 <rect key="frame" x="0.0" y="0.0" width="78" height="30"/>
@@ -42,15 +42,15 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fa7-6n-o4y">
-                                                <rect key="frame" x="86" y="0.0" width="241" height="30"/>
+                                                <rect key="frame" x="86" y="0.0" width="101.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zmk-R7-kjE">
-                                        <rect key="frame" x="0.0" y="38" width="327" height="30"/>
+                                        <rect key="frame" x="0.0" y="38" width="187.5" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="끝 페이지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8E-qt-alC">
                                                 <rect key="frame" x="0.0" y="0.0" width="78" height="30"/>
@@ -59,10 +59,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgA-eX-Fr8">
-                                                <rect key="frame" x="86" y="0.0" width="241" height="30"/>
+                                                <rect key="frame" x="86" y="0.0" width="101.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -72,13 +72,13 @@
                                 </constraints>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="K7M-Rm-3wp">
-                                <rect key="frame" x="24" y="158" width="327" height="463"/>
+                                <rect key="frame" x="24" y="200" width="327" height="451"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c8s-kZ-DVT">
-                                <rect key="frame" x="321" y="629" width="30" height="30"/>
+                                <rect key="frame" x="313" y="32" width="30" height="30"/>
                                 <state key="normal" title="등록"/>
                                 <connections>
                                     <action selector="addBookLog:" destination="SLR-La-4dC" eventType="touchUpInside" id="gtJ-hJ-xR7"/>
@@ -89,17 +89,17 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="hiT-Fv-Nux" firstAttribute="top" secondItem="Phf-I7-sAJ" secondAttribute="bottom" constant="16" id="8wG-uD-erE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="hiT-Fv-Nux" secondAttribute="trailing" constant="8" id="8zk-gt-6JU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Phf-I7-sAJ" secondAttribute="trailing" constant="8" id="DZX-jy-1lX"/>
-                            <constraint firstItem="zIr-fI-mC6" firstAttribute="top" secondItem="c8s-kZ-DVT" secondAttribute="bottom" constant="8" id="S4I-yz-wZ8"/>
+                            <constraint firstItem="hiT-Fv-Nux" firstAttribute="trailing" secondItem="Phf-I7-sAJ" secondAttribute="trailing" id="HQC-gH-5uG"/>
+                            <constraint firstItem="zIr-fI-mC6" firstAttribute="top" secondItem="K7M-Rm-3wp" secondAttribute="bottom" constant="16" id="O4N-m2-pcZ"/>
                             <constraint firstItem="K7M-Rm-3wp" firstAttribute="leading" secondItem="Arf-7K-IbI" secondAttribute="leadingMargin" constant="8" id="SB3-IV-lDb"/>
+                            <constraint firstItem="Phf-I7-sAJ" firstAttribute="top" secondItem="c8s-kZ-DVT" secondAttribute="bottom" constant="8" id="Szx-bK-60F"/>
                             <constraint firstItem="hiT-Fv-Nux" firstAttribute="leading" secondItem="Arf-7K-IbI" secondAttribute="leadingMargin" constant="8" id="VGt-ve-OGQ"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="c8s-kZ-DVT" secondAttribute="trailing" constant="8" id="YW9-h3-4ni"/>
-                            <constraint firstItem="Phf-I7-sAJ" firstAttribute="top" secondItem="czJ-0P-wGW" secondAttribute="bottom" constant="8" id="dxI-ho-gpw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="c8s-kZ-DVT" secondAttribute="trailing" constant="16" id="l07-iB-I81"/>
+                            <constraint firstItem="Phf-I7-sAJ" firstAttribute="leading" secondItem="Arf-7K-IbI" secondAttribute="leadingMargin" constant="8" id="py2-f9-dKB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="K7M-Rm-3wp" secondAttribute="trailing" constant="8" id="qgu-B4-MOr"/>
-                            <constraint firstItem="Phf-I7-sAJ" firstAttribute="width" secondItem="Arf-7K-IbI" secondAttribute="width" multiplier="0.4" id="rky-Za-t1M"/>
+                            <constraint firstItem="Phf-I7-sAJ" firstAttribute="width" secondItem="Arf-7K-IbI" secondAttribute="width" multiplier="0.5" id="rky-Za-t1M"/>
                             <constraint firstItem="K7M-Rm-3wp" firstAttribute="top" secondItem="hiT-Fv-Nux" secondAttribute="bottom" constant="16" id="sf6-o8-aXB"/>
-                            <constraint firstItem="c8s-kZ-DVT" firstAttribute="top" secondItem="K7M-Rm-3wp" secondAttribute="bottom" constant="8" id="uqf-w5-5ir"/>
+                            <constraint firstItem="c8s-kZ-DVT" firstAttribute="top" secondItem="Arf-7K-IbI" secondAttribute="topMargin" constant="32" id="utl-KJ-Pwo"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="ecI-qX-6ob" appends="YES" id="BPl-mV-lzv"/>
@@ -263,7 +263,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3fB-84-fcm" id="mBC-M2-yJ2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XL7-Lq-uZF">
@@ -328,7 +328,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CNj-AQ-DP2" id="yOH-j8-g0V">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OSn-Eu-YQ8">
@@ -677,6 +677,7 @@
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1독차" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sas-zr-Dn8">
                                     <rect key="frame" x="289" y="16" width="70" height="30"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="70" id="Red-h5-Gpj"/>
                                     </constraints>
@@ -737,7 +738,7 @@
                                 <rect key="frame" x="0.0" y="364" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gB5-TH-tQh" id="RWa-xM-4PM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
