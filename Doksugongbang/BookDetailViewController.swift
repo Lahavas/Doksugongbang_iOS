@@ -176,7 +176,7 @@ class BookDetailViewController: UIViewController {
             self.authorLabel.text = book.author
             self.publisherLabel.text = book.publisher
             self.pubdateLabel.text = dateFormatter.string(from: book.pubdate)
-            self.pageLabel.text = "\(String(book.page))p"
+            self.pageLabel.text = "\(book.page)p"
             self.categoryLabel.text = book.category
             self.descriptionLabel.text = book.bookDescription
             

@@ -61,6 +61,7 @@ class ReportBeforeReadViewController: UIViewController {
             bookInfo.bookTotalPage = self.book.page
             bookInfo.reportBeforeReading = self.reportTextView.text
             
+            bookInfo.parentBook = self.book
             self.book.bookInfos.append(bookInfo)
             
             realm.add(self.book, update: true)

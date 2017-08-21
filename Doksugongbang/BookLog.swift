@@ -22,7 +22,7 @@ class BookLog: Object {
     
     dynamic var dateUpdated: Date = Date()
     
-    let bookInfos = LinkingObjects(fromType: BookInfo.self, property: "bookLogs")
+    dynamic var parentBookInfo: BookInfo?
     
     // MARK: - Methods
     

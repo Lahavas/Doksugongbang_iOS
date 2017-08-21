@@ -106,6 +106,7 @@ class BookLogDetailViewController: UIViewController {
             if self.bookInfo.bookReadingPage < bookLog.endPage {
                 self.bookInfo.bookReadingPage = bookLog.endPage
             }
+            bookLog.parentBookInfo = self.bookInfo
             self.bookInfo.bookLogs.append(bookLog)
             
             self.dismiss(animated: true, completion: nil)
@@ -141,8 +142,8 @@ class BookLogDetailViewController: UIViewController {
     func setUpBookLogView() {
         
         self.bookTitleTextField.text = self.book.title
-        self.startPageTextField.text = String(self.bookReadingPage)
-        self.endPageTextField.text = String(self.bookReadingPage)
+        self.startPageTextField.text = "\(self.bookReadingPage)"
+        self.endPageTextField.text = "\(self.bookReadingPage)"
         
         self.numberFormatter.maximum = self.bookTotalPage as NSNumber
     }

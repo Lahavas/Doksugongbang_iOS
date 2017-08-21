@@ -78,15 +78,20 @@ struct AladinAPI {
         guard
             let bookInfoJson = json["subInfo"] as? [String: Any],
             let bookIsbn = json["isbn13"] as? String,
-            let bookTitle = json["title"] as? String,
-            let bookAuthor = json["author"] as? String,
-            let bookPublisher = json["publisher"] as? String,
+            let bookTitleEncoded = json["title"] as? String,
+            let bookAuthorEncoded = json["author"] as? String,
+            let bookPublisherEncoded = json["publisher"] as? String,
             let bookPubdateString = json["pubDate"] as? String,
             let bookPage = bookInfoJson["itemPage"] as? Int,
-            let bookCategory = json["categoryName"] as? String,
-            let bookDescription = json["description"] as? String,
+            let bookCategoryEncoded = json["categoryName"] as? String,
+            let bookDescriptionEncoded = json["description"] as? String,
             let bookLinkUrl = json["link"] as? String,
             let bookCoverUrl = json["cover"] as? String,
+            let bookTitle = String(htmlEncodedString: bookTitleEncoded),
+            let bookAuthor = String(htmlEncodedString: bookAuthorEncoded),
+            let bookPublisher = String(htmlEncodedString: bookPublisherEncoded),
+            let bookCategory = String(htmlEncodedString: bookCategoryEncoded),
+            let bookDescription = String(htmlEncodedString: bookDescriptionEncoded),
             let bookPubdate = dateFormatter.date(from: bookPubdateString) else {
                 return nil
         }
@@ -120,12 +125,16 @@ struct AladinAPI {
         
         guard
             let bookIsbn = json["isbn13"] as? String,
-            let bookTitle = json["title"] as? String,
-            let bookAuthor = json["author"] as? String,
-            let bookPublisher = json["publisher"] as? String,
+            let bookTitleEncoded = json["title"] as? String,
+            let bookAuthorEncoded = json["author"] as? String,
+            let bookPublisherEncoded = json["publisher"] as? String,
             let bookPubdateString = json["pubDate"] as? String,
-            let bookCategory = json["categoryName"] as? String,
+            let bookCategoryEncoded = json["categoryName"] as? String,
             let bookCoverUrl = json["cover"] as? String,
+            let bookTitle = String(htmlEncodedString: bookTitleEncoded),
+            let bookAuthor = String(htmlEncodedString: bookAuthorEncoded),
+            let bookPublisher = String(htmlEncodedString: bookPublisherEncoded),
+            let bookCategory = String(htmlEncodedString: bookCategoryEncoded),
             let bookPubdate = dateFormatter.date(from: bookPubdateString) else {
                 return nil
         }

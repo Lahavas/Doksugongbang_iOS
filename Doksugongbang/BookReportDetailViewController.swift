@@ -183,8 +183,8 @@ extension BookReportDetailViewController: UITableViewDelegate, UITableViewDataSo
         let bookLogListInSection = self.bookLogListInSections[indexPath.section]
         let bookLog: BookLog = bookLogListInSection[indexPath.row]
         
-        cell.startPageLabel.text = String(bookLog.startPage)
-        cell.endPageLabel.text = String(bookLog.endPage)
+        cell.startPageLabel.text = "\(bookLog.startPage)"
+        cell.endPageLabel.text = "\(bookLog.endPage)"
         cell.bookLogLabel.text = bookLog.logContent
         
         return cell

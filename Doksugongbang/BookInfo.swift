@@ -26,7 +26,8 @@ class BookInfo: Object {
     
     dynamic var dateUpdated: Date = Date()
     
-    let books = LinkingObjects(fromType: Book.self, property: "bookInfos")
+    dynamic var parentBook: Book?
+    
     let bookLogs = List<BookLog>()
     
     // MARK: - Methods
