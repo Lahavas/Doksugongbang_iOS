@@ -22,11 +22,21 @@ class BookReportDetailViewController: UIViewController {
     
     var book: Book!
     var bookInfo: BookInfo!
+    var bookLogList: [BookLog]!
     
     var bookReadCount: Int = 0
     var bookReadCountPickOption: [String] = []
     
+    var dateSectionList: [String]!
+    var bookLogListInSections: [[BookLog]]!
+    
     let realm = try! Realm()
+    
+    let dateFormatter: DateFormatter = {
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy년 MM월"
+        return dateFormatter
+    }()
     
     // MARK: - View Life Cycle
     
@@ -72,6 +82,8 @@ class BookReportDetailViewController: UIViewController {
             let readCountString: String = "\(readCount)독차"
             self.bookReadCountPickOption.append(readCountString)
         }
+        
+        self.bookLogList = self.bookInfo.bookLogs.sorted(byKeyPath: "dateUpdated", ascending: false).toArray()
     }
     
     func setUpDetailView() {
@@ -80,6 +92,31 @@ class BookReportDetailViewController: UIViewController {
         self.bookRating.rating = self.bookInfo.bookRating
         self.bookReportAfterReadLabel.text = self.bookInfo.reportAfterReading
         self.bookReportBeforeReadLabel.text = self.bookInfo.reportBeforeReading
+        
+        self.setUpBookLogList()
+        self.bookLogTableView.reloadData()
+    }
+    
+    func setUpBookLogList() {
+        
+        self.dateSectionList = []
+        self.bookLogListInSections = [[]]
+        var index: Int = -1
+        
+        for bookLog in self.bookLogList {
+            
+            if
+                let bookLogDate = bookLog.value(forKey: "dateUpdated") as? Date {
+                let bookLogDateString = self.dateFormatter.string(from: bookLogDate)
+                
+                if !(self.dateSectionList.contains(bookLogDateString)) {
+                    self.dateSectionList.append(bookLogDateString)
+                    index += 1
+                }
+                
+                self.bookLogListInSections[index].append(bookLog)
+            }
+        }
     }
 }
 
@@ -109,6 +146,7 @@ extension BookReportDetailViewController: UIPickerViewDelegate, UIPickerViewData
         self.bookReadCount = row + 1
         if let bookInfo = self.book.bookInfos.filter("bookReadCount = \(self.bookReadCount)").first {
             self.bookInfo = bookInfo
+            self.bookLogList = self.bookInfo.bookLogs.sorted(byKeyPath: "dateUpdated", ascending: false).toArray()
         } else {
             preconditionFailure("Cannot find bookInfo")
         }
@@ -124,11 +162,15 @@ extension BookReportDetailViewController: UITableViewDelegate, UITableViewDataSo
     // MARK: - Table View Data Source
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return self.dateSectionList.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return self.bookLogListInSections[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.dateSectionList[section]
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -137,6 +179,13 @@ extension BookReportDetailViewController: UITableViewDelegate, UITableViewDataSo
         guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? BookLogTableViewCell else {
             preconditionFailure("The dequeued cell is not an instance of BookLogTableViewCell.")
         }
+        
+        let bookLogListInSection = self.bookLogListInSections[indexPath.section]
+        let bookLog: BookLog = bookLogListInSection[indexPath.row]
+        
+        cell.startPageLabel.text = String(bookLog.startPage)
+        cell.endPageLabel.text = String(bookLog.endPage)
+        cell.bookLogLabel.text = bookLog.logContent
         
         return cell
     }

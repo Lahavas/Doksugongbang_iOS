@@ -9,6 +9,14 @@
 import UIKit
 
 class BookLogTableViewCell: UITableViewCell {
+    
+    // MARK: - Properties
+    
+    @IBOutlet var startPageLabel: UILabel!
+    @IBOutlet var endPageLabel: UILabel!
+    @IBOutlet var bookLogLabel: UILabel!
+    
+    // MARK: - View Life Cycle
 
     override func awakeFromNib() {
         super.awakeFromNib()
