@@ -29,6 +29,8 @@ class MyPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "My Page"
 
         self.bookCollectionView.delegate = self
         self.bookCollectionView.dataSource = self

@@ -32,6 +32,8 @@ class BookLogListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Book Log"
 
         self.bookLogTableView.delegate = self
         self.bookLogTableView.dataSource = self

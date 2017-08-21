@@ -32,11 +32,13 @@ class HomeViewController: UIViewController {
     
     let store = BookStore.shared
     
-    var bookList: [[Book]] = Array(repeating: Array(repeating: Book(), count:0), count: 3)
-    var book: Book!
-    
     var sections: [String] = [ "reading", "best seller", "new books" ]
     var selectedSection: String?
+    
+    var numberOfCellInSection: Int = 3
+    
+    var bookList: [[Book]] = Array(repeating: Array(repeating: Book(), count:0), count: 3)
+    var book: Book!
     
     // MARK: - View Life Cycle
     
@@ -45,6 +47,8 @@ class HomeViewController: UIViewController {
         
         // Realm Browser file 위치
         print(Realm.Configuration.defaultConfiguration.fileURL!)
+        
+        self.title = "Home"
         
         self.bookCollectionView.delegate = self
         self.bookCollectionView.dataSource = self
@@ -162,7 +166,7 @@ class HomeViewController: UIViewController {
 
 // MARK: -
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Collection View Delegate
     
@@ -202,7 +206,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             supplementaryView.sectionTitleLabel.text = sections[indexPath.section]
             
-            if bookList[indexPath.section].count <= 3 {
+            if bookList[indexPath.section].count <= self.numberOfCellInSection {
                 supplementaryView.showSectionButton.isHidden = true
             } else {
                 supplementaryView.showSectionButton.isHidden = false
@@ -253,8 +257,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         let bookList = self.bookList[section]
         
-        if bookList.count > 3 {
-            return 3
+        if bookList.count > self.numberOfCellInSection {
+            return self.numberOfCellInSection
         } else {
             return bookList.count
         }
@@ -269,4 +273,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         return cell
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        
+//        return CGSize(width: view.frame.width, height: 180.0)
+//    }
 }

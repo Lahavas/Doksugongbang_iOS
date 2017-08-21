@@ -48,6 +48,8 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Search"
+        
         self.searchBar.delegate = self
         
         self.quickSearchTableView.delegate = self
