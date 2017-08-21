@@ -153,6 +153,25 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
+		26702C211F4AEE44000338EF /* Realm Models */ = {
+			isa = PBXGroup;
+			children = (
+				26C22F081F44105900F8C6C7 /* Book.swift */,
+				266C39C31F488EE9000F64D7 /* BookInfo.swift */,
+				2674D7D71F4974470064E1D7 /* BookLog.swift */,
+			);
+			name = "Realm Models";
+			sourceTree = "<group>";
+		};
+		26702C221F4AEE63000338EF /* Store Models */ = {
+			isa = PBXGroup;
+			children = (
+				26C22F0C1F44109500F8C6C7 /* BookStore.swift */,
+				26C22F0A1F44107800F8C6C7 /* ImageStore.swift */,
+			);
+			name = "Store Models";
+			sourceTree = "<group>";
+		};
 		2674D7D21F4952E50064E1D7 /* Book Cycle */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,11 +252,8 @@
 		26C22F001F440F9A00F8C6C7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				26C22F081F44105900F8C6C7 /* Book.swift */,
-				266C39C31F488EE9000F64D7 /* BookInfo.swift */,
-				2674D7D71F4974470064E1D7 /* BookLog.swift */,
-				26C22F0C1F44109500F8C6C7 /* BookStore.swift */,
-				26C22F0A1F44107800F8C6C7 /* ImageStore.swift */,
+				26702C211F4AEE44000338EF /* Realm Models */,
+				26702C221F4AEE63000338EF /* Store Models */,
 			);
 			name = Models;
 			sourceTree = "<group>";

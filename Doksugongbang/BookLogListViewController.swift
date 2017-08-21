@@ -103,6 +103,7 @@ extension BookLogListViewController: UITableViewDelegate, UITableViewDataSource 
         
         let bookLogListInSection = self.bookLogListInSections[indexPath.section]
         let bookLog: BookLog = bookLogListInSection[indexPath.row]
+ 
         guard
             let bookInfo: BookInfo = bookLog.parentBookInfo,
             let book: Book = bookInfo.parentBook else {
@@ -112,7 +113,7 @@ extension BookLogListViewController: UITableViewDelegate, UITableViewDataSource 
         cell.startPageLabel.text = "\(bookLog.startPage)p"
         cell.endPageLabel.text = "\(bookLog.endPage)p"
         
-        cell.bookTitleLabel.text = book.title
+        cell.bookTitleLabel.text = "책 제목: \(book.title)"
         cell.bookReadCountLabel.text = "\(bookInfo.bookReadCount)독차"
         cell.bookLogLabel.text = bookLog.logContent
         
