@@ -34,8 +34,15 @@ class SectionDetailViewController: UIViewController {
         return dateFormatter
     }()
     
-    var selectedSection: String?
-    
+    var selectedSection: String! {
+        didSet {
+            guard let sectionString = self.selectedSection else {
+                preconditionFailure("Unexpected String")
+            }
+            
+            self.title = sectionString
+        }
+    }
     
     // MARK: - View Life Cycle
     
@@ -157,18 +164,18 @@ class SectionDetailViewController: UIViewController {
     
     func setUpSelectedSectionBookList() {
         
-        guard let sectionString = selectedSection else {
+        guard let sectionString = self.selectedSection else {
             preconditionFailure("Unexpected String")
         }
         
         switch sectionString {
-        case "favorite":
+        case "읽고 싶은 책":
             self.bookList = self.realm
                 .objects(Book.self)
                 .filter("isFavorite = True")
                 .sorted(byKeyPath: "dateUpdatedFavorite", ascending: false)
                 .toArray()
-        case "best seller":
+        case "베스트 셀러":
             var bestSellerListURL: URL {
                 
                 return AladinAPI.aladinApiURL(method: .itemList,
@@ -189,7 +196,7 @@ class SectionDetailViewController: UIViewController {
                     print(error)
                 }
             }
-        case "new books":
+        case "새로 나온 책":
             var itemNewSpecialListURL: URL {
                 
                 return AladinAPI.aladinApiURL(method: .itemList,

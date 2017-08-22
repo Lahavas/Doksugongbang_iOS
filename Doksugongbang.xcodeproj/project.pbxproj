@@ -150,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				26C22F1A1F4411E000F8C6C7 /* HomeViewController.swift */,
+				26C22F2E1F45744A00F8C6C7 /* SectionDetailViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -373,7 +374,6 @@
 			isa = PBXGroup;
 			children = (
 				26C22F251F442DCA00F8C6C7 /* MyPageViewController.swift */,
-				26C22F2E1F45744A00F8C6C7 /* SectionDetailViewController.swift */,
 			);
 			name = MyPage;
 			sourceTree = "<group>";

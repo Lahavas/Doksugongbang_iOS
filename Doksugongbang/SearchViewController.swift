@@ -145,6 +145,8 @@ class SearchViewController: UIViewController {
             
             self.barcodeCameraView.isHidden = false
             self.quickSearchTableView.isHidden = true
+            
+            self.view.endEditing(true)
         case .typingSearchingStart:
             self.sessionQueue.async {
                 self.session.stopRunning()

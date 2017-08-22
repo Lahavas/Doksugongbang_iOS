@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
     
     let store = BookStore.shared
     
-    var sections: [String] = [ "reading", "best seller", "new books" ]
+    var sections: [String] = [ "읽고 있는 책", "베스트 셀러", "새로 나온 책" ]
     var selectedSection: String?
     
     var numberOfCellInSection: Int = 3
@@ -48,7 +48,7 @@ class HomeViewController: UIViewController {
         // Realm Browser file 위치
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         
-        self.title = "Home"
+        self.title = "홈 화면"
         
         self.bookCollectionView.delegate = self
         self.bookCollectionView.dataSource = self

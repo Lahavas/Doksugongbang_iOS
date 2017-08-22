@@ -22,7 +22,7 @@ class MyPageViewController: UIViewController {
     var bookList: [[Book]] = Array(repeating: Array(repeating: Book(), count:0), count: 3)
     var book: Book!
     
-    var sections: [String] = [ "favorite", "reading", "read" ]
+    var sections: [String] = [ "읽고 싶은 책", "읽고 있는 책", "다 읽은 책" ]
     var selectedSection: String?
     
     // MARK: - View Life Cycle

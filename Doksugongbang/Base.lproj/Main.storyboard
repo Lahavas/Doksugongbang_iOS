@@ -185,8 +185,8 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x1f-So-eiJ">
-                                    <rect key="frame" x="16" y="16" width="58" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <rect key="frame" x="16" y="16" width="61" height="18"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -249,6 +249,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="1Er-8B-hdI"/>
                                 </constraints>
+                                <color key="barTintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -267,8 +268,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XL7-Lq-uZF">
-                                                    <rect key="frame" x="16" y="11" width="343" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="16" y="9.5" width="343" height="24"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -357,7 +358,7 @@
                                                 <constraint firstItem="mkv-3Q-QcF" firstAttribute="leading" secondItem="tZo-bD-kVr" secondAttribute="leading" id="qmL-Iw-swS"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgv-tc-575">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgv-tc-575">
                                             <rect key="frame" x="116" y="8" width="251" height="24"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                             <nil key="textColor"/>
@@ -412,7 +413,7 @@
                                         <constraint firstItem="fsh-d0-f1u" firstAttribute="top" secondItem="KBD-K7-39G" secondAttribute="bottom" constant="4" id="9Oj-nZ-TPe"/>
                                         <constraint firstItem="hgv-tc-575" firstAttribute="top" secondItem="yOH-j8-g0V" secondAttribute="top" constant="8" id="ARd-66-wJP"/>
                                         <constraint firstItem="KBD-K7-39G" firstAttribute="top" secondItem="KRw-6G-agI" secondAttribute="bottom" constant="4" id="D44-gW-lkv"/>
-                                        <constraint firstItem="3jj-Ny-Zrb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fsh-d0-f1u" secondAttribute="bottom" constant="8" id="Ewl-cX-L6H"/>
+                                        <constraint firstItem="3jj-Ny-Zrb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fsh-d0-f1u" secondAttribute="bottom" constant="4" id="Ewl-cX-L6H"/>
                                         <constraint firstAttribute="trailing" secondItem="KBD-K7-39G" secondAttribute="trailing" constant="8" id="Jot-az-gE4"/>
                                         <constraint firstAttribute="trailing" secondItem="hgv-tc-575" secondAttribute="trailing" constant="8" id="LvJ-UA-znU"/>
                                         <constraint firstItem="hgv-tc-575" firstAttribute="leading" secondItem="tZo-bD-kVr" secondAttribute="trailing" constant="8" id="WLZ-ee-vEV"/>
@@ -494,7 +495,7 @@
                                             <constraint firstItem="VRf-S1-wBj" firstAttribute="top" secondItem="84f-VA-iqI" secondAttribute="top" id="tuR-aG-LjK"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRO-bp-oEk">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oRO-bp-oEk">
                                         <rect key="frame" x="116" y="8" width="251" height="24"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <nil key="textColor"/>
@@ -569,7 +570,7 @@
                                     <constraint firstItem="84f-VA-iqI" firstAttribute="leading" secondItem="cz1-bv-yS2" secondAttribute="leading" constant="8" id="kCS-W2-js6"/>
                                     <constraint firstItem="EsW-Md-mgs" firstAttribute="top" secondItem="oRO-bp-oEk" secondAttribute="bottom" constant="8" id="p2K-jK-gV1"/>
                                     <constraint firstAttribute="height" constant="160" id="sDt-Bk-RY1"/>
-                                    <constraint firstItem="8Pq-td-8LO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zhC-Kl-sGl" secondAttribute="bottom" constant="8" id="sH4-4M-jIn"/>
+                                    <constraint firstItem="8Pq-td-8LO" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zhC-Kl-sGl" secondAttribute="bottom" constant="4" id="sH4-4M-jIn"/>
                                     <constraint firstItem="oRO-bp-oEk" firstAttribute="leading" secondItem="84f-VA-iqI" secondAttribute="trailing" constant="8" id="t71-2A-546"/>
                                     <constraint firstItem="zhC-Kl-sGl" firstAttribute="top" secondItem="4wW-3Z-c1C" secondAttribute="bottom" constant="4" id="vNG-tb-WhV"/>
                                 </constraints>
@@ -920,7 +921,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uZ2-4x-OSn">
                                 <rect key="frame" x="24" y="156" width="327" height="75"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="MJ3-Bh-6Ky"/>
                                 </constraints>
@@ -1035,7 +1036,7 @@
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.5" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l49-ie-HYz">
                                 <rect key="frame" x="24" y="260.5" width="327" height="75"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="AZR-2j-tEi"/>
                                 </constraints>
@@ -1141,8 +1142,8 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RYl-8G-chc">
-                                    <rect key="frame" x="16" y="16" width="58" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <rect key="frame" x="16" y="16" width="61" height="18"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -1222,7 +1223,7 @@
                                                 <constraint firstItem="7Bi-Gq-8G5" firstAttribute="leading" secondItem="KGC-NE-4XE" secondAttribute="leading" id="mU1-Lm-Z6Z"/>
                                             </constraints>
                                         </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zef-9w-NOH">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zef-9w-NOH">
                                             <rect key="frame" x="116" y="8" width="251" height="24"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                             <nil key="textColor"/>
@@ -1285,7 +1286,7 @@
                                         <constraint firstAttribute="trailing" secondItem="z3B-Ik-iem" secondAttribute="trailing" constant="8" id="UWP-Pt-gir"/>
                                         <constraint firstItem="z3B-Ik-iem" firstAttribute="leading" secondItem="KGC-NE-4XE" secondAttribute="trailing" constant="8" id="Y8q-Mx-g9A"/>
                                         <constraint firstItem="KGC-NE-4XE" firstAttribute="top" secondItem="TDb-Bb-9R2" secondAttribute="top" constant="10" id="agb-Vp-7Ys"/>
-                                        <constraint firstItem="E1x-9l-Sie" firstAttribute="top" relation="greaterThanOrEqual" secondItem="z3B-Ik-iem" secondAttribute="bottom" constant="8" id="hbA-lz-HeZ"/>
+                                        <constraint firstItem="E1x-9l-Sie" firstAttribute="top" relation="greaterThanOrEqual" secondItem="z3B-Ik-iem" secondAttribute="bottom" constant="4" id="hbA-lz-HeZ"/>
                                         <constraint firstAttribute="bottom" secondItem="KGC-NE-4XE" secondAttribute="bottom" constant="10" id="iOu-05-zIr"/>
                                         <constraint firstAttribute="trailing" secondItem="E1x-9l-Sie" secondAttribute="trailing" constant="8" id="j06-OV-pf2"/>
                                         <constraint firstItem="NNm-8w-rGN" firstAttribute="top" secondItem="Zef-9w-NOH" secondAttribute="bottom" constant="8" id="j0Q-ew-w1R"/>
@@ -1523,9 +1524,9 @@
         <image name="selectedLike" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="luG-n0-7sV"/>
+        <segue reference="RRs-8h-Uv0"/>
+        <segue reference="b1t-2d-dqD"/>
         <segue reference="pnK-yV-qy5"/>
-        <segue reference="DY5-AV-BGm"/>
-        <segue reference="CQW-8x-nZ2"/>
-        <segue reference="9DI-n4-3xv"/>
     </inferredMetricsTieBreakers>
 </document>
