@@ -6,6 +6,15 @@
 //  Copyright © 2017년 yeon. All rights reserved.
 //
 
+///////////////////////////////////////////
+//  수정 필요한 부분
+//
+//  1. ScrollView 적용
+//
+//  2. 진행률 ProgressBar 수정
+//
+///////////////////////////////////////////
+
 import UIKit
 import RealmSwift
 import SafariServices
@@ -22,6 +31,8 @@ class BookDetailViewController: UIViewController {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
+    @IBOutlet var publisherLabel: UILabel!
+    @IBOutlet var pubdateLabel: UILabel!
     
     @IBOutlet var likeButton: UIButton!
     @IBOutlet var bookButton: UIButton!
@@ -29,14 +40,11 @@ class BookDetailViewController: UIViewController {
     // Reading View's Outlets
     @IBOutlet var bookStateLabel: UILabel!
     @IBOutlet var bookCountLabel: UILabel!
-    @IBOutlet var bookLogCountLabel: UILabel!
     @IBOutlet var bookReadProgressView: UIProgressView!
     
     @IBOutlet var detailViewButton: UIButton!
     
     // Description View's Outlets
-    @IBOutlet var publisherLabel: UILabel!
-    @IBOutlet var pubdateLabel: UILabel!
     @IBOutlet var pageLabel: UILabel!
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
@@ -58,7 +66,7 @@ class BookDetailViewController: UIViewController {
     
     private let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
         return dateFormatter
     }()
     
@@ -77,7 +85,7 @@ class BookDetailViewController: UIViewController {
             self.book = existingBook
         }
         
-        self.setUpImageButton()
+        self.setUpMainView()
         self.setUpReadingView()
         self.setUpBookDetailView()
     }
@@ -168,15 +176,30 @@ class BookDetailViewController: UIViewController {
     
     // MARK: - Methods
     
+    func setUpMainView() {
+        
+        if self.book.isFavorite == false {
+            self.likeButton.isSelected = false
+        } else {
+            self.likeButton.isSelected = true
+        }
+        
+        if self.book.bookStateEnum == .reading {
+            self.bookButton.isSelected = true
+        } else {
+            self.bookButton.isSelected = false
+        }
+    }
+    
     func setUpBookDetailView() {
         
         if let book = self.book {
             
             self.titleLabel.text = book.title
             self.authorLabel.text = book.author
-            self.publisherLabel.text = book.publisher
-            self.pubdateLabel.text = dateFormatter.string(from: book.pubdate)
-            self.pageLabel.text = "\(book.page)p"
+            self.publisherLabel.text = "\(book.publisher) 펴냄"
+            self.pubdateLabel.text = "\(dateFormatter.string(from: book.pubdate)) 출판"
+            self.pageLabel.text = "\(book.page) 페이지"
             self.categoryLabel.text = book.category
             self.descriptionLabel.text = book.bookDescription
             
@@ -206,8 +229,6 @@ class BookDetailViewController: UIViewController {
                 
                 let progressRating: Float = Float(bookInfo.bookReadingPage) / Float(bookInfo.bookTotalPage)
                 self.bookReadProgressView.setProgress(progressRating, animated: true)
-                
-                self.bookLogCountLabel.text = "북로그: \(bookInfo.bookLogs.count)개"
             }
         case .read:
             self.bookStateLabel.text = "이미 읽은 책입니다."
@@ -225,28 +246,6 @@ class BookDetailViewController: UIViewController {
     }
     
     func setUpImageButton() {
-        
-        let bundle = Bundle(for: type(of: self))
-        
-        let emptyBook = UIImage(named: "emptyBook", in: bundle, compatibleWith: self.traitCollection)
-        let selectedBook = UIImage(named: "selectedBook", in: bundle, compatibleWith: self.traitCollection)
-        
-        let emptyLike = UIImage(named: "emptyLike", in: bundle, compatibleWith: self.traitCollection)
-        let selectedLike = UIImage(named: "selectedLike", in: bundle, compatibleWith: self.traitCollection)
-        
-        self.bookButton.setImage(emptyBook, for: .normal)
-        self.bookButton.setImage(selectedBook, for: .selected)
-        
-        self.likeButton.setImage(emptyLike, for: .normal)
-        self.likeButton.setImage(selectedLike, for: .selected)
-        
-        self.bookButton.translatesAutoresizingMaskIntoConstraints = false
-        self.bookButton.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
-        self.bookButton.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
-
-        self.likeButton.translatesAutoresizingMaskIntoConstraints = false
-        self.likeButton.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
-        self.likeButton.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
         
         if self.book.isFavorite == false {
             self.likeButton.isSelected = false

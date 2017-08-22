@@ -172,6 +172,35 @@
 			name = "Store Models";
 			sourceTree = "<group>";
 		};
+		26702C231F4B398C000338EF /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				26C22F141F44117600F8C6C7 /* BarcodeCameraView.swift */,
+				266C39C01F46C76D000F64D7 /* RatingControl.swift */,
+			);
+			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		26702C241F4B399E000338EF /* Table View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				26C22F161F4411B400F8C6C7 /* SearchBookListTableViewCell.swift */,
+				26C22F181F4411D100F8C6C7 /* QuickSearchTableViewCell.swift */,
+				2674D7D51F496D200064E1D7 /* BookLogTableViewCell.swift */,
+				267F5FDF1F4ABF910005464B /* BookLogListTableViewCell.swift */,
+			);
+			name = "Table View Cell";
+			sourceTree = "<group>";
+		};
+		26702C251F4B39B0000338EF /* Collection View */ = {
+			isa = PBXGroup;
+			children = (
+				26C22F291F4432BD00F8C6C7 /* BookCollectionViewCell.swift */,
+				26C22F2C1F4560B200F8C6C7 /* BookCollectionReusableView.swift */,
+			);
+			name = "Collection View";
+			sourceTree = "<group>";
+		};
 		2674D7D21F4952E50064E1D7 /* Book Cycle */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,14 +352,9 @@
 		26C22F121F44115800F8C6C7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				26C22F141F44117600F8C6C7 /* BarcodeCameraView.swift */,
-				26C22F161F4411B400F8C6C7 /* SearchBookListTableViewCell.swift */,
-				26C22F181F4411D100F8C6C7 /* QuickSearchTableViewCell.swift */,
-				26C22F291F4432BD00F8C6C7 /* BookCollectionViewCell.swift */,
-				26C22F2C1F4560B200F8C6C7 /* BookCollectionReusableView.swift */,
-				266C39C01F46C76D000F64D7 /* RatingControl.swift */,
-				2674D7D51F496D200064E1D7 /* BookLogTableViewCell.swift */,
-				267F5FDF1F4ABF910005464B /* BookLogListTableViewCell.swift */,
+				26702C251F4B39B0000338EF /* Collection View */,
+				26702C241F4B399E000338EF /* Table View Cell */,
+				26702C231F4B398C000338EF /* Custom Views */,
 			);
 			name = Views;
 			sourceTree = "<group>";

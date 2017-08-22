@@ -22,16 +22,26 @@ class BookCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        setUpBookImage()
         update(with: nil)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
+        setUpBookImage()
         update(with: nil)
     }
     
     // MARK: - Methods
+    
+    func setUpBookImage() {
+        
+        self.coverImageView.layer.shadowColor = UIColor.black.cgColor
+        self.coverImageView.layer.shadowOffset = CGSize(width: 1, height: 5)
+        self.coverImageView.layer.shadowOpacity = 1
+        self.coverImageView.layer.shadowRadius = 1.0
+    }
     
     func update(with image: UIImage?) {
         
