@@ -54,6 +54,10 @@ class BookDetailViewController: UIViewController {
     @IBOutlet var readingView: UIView!
     @IBOutlet var descriptionView: UIView!
     
+    // Constraints
+    
+    @IBOutlet var readingViewHeightConstraint: NSLayoutConstraint!
+    
     // MARK: Model
     
     var book: Book!
@@ -75,6 +79,7 @@ class BookDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "책 정보"
         self.navigationController?.isNavigationBarHidden = false
     }
     
@@ -85,9 +90,11 @@ class BookDetailViewController: UIViewController {
             self.book = existingBook
         }
         
+        self.setUpBookImage()
+        
         self.setUpMainView()
         self.setUpReadingView()
-        self.setUpBookDetailView()
+        self.setUpBookDescriptionView()
     }
     
     // MARK: - Memory Management
@@ -178,30 +185,12 @@ class BookDetailViewController: UIViewController {
     
     func setUpMainView() {
         
-        if self.book.isFavorite == false {
-            self.likeButton.isSelected = false
-        } else {
-            self.likeButton.isSelected = true
-        }
-        
-        if self.book.bookStateEnum == .reading {
-            self.bookButton.isSelected = true
-        } else {
-            self.bookButton.isSelected = false
-        }
-    }
-    
-    func setUpBookDetailView() {
-        
         if let book = self.book {
-            
+        
             self.titleLabel.text = book.title
             self.authorLabel.text = book.author
             self.publisherLabel.text = "\(book.publisher) 펴냄"
             self.pubdateLabel.text = "\(dateFormatter.string(from: book.pubdate)) 출판"
-            self.pageLabel.text = "\(book.page) 페이지"
-            self.categoryLabel.text = book.category
-            self.descriptionLabel.text = book.bookDescription
             
             self.store.fetchImage(for: book) {
                 (result) -> Void in
@@ -214,38 +203,6 @@ class BookDetailViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    func setUpReadingView() {
-        
-        self.bookCountLabel.text = "\(self.book.bookReadCount)독차"
-        
-        switch self.book.bookStateEnum {
-        case .reading:
-            self.bookStateLabel.text = "읽고 있는 중입니다."
-            self.detailViewButton.isHidden = false
-            
-            if let bookInfo = self.book.bookInfos.filter("bookReadCount = \(self.book.bookReadCount)").first {
-                
-                let progressRating: Float = Float(bookInfo.bookReadingPage) / Float(bookInfo.bookTotalPage)
-                self.bookReadProgressView.setProgress(progressRating, animated: true)
-            }
-        case .read:
-            self.bookStateLabel.text = "이미 읽은 책입니다."
-            self.detailViewButton.isHidden = false
-            
-            if let bookInfo = self.book.bookInfos.filter("bookReadCount = \(self.book.bookReadCount)").first {
-                
-                let progressRating: Float = Float(bookInfo.bookReadingPage) / Float(bookInfo.bookTotalPage)
-                self.bookReadProgressView.setProgress(Float(progressRating), animated: true)
-            }
-        case .none:
-            self.bookStateLabel.text = "아직 읽은 적이 없습니다."
-            self.detailViewButton.isHidden = true
-        }
-    }
-    
-    func setUpImageButton() {
         
         if self.book.isFavorite == false {
             self.likeButton.isSelected = false
@@ -258,6 +215,57 @@ class BookDetailViewController: UIViewController {
         } else {
             self.bookButton.isSelected = false
         }
+    }
+    
+    func setUpReadingView() {
+        
+        self.bookCountLabel.text = "\(self.book.bookReadCount)독차"
+        
+        switch self.book.bookStateEnum {
+        case .reading:
+            self.bookStateLabel.text = "읽고 있는 중입니다."
+            self.detailViewButton.isHidden = false
+            
+            self.readingViewHeightConstraint.constant = 140.0
+            
+            if let bookInfo = self.book.bookInfos.filter("bookReadCount = \(self.book.bookReadCount)").first {
+                
+                let progressRating: Float = Float(bookInfo.bookReadingPage) / Float(bookInfo.bookTotalPage)
+                self.bookReadProgressView.setProgress(progressRating, animated: true)
+            }
+        case .read:
+            self.bookStateLabel.text = "이미 읽은 책입니다."
+            
+            self.bookReadProgressView.isHidden = true
+            self.detailViewButton.isHidden = false
+            
+            self.readingViewHeightConstraint.constant = 80.0
+        case .none:
+            self.bookStateLabel.text = "아직 읽은 적이 없습니다."
+            
+            self.bookReadProgressView.isHidden = true
+            self.detailViewButton.isHidden = true
+            
+            self.readingViewHeightConstraint.constant = 60.0
+        }
+    }
+    
+    func setUpBookDescriptionView() {
+        
+        if let book = self.book {
+            
+            self.pageLabel.text = "\(book.page) 페이지"
+            self.categoryLabel.text = book.category
+            self.descriptionLabel.text = book.bookDescription
+        }
+    }
+
+    func setUpBookImage() {
+        
+        self.coverImageView.layer.shadowColor = UIColor.black.cgColor
+        self.coverImageView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        self.coverImageView.layer.shadowOpacity = 1
+        self.coverImageView.layer.shadowRadius = 1.0
     }
     
     func update(with image: UIImage?) {
