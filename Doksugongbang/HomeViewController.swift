@@ -11,11 +11,6 @@
 //
 //  1. TableView 두 번 리로드되는 부분 (두번 통신하기 때문, Notification을 통해 둘 다 충족될때 한번만 리로드로 수정 필요)
 //
-//  2. AddBookLog 부분 전반적 수정 필요 (위치 바꾸기, 전역으로 존재 필요, reading state가 없을 경우 접근 불가능하게...)
-//
-//  3.
-//
-//
 ///////////////////////////////////////////
 
 
@@ -86,8 +81,6 @@ class HomeViewController: UIViewController {
             }
             
             bookDetailViewController.book = self.book
-        case "AddBookLog":
-            print("add book log")
         default:
             preconditionFailure("Unexpected Segue Identifier")
         }

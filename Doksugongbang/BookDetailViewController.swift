@@ -89,6 +89,18 @@ class BookDetailViewController: UIViewController {
             self.book = existingBook
         }
         
+        if self.book.bookStateEnum == .reading {
+            
+            guard let addLogImage: UIImage = UIImage(named: "addLogIcon") else {
+                preconditionFailure("Cannot find image")
+            }
+            
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: addLogImage,
+                                                                     style: .done,
+                                                                     target: self,
+                                                                     action: #selector(self.addBookLog(_:)))
+        }
+        
         self.setUpBookImage()
         
         self.setUpMainView()
@@ -127,6 +139,12 @@ class BookDetailViewController: UIViewController {
             }
             
             bookReportDetailViewController.book = self.book
+        case "AddBookLog":
+            guard let bookLogDetailViewController = segue.destination as? BookLogDetailViewController else {
+                preconditionFailure("Unexpected Segue Destination")
+            }
+            
+            bookLogDetailViewController.book = self.book
         default:
             preconditionFailure("Unexpected Segue Identifier")
         }
@@ -178,6 +196,11 @@ class BookDetailViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { 
             self.navigationController?.popToRootViewController(animated: true)
         }
+    }
+    
+    func addBookLog(_ sender: UIBarButtonItem) {
+        
+        self.performSegue(withIdentifier: "AddBookLog", sender: self)
     }
     
     // MARK: - Methods

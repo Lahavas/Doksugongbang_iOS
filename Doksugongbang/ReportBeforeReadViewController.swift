@@ -12,12 +12,17 @@ import RealmSwift
 class ReportBeforeReadViewController: UIViewController {
     
     // MARK: - Properties
+    // MARK: Outlets
     
     @IBOutlet var reportTextView: UITextView!
     
-    let realm = try! Realm()
+    // MARK: Model
     
     var book: Book!
+    
+    // MARK: Extras
+    
+    let realm = try! Realm()
     
     let animator: Animator = Animator()
     
@@ -25,7 +30,8 @@ class ReportBeforeReadViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        
+        
     }
     
     override func awakeFromNib() {

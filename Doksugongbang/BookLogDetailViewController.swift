@@ -9,12 +9,11 @@
 ///////////////////////////////////////////
 //  수정 필요한 부분
 //
-//  1. StartPage, EndPage 제약조건 (Delegate를 통해 Max값 체크해주고 stargPage <= endPage)
+//  1. 진행률 ProgressBar 두기
 //
-//  2. 진행률 ProgressBar 두기
+//  2. UX적인 부분 검토 (키패드 창, Picker View 등등...)
 //
-//  3. UX적인 부분 검토 (키패드 창, Picker View 등등...)
-//
+//  3. 경고창 띄우기 (print("경고") 대신)
 //
 ///////////////////////////////////////////
 
@@ -25,27 +24,30 @@ class BookLogDetailViewController: UIViewController {
     
     // MARK: - Properties
     
-    @IBOutlet var bookTitleTextField: UITextField!
+    // MARK: Outlets
+    
+    @IBOutlet var titleLabel: UILabel!
+    
     @IBOutlet var startPageTextField: UITextField!
     @IBOutlet var endPageTextField: UITextField!
     
     @IBOutlet var bookLogTextView: UITextView!
     
-    let realm = try! Realm()
+    // MARK: Model
     
     var book: Book!
-    var bookList: [Book]!
     var bookInfo: BookInfo!
+    
+    // MARK: Extras
+    
+    let realm = try! Realm()
     
     var bookTotalPage: Int = 0
     var bookReadingPage: Int = 0
-    var bookTitlePickOption: [String] = []
     
     let numberFormatter: NumberFormatter = {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
-        numberFormatter.generatesDecimalNumbers = true
-        numberFormatter.minimum = 0
         return numberFormatter
     }()
     
@@ -56,9 +58,8 @@ class BookLogDetailViewController: UIViewController {
 
         self.initBookInfo()
         
-        let bookTitlePickerView = UIPickerView()
-        bookTitlePickerView.delegate = self
-        self.bookTitleTextField.inputView = bookTitlePickerView
+        self.startPageTextField.delegate = self
+        self.endPageTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,14 +89,14 @@ class BookLogDetailViewController: UIViewController {
             let bookLog: BookLog = BookLog()
             
             guard
-                let startPageString: String = startPageTextField.text,
-                let startPageNumber: NSNumber = numberFormatter.number(from: startPageString) else {
+                let startPageString: String = self.startPageTextField.text,
+                let startPageNumber: NSNumber = self.numberFormatter.number(from: startPageString) else {
                     preconditionFailure("Unexpected Start Page")
             }
             
             guard
-                let endPageString: String = endPageTextField.text,
-                let endPageNumber: NSNumber = numberFormatter.number(from: endPageString) else {
+                let endPageString: String = self.endPageTextField.text,
+                let endPageNumber: NSNumber = self.numberFormatter.number(from: endPageString) else {
                     preconditionFailure("Unexpected End Page")
             }
             
@@ -113,24 +114,16 @@ class BookLogDetailViewController: UIViewController {
         }
     }
     
+    @IBAction func cancelButton(_ sender: UIButton) {
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Methods
     
     func initBookInfo() {
         
-        self.bookList = self.realm
-            .objects(Book.self)
-            .filter("bookState = 'reading'")
-            .sorted(byKeyPath: "dateUpdatedBookState", ascending: false)
-            .toArray()
-        
-        for book in bookList {
-            self.bookTitlePickOption.append(book.title)
-        }
-        
-        if
-            let firstBook: Book = bookList.first,
-            let bookInfo: BookInfo = firstBook.bookInfos.sorted(byKeyPath: "bookReadCount", ascending: false).first {
-            self.book = firstBook
+        if let bookInfo: BookInfo = self.book.bookInfos.sorted(byKeyPath: "bookReadCount", ascending: false).first {
             self.bookInfo = bookInfo
             self.bookTotalPage = bookInfo.bookTotalPage
             self.bookReadingPage = bookInfo.bookReadingPage
@@ -141,50 +134,59 @@ class BookLogDetailViewController: UIViewController {
     
     func setUpBookLogView() {
         
-        self.bookTitleTextField.text = self.book.title
+        self.titleLabel.text = self.book.title
+        
         self.startPageTextField.text = "\(self.bookReadingPage)"
         self.endPageTextField.text = "\(self.bookReadingPage)"
-        
-        self.numberFormatter.maximum = self.bookTotalPage as NSNumber
     }
 }
 
 // MARK: -
 
-extension BookLogDetailViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension BookLogDetailViewController: UITextFieldDelegate {
+ 
+    // MARK: - Text Field Delegate
     
-    // MARK: - Picker View Data Source
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        textField.text = ""
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return bookTitlePickOption.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return bookTitlePickOption[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         
-        self.view.endEditing(true)
-        
-        let bookTitle: String = bookTitlePickOption[row]
-        
-        if
-            let selectedBook: Book = realm.objects(Book.self).filter("title = '\(bookTitle)'").first,
-            let bookInfo: BookInfo = selectedBook.bookInfos.sorted(byKeyPath: "bookReadCount", ascending: false).first {
-            self.book = selectedBook
-            self.bookInfo = bookInfo
-            self.bookTotalPage = bookInfo.bookTotalPage
-            self.bookReadingPage = bookInfo.bookReadingPage
-        } else {
-            preconditionFailure("Cannot find bookInfo")
+        guard
+            let pageString: String = textField.text,
+            let pageNumber: NSNumber = self.numberFormatter.number(from: pageString) else {
+                textField.text = "\(self.bookReadingPage)"
+                return
         }
         
-        self.setUpBookLogView()
+        if pageNumber.intValue > self.bookTotalPage {
+            print("경고")
+            
+            textField.text = "\(self.bookReadingPage)"
+        }
+        
+        if self.endPageTextField == textField {
+            
+            guard
+                let startPageString: String = self.startPageTextField.text,
+                let startPageNumber: NSNumber = self.numberFormatter.number(from: startPageString) else {
+                    preconditionFailure("Unexpected Start Page")
+            }
+            
+            guard
+                let endPageString: String = self.endPageTextField.text,
+                let endPageNumber: NSNumber = self.numberFormatter.number(from: endPageString) else {
+                    preconditionFailure("Unexpected End Page")
+            }
+            
+            if startPageNumber.intValue > endPageNumber.intValue {
+                print("경고")
+                
+                textField.text = "\(self.bookReadingPage)"
+            }
+        }
     }
+    
 }
-

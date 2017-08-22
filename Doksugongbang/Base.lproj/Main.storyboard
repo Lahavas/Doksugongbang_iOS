@@ -23,46 +23,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Book Title" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Phf-I7-sAJ">
-                                <rect key="frame" x="24" y="70" width="187.5" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4j4-JO-Pef">
+                                <rect key="frame" x="24" y="70" width="327" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="hiT-Fv-Nux">
-                                <rect key="frame" x="24" y="116" width="187.5" height="68"/>
+                                <rect key="frame" x="24" y="110" width="150" height="68"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="GUI-rc-Teg">
-                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시작 페이지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4K-nw-Gm7">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="55.5" height="30"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fa7-6n-o4y">
-                                                <rect key="frame" x="86" y="0.0" width="101.5" height="30"/>
+                                                <rect key="frame" x="63.5" y="0.0" width="86.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zmk-R7-kjE">
-                                        <rect key="frame" x="0.0" y="38" width="187.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="38" width="150" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="끝 페이지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U8E-qt-alC">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="30"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="55.5" height="30"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zgA-eX-Fr8">
-                                                <rect key="frame" x="86" y="0.0" width="101.5" height="30"/>
+                                                <rect key="frame" x="63.5" y="0.0" width="86.5" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -72,7 +72,7 @@
                                 </constraints>
                             </stackView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="K7M-Rm-3wp">
-                                <rect key="frame" x="24" y="200" width="327" height="451"/>
+                                <rect key="frame" x="24" y="194" width="327" height="457"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -84,22 +84,31 @@
                                     <action selector="addBookLog:" destination="SLR-La-4dC" eventType="touchUpInside" id="gtJ-hJ-xR7"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVM-qm-KcL">
+                                <rect key="frame" x="275" y="32" width="30" height="30"/>
+                                <state key="normal" title="취소"/>
+                                <connections>
+                                    <action selector="cancelButton:" destination="SLR-La-4dC" eventType="touchUpInside" id="2bz-lR-bn6"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="hiT-Fv-Nux" firstAttribute="top" secondItem="Phf-I7-sAJ" secondAttribute="bottom" constant="16" id="8wG-uD-erE"/>
-                            <constraint firstItem="hiT-Fv-Nux" firstAttribute="trailing" secondItem="Phf-I7-sAJ" secondAttribute="trailing" id="HQC-gH-5uG"/>
+                            <constraint firstItem="hiT-Fv-Nux" firstAttribute="width" secondItem="Arf-7K-IbI" secondAttribute="width" multiplier="0.4" id="HLW-HL-bR7"/>
+                            <constraint firstItem="4j4-JO-Pef" firstAttribute="top" secondItem="c8s-kZ-DVT" secondAttribute="bottom" constant="8" id="IuU-4e-n1t"/>
+                            <constraint firstItem="4j4-JO-Pef" firstAttribute="leading" secondItem="Arf-7K-IbI" secondAttribute="leading" constant="24" id="LvK-Cb-qtO"/>
                             <constraint firstItem="zIr-fI-mC6" firstAttribute="top" secondItem="K7M-Rm-3wp" secondAttribute="bottom" constant="16" id="O4N-m2-pcZ"/>
                             <constraint firstItem="K7M-Rm-3wp" firstAttribute="leading" secondItem="Arf-7K-IbI" secondAttribute="leadingMargin" constant="8" id="SB3-IV-lDb"/>
-                            <constraint firstItem="Phf-I7-sAJ" firstAttribute="top" secondItem="c8s-kZ-DVT" secondAttribute="bottom" constant="8" id="Szx-bK-60F"/>
                             <constraint firstItem="hiT-Fv-Nux" firstAttribute="leading" secondItem="Arf-7K-IbI" secondAttribute="leadingMargin" constant="8" id="VGt-ve-OGQ"/>
+                            <constraint firstItem="hiT-Fv-Nux" firstAttribute="top" secondItem="4j4-JO-Pef" secondAttribute="bottom" constant="16" id="WoR-fw-tXb"/>
+                            <constraint firstAttribute="trailing" secondItem="4j4-JO-Pef" secondAttribute="trailing" constant="24" id="aq9-qz-KK5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="c8s-kZ-DVT" secondAttribute="trailing" constant="16" id="l07-iB-I81"/>
-                            <constraint firstItem="Phf-I7-sAJ" firstAttribute="leading" secondItem="Arf-7K-IbI" secondAttribute="leadingMargin" constant="8" id="py2-f9-dKB"/>
+                            <constraint firstItem="MVM-qm-KcL" firstAttribute="top" secondItem="c8s-kZ-DVT" secondAttribute="top" id="p0c-zU-mu4"/>
                             <constraint firstAttribute="trailingMargin" secondItem="K7M-Rm-3wp" secondAttribute="trailing" constant="8" id="qgu-B4-MOr"/>
-                            <constraint firstItem="Phf-I7-sAJ" firstAttribute="width" secondItem="Arf-7K-IbI" secondAttribute="width" multiplier="0.5" id="rky-Za-t1M"/>
                             <constraint firstItem="K7M-Rm-3wp" firstAttribute="top" secondItem="hiT-Fv-Nux" secondAttribute="bottom" constant="16" id="sf6-o8-aXB"/>
                             <constraint firstItem="c8s-kZ-DVT" firstAttribute="top" secondItem="Arf-7K-IbI" secondAttribute="topMargin" constant="32" id="utl-KJ-Pwo"/>
+                            <constraint firstItem="c8s-kZ-DVT" firstAttribute="leading" secondItem="MVM-qm-KcL" secondAttribute="trailing" constant="8" id="yxY-1V-YtY"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="ecI-qX-6ob" appends="YES" id="BPl-mV-lzv"/>
@@ -107,9 +116,9 @@
                     </view>
                     <connections>
                         <outlet property="bookLogTextView" destination="K7M-Rm-3wp" id="hMz-vb-RFU"/>
-                        <outlet property="bookTitleTextField" destination="Phf-I7-sAJ" id="8tm-Oq-x85"/>
                         <outlet property="endPageTextField" destination="zgA-eX-Fr8" id="ed0-7o-ehB"/>
                         <outlet property="startPageTextField" destination="fa7-6n-o4y" id="zfc-5q-TLi"/>
+                        <outlet property="titleLabel" destination="4j4-JO-Pef" id="0rQ-oF-cro"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dER-EL-vUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -210,13 +219,7 @@
                         </collectionReusableView>
                     </collectionView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="KXT-eR-jdA">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="RPb-jG-HT0">
-                            <connections>
-                                <segue destination="SLR-La-4dC" kind="presentation" identifier="AddBookLog" id="Ssa-z1-V10"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="KXT-eR-jdA"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="bookCollectionView" destination="bXE-EZ-hO0" id="UOL-7Q-8ey"/>
@@ -619,7 +622,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8sc-9o-8Iy">
-                                <rect key="frame" x="0.0" y="380" width="375" height="238"/>
+                                <rect key="frame" x="0.0" y="380" width="375" height="243"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="상세 정보" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3be-Mb-NIi">
                                         <rect key="frame" x="8" y="8" width="359" height="20.5"/>
@@ -646,7 +649,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ImS-Cd-R21">
-                                        <rect key="frame" x="298" y="200" width="69" height="30"/>
+                                        <rect key="frame" x="298" y="205" width="69" height="30"/>
                                         <state key="normal" title="책 구매하기"/>
                                         <connections>
                                             <action selector="openAmazonLink:" destination="ZW8-L0-hcX" eventType="touchUpInside" id="oN5-8S-MNy"/>
@@ -712,6 +715,7 @@
                         <outlet property="titleLabel" destination="oRO-bp-oEk" id="4vC-Qg-bku"/>
                         <segue destination="gLo-o7-4CT" kind="presentation" identifier="ReportBeforeRead" id="RRs-8h-Uv0"/>
                         <segue destination="bNm-MB-Zsj" kind="presentation" identifier="ReportAfterRead" id="b1t-2d-dqD"/>
+                        <segue destination="SLR-La-4dC" kind="presentation" identifier="AddBookLog" id="C3f-vx-fLd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFd-cQ-aF6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1524,9 +1528,9 @@
         <image name="selectedLike" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="luG-n0-7sV"/>
+        <segue reference="PXh-Jv-Mbk"/>
+        <segue reference="4u3-vt-xE0"/>
         <segue reference="RRs-8h-Uv0"/>
         <segue reference="b1t-2d-dqD"/>
-        <segue reference="pnK-yV-qy5"/>
     </inferredMetricsTieBreakers>
 </document>
