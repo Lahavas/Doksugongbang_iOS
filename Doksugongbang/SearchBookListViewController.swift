@@ -101,7 +101,7 @@ class SearchBookListViewController: UIViewController {
         guard
             let stackView = button.superview,
             let contentView = stackView.superview,
-            let cell = contentView.superview as? SearchBookListTableViewCell else {
+            let cell = contentView.superview as? BookListTableViewCell else {
                 preconditionFailure("Unexpected sender")
         }
         
@@ -135,7 +135,7 @@ class SearchBookListViewController: UIViewController {
         guard
             let stackView = button.superview,
             let contentView = stackView.superview,
-            let cell = contentView.superview as? SearchBookListTableViewCell else {
+            let cell = contentView.superview as? BookListTableViewCell else {
                 preconditionFailure("Unexpected sender")
         }
         
@@ -177,10 +177,10 @@ extension SearchBookListViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let identifier = "SearchBookListTableViewCell"
+        let identifier = "BookListTableViewCell"
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? SearchBookListTableViewCell else {
-            preconditionFailure("The dequeued cell is not an instance of SearchBookListTableViewCell.")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? BookListTableViewCell else {
+            preconditionFailure("The dequeued cell is not an instance of BookListTableViewCell.")
         }
         
         var book = self.bookList[indexPath.row]

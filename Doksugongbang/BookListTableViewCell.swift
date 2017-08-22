@@ -1,5 +1,5 @@
 //
-//  SearchBookListTableViewCell.swift
+//  BookListTableViewCell.swift
 //  Doksugongbang
 //
 //  Created by Yeon on 2017. 8. 16..
@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class SearchBookListTableViewCell: UITableViewCell {
+class BookListTableViewCell: UITableViewCell {
 
     // MARK: - Properties
     
@@ -37,13 +37,15 @@ class SearchBookListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        update(with: nil)
+        self.setUpBookImage()
+        self.update(with: nil)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        update(with: nil)
+        self.setUpBookImage()
+        self.update(with: nil)
     }
     
     // MARK: - Methods
@@ -57,5 +59,13 @@ class SearchBookListTableViewCell: UITableViewCell {
             self.spinner.startAnimating()
             self.coverImageView.image = nil
         }
+    }
+    
+    func setUpBookImage() {
+        
+        self.coverImageView.layer.shadowColor = UIColor.gray.cgColor
+        self.coverImageView.layer.shadowOffset = CGSize(width: 3, height: 5)
+        self.coverImageView.layer.shadowOpacity = 1
+        self.coverImageView.layer.shadowRadius = 1.0
     }
 }

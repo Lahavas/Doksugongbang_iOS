@@ -9,6 +9,15 @@
 import UIKit
 import RealmSwift
 
+///////////////////////////////////////////
+//  수정 필요한 부분
+//
+//  1. ScrollView 적용
+//
+//  2. Log부분 수정
+//
+///////////////////////////////////////////
+
 class BookReportDetailViewController: UIViewController {
 
     // MARK: - Properties

@@ -32,7 +32,7 @@
 		26C22F0D1F44109500F8C6C7 /* BookStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C22F0C1F44109500F8C6C7 /* BookStore.swift */; };
 		26C22F101F4410DF00F8C6C7 /* AladinConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C22F0F1F4410DF00F8C6C7 /* AladinConfig.swift */; };
 		26C22F151F44117600F8C6C7 /* BarcodeCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C22F141F44117600F8C6C7 /* BarcodeCameraView.swift */; };
-		26C22F171F4411B400F8C6C7 /* SearchBookListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C22F161F4411B400F8C6C7 /* SearchBookListTableViewCell.swift */; };
+		26C22F171F4411B400F8C6C7 /* BookListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C22F161F4411B400F8C6C7 /* BookListTableViewCell.swift */; };
 		26C22F191F4411D100F8C6C7 /* QuickSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C22F181F4411D100F8C6C7 /* QuickSearchTableViewCell.swift */; };
 		26C22F1B1F4411E000F8C6C7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C22F1A1F4411E000F8C6C7 /* HomeViewController.swift */; };
 		26C22F1E1F44189B00F8C6C7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C22F1D1F44189B00F8C6C7 /* SearchViewController.swift */; };
@@ -96,7 +96,7 @@
 		26C22F0C1F44109500F8C6C7 /* BookStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookStore.swift; sourceTree = "<group>"; };
 		26C22F0F1F4410DF00F8C6C7 /* AladinConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AladinConfig.swift; path = Configurations/AladinConfig.swift; sourceTree = "<group>"; };
 		26C22F141F44117600F8C6C7 /* BarcodeCameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeCameraView.swift; sourceTree = "<group>"; };
-		26C22F161F4411B400F8C6C7 /* SearchBookListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBookListTableViewCell.swift; sourceTree = "<group>"; };
+		26C22F161F4411B400F8C6C7 /* BookListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookListTableViewCell.swift; sourceTree = "<group>"; };
 		26C22F181F4411D100F8C6C7 /* QuickSearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickSearchTableViewCell.swift; sourceTree = "<group>"; };
 		26C22F1A1F4411E000F8C6C7 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		26C22F1D1F44189B00F8C6C7 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -185,7 +185,7 @@
 		26702C241F4B399E000338EF /* Table View Cell */ = {
 			isa = PBXGroup;
 			children = (
-				26C22F161F4411B400F8C6C7 /* SearchBookListTableViewCell.swift */,
+				26C22F161F4411B400F8C6C7 /* BookListTableViewCell.swift */,
 				26C22F181F4411D100F8C6C7 /* QuickSearchTableViewCell.swift */,
 				2674D7D51F496D200064E1D7 /* BookLogTableViewCell.swift */,
 				267F5FDF1F4ABF910005464B /* BookLogListTableViewCell.swift */,
@@ -738,7 +738,7 @@
 				26C22F2F1F45744A00F8C6C7 /* SectionDetailViewController.swift in Sources */,
 				2674D7DB1F49777C0064E1D7 /* BookLogDetailViewController.swift in Sources */,
 				267F5FE01F4ABF910005464B /* BookLogListTableViewCell.swift in Sources */,
-				26C22F171F4411B400F8C6C7 /* SearchBookListTableViewCell.swift in Sources */,
+				26C22F171F4411B400F8C6C7 /* BookListTableViewCell.swift in Sources */,
 				2674D7D81F4974470064E1D7 /* BookLog.swift in Sources */,
 				2674D7D41F496BF40064E1D7 /* BookReportDetailViewController.swift in Sources */,
 				266C39C11F46C76D000F64D7 /* RatingControl.swift in Sources */,

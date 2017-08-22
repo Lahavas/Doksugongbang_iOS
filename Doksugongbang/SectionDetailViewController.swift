@@ -13,28 +13,149 @@ class SectionDetailViewController: UIViewController {
 
     // MARK: - Properties
     
-    @IBOutlet var bookCollectionView: UICollectionView!
+    // MARK: Outlets
     
-    let realm = try! Realm()
+    @IBOutlet var sectionBookListTableView: UITableView!
+    
+    // MARK: Model
     
     let store = BookStore.shared
     
-    var selectedSection: String?
-    
     var book: Book!
     var bookList: [Book]!
+    
+    // MARK: Extra
+    
+    let realm = try! Realm()
+    
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+        return dateFormatter
+    }()
+    
+    var selectedSection: String?
+    
     
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        bookCollectionView.delegate = self
-        bookCollectionView.dataSource = self
+        self.sectionBookListTableView.delegate = self
+        self.sectionBookListTableView.dataSource = self
+        
+        self.sectionBookListTableView.rowHeight = UITableViewAutomaticDimension
+        self.sectionBookListTableView.estimatedRowHeight = 160
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        setUpSelectedSectionBookList()
+    }
+
+    // MARK: - Memory Management
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: self)
+        
+        switch segue.identifier ?? "" {
+        case "ReportBeforeRead":
+            guard let reportBeforeReadViewController = segue.destination as? ReportBeforeReadViewController else {
+                preconditionFailure("Unexpected Segue Destination")
+            }
+            
+            reportBeforeReadViewController.book = self.book
+        case "ReportAfterRead":
+            guard let reportAfterReadViewController = segue.destination as? ReportAfterReadViewController else {
+                preconditionFailure("Unexpected Segue Destination")
+            }
+            
+            reportAfterReadViewController.book = self.book
+        case "ShowDetail":
+            guard let bookDetailViewController = segue.destination as? BookDetailViewController else {
+                preconditionFailure("Unexpected destination: \(segue.destination)")
+            }
+            
+            bookDetailViewController.book = self.book
+        default:
+            preconditionFailure("Unexpected Segue Identifier")
+        }
+    }
+    
+    // MARK: - Actions
+    
+    func likeButtonAction(_ sender: UIButton) {
+        
+        let button: UIButton = sender
+        
+        guard
+            let stackView = button.superview,
+            let contentView = stackView.superview,
+            let cell = contentView.superview as? BookListTableViewCell else {
+                preconditionFailure("Unexpected sender")
+        }
+        
+        let selectedBook: Book = cell.book
+        
+        if selectedBook.isFavorite == false {
+            
+            try! realm.write {
+                selectedBook.isFavorite = true
+                selectedBook.dateUpdatedFavorite = Date()
+                realm.add(selectedBook, update: true)
+                button.isSelected = true
+            }
+        } else {
+            
+            try! realm.write {
+                selectedBook.isFavorite = false
+                selectedBook.dateUpdatedFavorite = Date()
+                realm.add(selectedBook, update: true)
+                button.isSelected = false
+            }
+        }
+        
+        self.sectionBookListTableView.reloadData()
+    }
+    
+    func bookButtonAction(_ sender: UIButton) {
+        
+        let button: UIButton = sender
+        
+        guard
+            let stackView = button.superview,
+            let contentView = stackView.superview,
+            let cell = contentView.superview as? BookListTableViewCell else {
+                preconditionFailure("Unexpected sender")
+        }
+        
+        self.book = cell.book
+        
+        if self.book.bookStateEnum == .reading {
+            performSegue(withIdentifier: "ReportAfterRead", sender: self)
+        } else {
+            performSegue(withIdentifier: "ReportBeforeRead", sender: self)
+        }
+    }
+    
+    @IBAction func unwindToModal(sender: UIStoryboardSegue) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+    }
+    
+    // MARK: - Methods
+    
+    func setUpSelectedSectionBookList() {
         
         guard let sectionString = selectedSection else {
             preconditionFailure("Unexpected String")
@@ -42,7 +163,7 @@ class SectionDetailViewController: UIViewController {
         
         switch sectionString {
         case "favorite":
-            bookList = realm
+            self.bookList = self.realm
                 .objects(Book.self)
                 .filter("isFavorite = True")
                 .sorted(byKeyPath: "dateUpdatedFavorite", ascending: false)
@@ -62,7 +183,7 @@ class SectionDetailViewController: UIViewController {
                 case let .success(bookList):
                     self.bookList = bookList
                     DispatchQueue.main.async {
-                        self.bookCollectionView.reloadData()
+                        self.sectionBookListTableView.reloadData()
                     }
                 case let .failure(error):
                     print(error)
@@ -83,79 +204,102 @@ class SectionDetailViewController: UIViewController {
                 case let .success(bookList):
                     self.bookList = bookList
                     DispatchQueue.main.async {
-                        self.bookCollectionView.reloadData()
+                        self.sectionBookListTableView.reloadData()
                     }
                 case let .failure(error):
                     print(error)
                 }
             }
         default:
-            bookList = realm
+            self.bookList = realm
                 .objects(Book.self)
                 .filter("bookState = '\(sectionString)'")
                 .sorted(byKeyPath: "dateUpdatedBookState", ascending: false)
                 .toArray()
         }
         
-        bookCollectionView.reloadData()
-    }
-
-    // MARK: - Memory Management
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: self)
-        
-        switch segue.identifier ?? "" {
-        case "ShowDetail":
-            guard let bookDetailViewController = segue.destination as? BookDetailViewController else {
-                preconditionFailure("Unexpected destination: \(segue.destination)")
-            }
-            
-            bookDetailViewController.book = self.book
-        default:
-            preconditionFailure("Unexpected Segue Identifier")
-        }
+        self.sectionBookListTableView.reloadData()
     }
 }
 
 // MARK: -
 
-extension SectionDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension SectionDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
-    // MARK: - Collection View Delegate
+    // MARK: - Table View Data Source
     
-    func collectionView(_ collectionView: UICollectionView,
-                        willDisplay cell: UICollectionViewCell,
-                        forItemAt indexPath: IndexPath) {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let book = self.bookList[indexPath.row]
-        
-        store.fetchImage(for: book) {
-            (result) -> Void in
-            
-            guard let bookIndex = self.bookList.index(of: book),
-                case let .success(image) = result else {
-                    return
-            }
-            let bookIndexPath = IndexPath(item: bookIndex, section: 0)
-            
-            if let cell = self.bookCollectionView.cellForItem(at: bookIndexPath) as? BookCollectionViewCell {
-                cell.titleLabel.text = book.title
-                cell.update(with: image)
-            }
+        if let bookList = self.bookList {
+            return bookList.count
+        } else {
+            return 0
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let isbnString = self.bookList[indexPath.row].isbn {
+        let identifier = "BookListTableViewCell"
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? BookListTableViewCell else {
+            preconditionFailure("The dequeued cell is not an instance of BookListTableViewCell.")
+        }
+        
+        var book = self.bookList[indexPath.row]
+        
+        if let existingBook = Book.isExist(book: book) {
+            book = existingBook
+        }
+        
+        cell.book = book
+        
+        cell.likeButton.addTarget(self,
+                                  action: #selector(self.likeButtonAction(_:)),
+                                  for: .touchUpInside)
+        
+        cell.bookButton.addTarget(self,
+                                  action: #selector(self.bookButtonAction(_:)),
+                                  for: .touchUpInside)
+        
+        cell.titleLabel.text = book.title
+        cell.authorLabel.text = book.author
+        cell.publisherLabel.text = "\(book.publisher) 펴냄"
+        cell.pubdateLabel.text = "\(self.dateFormatter.string(from: book.pubdate)) 출판"
+        self.store.fetchImage(for: book) {
+            (result) -> Void in
             
+            switch result {
+            case let .success(image):
+                cell.update(with: image)
+            case let .failure(error):
+                print("Error fetching image for photo: \(error)")
+            }
+        }
+        
+        if book.isFavorite == false {
+            cell.likeButton.isSelected = false
+        } else {
+            cell.likeButton.isSelected = true
+        }
+        
+        if book.bookStateEnum == .reading {
+            cell.bookButton.isSelected = true
+        } else {
+            cell.bookButton.isSelected = false
+        }
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedBook = self.bookList[indexPath.row]
+        
+        if let isbnString = selectedBook.isbn {
             var bookLookUpURL: URL {
                 
                 return AladinAPI.aladinApiURL(method: .itemLookUp,
@@ -175,30 +319,5 @@ extension SectionDetailViewController: UICollectionViewDelegate, UICollectionVie
                 }
             }
         }
-    }
-    
-    // MARK: - Collection View Data Source
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if let bookList = self.bookList {
-            return bookList.count
-        } else {
-            return 0
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let identifier = "BookCollectionViewCell"
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? BookCollectionViewCell else {
-            preconditionFailure("The dequeued cell is not an instance of BookCollectionViewCell.")
-        }
-        
-        return cell
     }
 }
