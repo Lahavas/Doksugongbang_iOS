@@ -59,8 +59,6 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.isNavigationBarHidden = true
-        
         self.setUpSessionConfiguration()
         self.toggleSearchViewState(.barcodeSearching)
         
@@ -147,8 +145,6 @@ class SearchViewController: UIViewController {
             
             self.barcodeCameraView.isHidden = false
             self.quickSearchTableView.isHidden = true
-            
-            self.view.endEditing(true)
         case .typingSearchingStart:
             self.sessionQueue.async {
                 self.session.stopRunning()

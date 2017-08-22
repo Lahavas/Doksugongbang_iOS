@@ -7,16 +7,30 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SearchBookListTableViewCell: UITableViewCell {
 
     // MARK: - Properties
+    
+    // MARK: Outlets
     
     @IBOutlet var coverImageView: UIImageView!
     @IBOutlet var spinner: UIActivityIndicatorView!
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var authorLabel: UILabel!
+    @IBOutlet var publisherLabel: UILabel!
+    @IBOutlet var pubdateLabel: UILabel!
+    
+    @IBOutlet var likeButton: UIButton!
+    @IBOutlet var bookButton: UIButton!
+    
+    // MARK: Models
+    
+    var book: Book!
+    
+    let realm = try! Realm()
     
     // MARK: - View Life Cycle
     

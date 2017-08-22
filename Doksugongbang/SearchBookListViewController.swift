@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SearchBookListViewController: UIViewController {
 
@@ -23,13 +24,23 @@ class SearchBookListViewController: UIViewController {
     var book: Book!
     var bookList: [Book]!
     
+    // MARK: Extra
+    
+    let realm = try! Realm()
+    
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+        return dateFormatter
+    }()
+    
     var searchText: String! {
         didSet {
             guard let searchText = self.searchText else {
                 preconditionFailure("Unexpected search text")
             }
             
-            self.navigationItem.title = "검색어: \(searchText)"
+            self.title = "검색어: \(searchText)"
         }
     }
     
@@ -37,8 +48,6 @@ class SearchBookListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController?.isNavigationBarHidden = false
         
         self.searchBookListTableView.delegate = self
         self.searchBookListTableView.dataSource = self
@@ -60,6 +69,18 @@ class SearchBookListViewController: UIViewController {
         super.prepare(for: segue, sender: sender)
         
         switch segue.identifier ?? "" {
+        case "ReportBeforeRead":
+            guard let reportBeforeReadViewController = segue.destination as? ReportBeforeReadViewController else {
+                preconditionFailure("Unexpected Segue Destination")
+            }
+            
+            reportBeforeReadViewController.book = self.book
+        case "ReportAfterRead":
+            guard let reportAfterReadViewController = segue.destination as? ReportAfterReadViewController else {
+                preconditionFailure("Unexpected Segue Destination")
+            }
+            
+            reportAfterReadViewController.book = self.book
         case "ShowDetail":
             guard let bookDetailViewController = segue.destination as? BookDetailViewController else {
                 preconditionFailure("Unexpected destination: \(segue.destination)")
@@ -68,6 +89,69 @@ class SearchBookListViewController: UIViewController {
             bookDetailViewController.book = self.book
         default:
             preconditionFailure("Unexpected Segue Identifier")
+        }
+    }
+    
+    // MARK: - Actions
+    
+    func likeButtonAction(_ sender: UIButton) {
+        
+        let button: UIButton = sender
+        
+        guard
+            let stackView = button.superview,
+            let contentView = stackView.superview,
+            let cell = contentView.superview as? SearchBookListTableViewCell else {
+                preconditionFailure("Unexpected sender")
+        }
+        
+        let selectedBook: Book = cell.book
+        
+        if selectedBook.isFavorite == false {
+            
+            try! realm.write {
+                selectedBook.isFavorite = true
+                selectedBook.dateUpdatedFavorite = Date()
+                realm.add(selectedBook, update: true)
+                button.isSelected = true
+            }
+        } else {
+            
+            try! realm.write {
+                selectedBook.isFavorite = false
+                selectedBook.dateUpdatedFavorite = Date()
+                realm.add(selectedBook, update: true)
+                button.isSelected = false
+            }
+        }
+        
+        self.searchBookListTableView.reloadData()
+    }
+    
+    func bookButtonAction(_ sender: UIButton) {
+        
+        let button: UIButton = sender
+        
+        guard
+            let stackView = button.superview,
+            let contentView = stackView.superview,
+            let cell = contentView.superview as? SearchBookListTableViewCell else {
+                preconditionFailure("Unexpected sender")
+        }
+        
+        self.book = cell.book
+        
+        if self.book.bookStateEnum == .reading {
+            performSegue(withIdentifier: "ReportAfterRead", sender: self)
+        } else {
+            performSegue(withIdentifier: "ReportBeforeRead", sender: self)
+        }
+    }
+    
+    @IBAction func unwindToModal(sender: UIStoryboardSegue) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.navigationController?.popToRootViewController(animated: true)
         }
     }
 }
@@ -99,10 +183,26 @@ extension SearchBookListViewController: UITableViewDelegate, UITableViewDataSour
             preconditionFailure("The dequeued cell is not an instance of SearchBookListTableViewCell.")
         }
         
-        let book = self.bookList[indexPath.row]
+        var book = self.bookList[indexPath.row]
+        
+        if let existingBook = Book.isExist(book: book) {
+            book = existingBook
+        }
+        
+        cell.book = book
+        
+        cell.likeButton.addTarget(self,
+                                  action: #selector(self.likeButtonAction(_:)),
+                                  for: .touchUpInside)
+        
+        cell.bookButton.addTarget(self,
+                                  action: #selector(self.bookButtonAction(_:)),
+                                  for: .touchUpInside)
         
         cell.titleLabel.text = book.title
         cell.authorLabel.text = book.author
+        cell.publisherLabel.text = "\(book.publisher) 펴냄"
+        cell.pubdateLabel.text = "\(self.dateFormatter.string(from: book.pubdate)) 출판"
         self.store.fetchImage(for: book) {
             (result) -> Void in
             
@@ -112,6 +212,18 @@ extension SearchBookListViewController: UITableViewDelegate, UITableViewDataSour
             case let .failure(error):
                 print("Error fetching image for photo: \(error)")
             }
+        }
+        
+        if book.isFavorite == false {
+            cell.likeButton.isSelected = false
+        } else {
+            cell.likeButton.isSelected = true
+        }
+        
+        if book.bookStateEnum == .reading {
+            cell.bookButton.isSelected = true
+        } else {
+            cell.bookButton.isSelected = false
         }
         
         return cell

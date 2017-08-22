@@ -13,12 +13,29 @@ class BookReportDetailViewController: UIViewController {
 
     // MARK: - Properties
     
-    @IBOutlet var bookLogTableView: UITableView!
+    // MARK: Outlets
+    
+    // Book Count
     
     @IBOutlet var bookCountTextField: UITextField!
+    
+    // Book Report After Read
+    
     @IBOutlet var bookRating: RatingControl!
     @IBOutlet var bookReportAfterReadLabel: UILabel!
+    
+    // Book Report Before Read
+    
     @IBOutlet var bookReportBeforeReadLabel: UILabel!
+    
+    // Views
+    
+    @IBOutlet var bookReportView: UIView!
+    @IBOutlet var bookReportAfterView: UIView!
+    @IBOutlet var bookReportBeforeView: UIView!
+    @IBOutlet var bookLogTableView: UITableView!
+    
+    // MARK: Models
     
     var book: Book!
     var bookInfo: BookInfo!
@@ -29,6 +46,8 @@ class BookReportDetailViewController: UIViewController {
     
     var dateSectionList: [String]!
     var bookLogListInSections: [[BookLog]]!
+    
+    // MARK: Extra
     
     let realm = try! Realm()
     
@@ -56,7 +75,8 @@ class BookReportDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.setUpDetailView()
+        self.setUpBookReportView()
+        self.setUpBookLogList()
     }
     
     // MARK: - Memory Management
@@ -86,15 +106,19 @@ class BookReportDetailViewController: UIViewController {
         self.bookLogList = self.bookInfo.bookLogs.sorted(byKeyPath: "dateUpdated", ascending: false).toArray()
     }
     
-    func setUpDetailView() {
+    func setUpBookReportView() {
         
         self.bookCountTextField.text = "\(bookReadCount)독차"
-        self.bookRating.rating = self.bookInfo.bookRating
-        self.bookReportAfterReadLabel.text = self.bookInfo.reportAfterReading
-        self.bookReportBeforeReadLabel.text = self.bookInfo.reportBeforeReading
         
-        self.setUpBookLogList()
-        self.bookLogTableView.reloadData()
+        self.bookRating.rating = self.bookInfo.bookRating
+        
+        if self.bookInfo.bookRating == 0 {
+            self.bookReportAfterReadLabel.text = "아직 책을 다 읽지 않았습니다!"
+        } else {
+            self.bookReportAfterReadLabel.text = self.bookInfo.reportAfterReading
+        }
+        
+        self.bookReportBeforeReadLabel.text = self.bookInfo.reportBeforeReading
     }
     
     func setUpBookLogList() {
@@ -117,6 +141,8 @@ class BookReportDetailViewController: UIViewController {
                 self.bookLogListInSections[index].append(bookLog)
             }
         }
+        
+        self.bookLogTableView.reloadData()
     }
 }
 
@@ -151,7 +177,7 @@ extension BookReportDetailViewController: UIPickerViewDelegate, UIPickerViewData
             preconditionFailure("Cannot find bookInfo")
         }
         
-        self.setUpDetailView()
+        self.setUpBookReportView()
     }
 }
 

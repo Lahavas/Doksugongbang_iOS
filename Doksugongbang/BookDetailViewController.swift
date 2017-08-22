@@ -68,7 +68,7 @@ class BookDetailViewController: UIViewController {
     
     let realm = try! Realm()
     
-    private let dateFormatter: DateFormatter = {
+    let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy년 MM월 dd일"
         return dateFormatter
@@ -80,7 +80,6 @@ class BookDetailViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "책 정보"
-        self.navigationController?.isNavigationBarHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -262,8 +261,8 @@ class BookDetailViewController: UIViewController {
 
     func setUpBookImage() {
         
-        self.coverImageView.layer.shadowColor = UIColor.black.cgColor
-        self.coverImageView.layer.shadowOffset = CGSize(width: 5, height: 5)
+        self.coverImageView.layer.shadowColor = UIColor.gray.cgColor
+        self.coverImageView.layer.shadowOffset = CGSize(width: 3, height: 5)
         self.coverImageView.layer.shadowOpacity = 1
         self.coverImageView.layer.shadowRadius = 1.0
     }
