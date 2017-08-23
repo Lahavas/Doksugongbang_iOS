@@ -14,7 +14,6 @@
 		266C39CC1F4930CC000F64D7 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C39CB1F4930CC000F64D7 /* Animator.swift */; };
 		266C39CE1F494A14000F64D7 /* ReportAfterReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C39CD1F494A14000F64D7 /* ReportAfterReadViewController.swift */; };
 		2674D7D41F496BF40064E1D7 /* BookReportDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2674D7D31F496BF40064E1D7 /* BookReportDetailViewController.swift */; };
-		2674D7D61F496D200064E1D7 /* BookLogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2674D7D51F496D200064E1D7 /* BookLogTableViewCell.swift */; };
 		2674D7D81F4974470064E1D7 /* BookLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2674D7D71F4974470064E1D7 /* BookLog.swift */; };
 		2674D7DB1F49777C0064E1D7 /* BookLogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2674D7DA1F49777C0064E1D7 /* BookLogDetailViewController.swift */; };
 		267F5FDE1F4ABB970005464B /* BookLogListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267F5FDD1F4ABB970005464B /* BookLogListViewController.swift */; };
@@ -72,7 +71,6 @@
 		266C39CB1F4930CC000F64D7 /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		266C39CD1F494A14000F64D7 /* ReportAfterReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportAfterReadViewController.swift; sourceTree = "<group>"; };
 		2674D7D31F496BF40064E1D7 /* BookReportDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookReportDetailViewController.swift; sourceTree = "<group>"; };
-		2674D7D51F496D200064E1D7 /* BookLogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookLogTableViewCell.swift; sourceTree = "<group>"; };
 		2674D7D71F4974470064E1D7 /* BookLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookLog.swift; sourceTree = "<group>"; };
 		2674D7DA1F49777C0064E1D7 /* BookLogDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookLogDetailViewController.swift; sourceTree = "<group>"; };
 		267F5FDD1F4ABB970005464B /* BookLogListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookLogListViewController.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 			children = (
 				26C22F161F4411B400F8C6C7 /* BookListTableViewCell.swift */,
 				26C22F181F4411D100F8C6C7 /* QuickSearchTableViewCell.swift */,
-				2674D7D51F496D200064E1D7 /* BookLogTableViewCell.swift */,
 				267F5FDF1F4ABF910005464B /* BookLogListTableViewCell.swift */,
 			);
 			name = "Table View Cell";
@@ -725,7 +722,6 @@
 				26C22F101F4410DF00F8C6C7 /* AladinConfig.swift in Sources */,
 				26C22F1E1F44189B00F8C6C7 /* SearchViewController.swift in Sources */,
 				26C22F091F44105900F8C6C7 /* Book.swift in Sources */,
-				2674D7D61F496D200064E1D7 /* BookLogTableViewCell.swift in Sources */,
 				26C22F2A1F4432BD00F8C6C7 /* BookCollectionViewCell.swift in Sources */,
 				266C39C81F492DBC000F64D7 /* ReportBeforeReadViewController.swift in Sources */,
 				26C22F221F44269A00F8C6C7 /* BookDetailViewController.swift in Sources */,

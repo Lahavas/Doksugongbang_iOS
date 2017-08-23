@@ -14,8 +14,6 @@ import RealmSwift
 //
 //  1. ScrollView 적용
 //
-//  2. Log부분 수정
-//
 ///////////////////////////////////////////
 
 class BookReportDetailViewController: UIViewController {
@@ -210,16 +208,25 @@ extension BookReportDetailViewController: UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let identifier = "BookLogTableViewCell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? BookLogTableViewCell else {
-            preconditionFailure("The dequeued cell is not an instance of BookLogTableViewCell.")
+        let identifier = "BookLogListTableViewCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? BookLogListTableViewCell else {
+            preconditionFailure("The dequeued cell is not an instance of BookLogListTableViewCell.")
         }
         
         let bookLogListInSection = self.bookLogListInSections[indexPath.section]
         let bookLog: BookLog = bookLogListInSection[indexPath.row]
         
-        cell.startPageLabel.text = "\(bookLog.startPage)"
-        cell.endPageLabel.text = "\(bookLog.endPage)"
+        guard
+            let bookInfo: BookInfo = bookLog.parentBookInfo,
+            let book: Book = bookInfo.parentBook else {
+                preconditionFailure("Unexpected realm model")
+        }
+        
+        cell.startPageLabel.text = "\(bookLog.startPage)p"
+        cell.endPageLabel.text = "\(bookLog.endPage)p"
+        
+        cell.bookTitleLabel.text = book.title
+        cell.bookReadCountLabel.text = "\(bookInfo.bookReadCount)독차"
         cell.bookLogLabel.text = bookLog.logContent
         
         return cell

@@ -13,12 +13,20 @@ class BookLogListViewController: UIViewController {
 
     // MARK: - Properties
     
+    // MARK: Outlets
+    
     @IBOutlet var bookLogTableView: UITableView!
     
-    var bookLogList: [BookLog]!
+    @IBOutlet var searchBar: UISearchBar!
     
+    // MARK: Model
+    
+    var bookLogList: [BookLog]!
+
     var dateSectionList: [String]!
     var bookLogListInSections: [[BookLog]]!
+    
+    // MARK: Extras
     
     let realm = try! Realm()
     
@@ -33,14 +41,21 @@ class BookLogListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Book Log"
-
+        self.title = "북 로그"
+        
+        self.searchBar.delegate = self
+        
         self.bookLogTableView.delegate = self
         self.bookLogTableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.bookLogList = realm
+            .objects(BookLog.self)
+            .sorted(byKeyPath: "dateUpdated", ascending: false)
+            .toArray()
         
         self.setUpBookLogList()
         self.bookLogTableView.reloadData()
@@ -56,8 +71,6 @@ class BookLogListViewController: UIViewController {
     // MARK: - Methods
     
     func setUpBookLogList() {
-        
-        self.bookLogList = realm.objects(BookLog.self).sorted(byKeyPath: "dateUpdated", ascending: false).toArray()
         
         self.dateSectionList = []
         self.bookLogListInSections = [[]]
@@ -79,6 +92,56 @@ class BookLogListViewController: UIViewController {
         }
     }
 }
+
+// MARK: -
+
+extension BookLogListViewController: UISearchBarDelegate {
+    
+    // MARK: - Search Bar Delegate
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        guard let searchText = searchBar.text else {
+            preconditionFailure("Unexpected Search Text")
+        }
+        
+        let tempBookLogList = realm
+            .objects(BookLog.self)
+            .filter("logContent LIKE '*\(searchText)*'")
+            .sorted(byKeyPath: "dateUpdated", ascending: false)
+            .toArray()
+        
+        if tempBookLogList.count <= 0 {
+            print("경고")
+            
+            self.bookLogList = realm
+                .objects(BookLog.self)
+                .sorted(byKeyPath: "dateUpdated", ascending: false)
+                .toArray()
+        } else {
+            self.bookLogList = tempBookLogList
+            
+            self.setUpBookLogList()
+            self.bookLogTableView.reloadData()
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        self.bookLogList = realm
+            .objects(BookLog.self)
+            .sorted(byKeyPath: "dateUpdated", ascending: false)
+            .toArray()
+        
+        self.setUpBookLogList()
+        self.bookLogTableView.reloadData()
+        
+        searchBar.text = ""
+        self.view.endEditing(true)
+    }
+}
+
+// MARK: -
 
 extension BookLogListViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -115,7 +178,7 @@ extension BookLogListViewController: UITableViewDelegate, UITableViewDataSource 
         cell.startPageLabel.text = "\(bookLog.startPage)p"
         cell.endPageLabel.text = "\(bookLog.endPage)p"
         
-        cell.bookTitleLabel.text = "책 제목: \(book.title)"
+        cell.bookTitleLabel.text = book.title
         cell.bookReadCountLabel.text = "\(bookInfo.bookReadCount)독차"
         cell.bookLogLabel.text = bookLog.logContent
         
