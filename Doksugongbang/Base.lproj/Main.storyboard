@@ -244,8 +244,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysI-WP-2Hb" customClass="BarcodeCameraView" customModule="Doksugongbang" customModuleProvider="target">
-                                <rect key="frame" x="94" y="208" width="187.5" height="133.5"/>
+                                <rect key="frame" x="84" y="228" width="208.5" height="250"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="edn-db-SsR"/>
+                                </constraints>
                             </view>
                             <searchBar contentMode="redraw" showsSearchResultsButton="YES" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qlV-tY-MSQ">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
@@ -294,15 +297,14 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="wFk-AR-Cj0" firstAttribute="top" secondItem="q0P-DP-cjz" secondAttribute="bottom" id="5eA-0y-6uB"/>
-                            <constraint firstItem="ysI-WP-2Hb" firstAttribute="top" secondItem="qlV-tY-MSQ" secondAttribute="bottom" constant="100" id="E2o-Nj-PNb"/>
                             <constraint firstAttribute="trailing" secondItem="qlV-tY-MSQ" secondAttribute="trailing" id="HuS-NW-sVX"/>
                             <constraint firstItem="qlV-tY-MSQ" firstAttribute="leading" secondItem="nCR-by-W9N" secondAttribute="leading" id="OXP-Dj-WtR"/>
                             <constraint firstItem="q0P-DP-cjz" firstAttribute="leading" secondItem="nCR-by-W9N" secondAttribute="leading" id="Qh0-Km-R8F"/>
                             <constraint firstItem="qlV-tY-MSQ" firstAttribute="top" secondItem="Ul1-Oc-jD6" secondAttribute="bottom" id="SfQ-8q-bIK"/>
                             <constraint firstItem="ysI-WP-2Hb" firstAttribute="centerX" secondItem="nCR-by-W9N" secondAttribute="centerX" id="cZE-m4-bSF"/>
                             <constraint firstItem="q0P-DP-cjz" firstAttribute="top" secondItem="qlV-tY-MSQ" secondAttribute="bottom" id="fTT-6L-Kwx"/>
-                            <constraint firstAttribute="height" secondItem="ysI-WP-2Hb" secondAttribute="height" multiplier="5" id="h0C-JA-pjb"/>
-                            <constraint firstAttribute="width" secondItem="ysI-WP-2Hb" secondAttribute="width" multiplier="2" id="iX7-q9-Iik"/>
+                            <constraint firstItem="ysI-WP-2Hb" firstAttribute="top" secondItem="qlV-tY-MSQ" secondAttribute="bottom" constant="120" id="g6e-Fy-r6I"/>
+                            <constraint firstAttribute="width" secondItem="ysI-WP-2Hb" secondAttribute="width" multiplier="1.8" id="iX7-q9-Iik"/>
                             <constraint firstAttribute="trailing" secondItem="q0P-DP-cjz" secondAttribute="trailing" id="mCw-0u-u3t"/>
                         </constraints>
                     </view>
@@ -824,15 +826,24 @@
                                         <constraint firstItem="01b-8f-hQz" firstAttribute="top" secondItem="JDF-OA-bKu" secondAttribute="top" constant="8" id="hGr-LI-4VW"/>
                                     </constraints>
                                 </view>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGz-vl-UpO">
+                                    <rect key="frame" x="8" y="16" width="273" height="24"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="gcu-Fa-ta6" secondAttribute="trailing" id="Fiv-QO-kwI"/>
                                 <constraint firstItem="gcu-Fa-ta6" firstAttribute="leading" secondItem="U1H-Jq-Shb" secondAttribute="leading" id="Hcf-rr-GkK"/>
+                                <constraint firstItem="sas-zr-Dn8" firstAttribute="leading" secondItem="kGz-vl-UpO" secondAttribute="trailing" constant="8" id="ILh-qA-6xV"/>
                                 <constraint firstItem="sas-zr-Dn8" firstAttribute="top" secondItem="U1H-Jq-Shb" secondAttribute="topMargin" constant="8" id="JLF-tR-qxv"/>
                                 <constraint firstAttribute="trailingMargin" secondItem="sas-zr-Dn8" secondAttribute="trailing" constant="8" id="NWh-iB-AfB"/>
                                 <constraint firstItem="gcu-Fa-ta6" firstAttribute="top" secondItem="sas-zr-Dn8" secondAttribute="bottom" constant="8" id="Q5v-Xr-FiF"/>
+                                <constraint firstItem="kGz-vl-UpO" firstAttribute="top" secondItem="sas-zr-Dn8" secondAttribute="top" id="Qek-z7-OKf"/>
                                 <constraint firstItem="JDF-OA-bKu" firstAttribute="leading" secondItem="U1H-Jq-Shb" secondAttribute="leading" id="Wpg-AB-LBX"/>
+                                <constraint firstItem="kGz-vl-UpO" firstAttribute="leading" secondItem="RjR-cm-VUc" secondAttribute="leading" id="Y9M-UG-9C6"/>
                                 <constraint firstItem="JDF-OA-bKu" firstAttribute="top" secondItem="gcu-Fa-ta6" secondAttribute="bottom" constant="8" id="qu3-LD-Qx5"/>
                                 <constraint firstAttribute="trailing" secondItem="JDF-OA-bKu" secondAttribute="trailing" id="rYX-r9-NTp"/>
                                 <constraint firstAttribute="bottom" secondItem="JDF-OA-bKu" secondAttribute="bottom" constant="8" id="tOt-8w-SMr"/>
@@ -928,6 +939,7 @@
                         <outlet property="bookReportBeforeReadLabel" destination="Aqi-0E-d4S" id="Tuv-Oi-mOL"/>
                         <outlet property="bookReportBeforeView" destination="JDF-OA-bKu" id="rOw-jA-svp"/>
                         <outlet property="bookReportView" destination="U1H-Jq-Shb" id="RgY-Uz-Edx"/>
+                        <outlet property="titleLabel" destination="kGz-vl-UpO" id="9Pa-nw-QVq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ClD-Xx-8nC" userLabel="First Responder" sceneMemberID="firstResponder"/>

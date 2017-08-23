@@ -22,9 +22,10 @@ class BookReportDetailViewController: UIViewController {
     
     // MARK: Outlets
     
-    // Book Count
+    // Book Header
     
     @IBOutlet var bookCountTextField: UITextField!
+    @IBOutlet var titleLabel: UILabel!
     
     // Book Report After Read
     
@@ -71,6 +72,8 @@ class BookReportDetailViewController: UIViewController {
         
         self.initBookInfo()
         
+        self.title = "책 기록"
+        
         self.bookLogTableView.delegate = self
         self.bookLogTableView.dataSource = self
         
@@ -96,6 +99,8 @@ class BookReportDetailViewController: UIViewController {
     // MARK: - Methods
     
     func initBookInfo() {
+        
+        self.titleLabel.text = self.book.title
         
         if let bookInfo = self.book.bookInfos.sorted(byKeyPath: "bookReadCount", ascending: false).first {
             self.bookInfo = bookInfo

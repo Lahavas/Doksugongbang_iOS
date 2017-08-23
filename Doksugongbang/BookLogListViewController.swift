@@ -112,12 +112,24 @@ extension BookLogListViewController: UISearchBarDelegate {
             .toArray()
         
         if tempBookLogList.count <= 0 {
-            print("경고")
             
-            self.bookLogList = realm
-                .objects(BookLog.self)
-                .sorted(byKeyPath: "dateUpdated", ascending: false)
-                .toArray()
+            let alertController: UIAlertController =
+                UIAlertController(title: "결과가 없습니다", message: nil, preferredStyle: .alert)
+            
+            let okAction: UIAlertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            
+            alertController.addAction(okAction)
+            
+            present(alertController, animated: true) {
+                () -> Void in
+                
+                searchBar.text = ""
+                
+                self.bookLogList = self.realm
+                    .objects(BookLog.self)
+                    .sorted(byKeyPath: "dateUpdated", ascending: false)
+                    .toArray()
+            }
         } else {
             self.bookLogList = tempBookLogList
             

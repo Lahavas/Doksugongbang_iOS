@@ -48,7 +48,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Search"
+        self.title = "검색"
         
         self.searchBar.delegate = self
         
@@ -132,7 +132,7 @@ class SearchViewController: UIViewController {
         }
         self.session.commitConfiguration()
         self.barcodeCameraView.layer.session = self.session
-        self.barcodeCameraView.layer.videoGravity = AVLayerVideoGravityResize
+        self.barcodeCameraView.layer.videoGravity = AVLayerVideoGravityResizeAspectFill
     }
     
     func toggleSearchViewState(_ state: SearchViewState) {

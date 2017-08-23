@@ -13,8 +13,6 @@
 //
 //  2. UX적인 부분 검토 (키패드 창, Picker View 등등...)
 //
-//  3. 경고창 띄우기 (print("경고") 대신)
-//
 ///////////////////////////////////////////
 
 import UIKit
@@ -162,9 +160,19 @@ extension BookLogDetailViewController: UITextFieldDelegate {
         }
         
         if pageNumber.intValue > self.bookTotalPage {
-            print("경고")
             
-            textField.text = "\(self.bookReadingPage)"
+            let alertController: UIAlertController =
+                UIAlertController(title: "입력 범위를 초과했습니다", message: "\(self.bookTotalPage) 이하의 값을 입력해주세요.", preferredStyle: .alert)
+            
+            let okAction: UIAlertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            
+            alertController.addAction(okAction)
+            
+            present(alertController, animated: true) { 
+                () -> Void in
+                
+                textField.text = "\(self.bookReadingPage)"
+            }
         }
         
         if self.endPageTextField == textField {
@@ -182,9 +190,19 @@ extension BookLogDetailViewController: UITextFieldDelegate {
             }
             
             if startPageNumber.intValue > endPageNumber.intValue {
-                print("경고")
                 
-                textField.text = "\(self.bookReadingPage)"
+                let alertController: UIAlertController =
+                    UIAlertController(title: "잘못된 값을 입력하였습니다", message: "시작 페이지보다 높은 값을 입력해주세요", preferredStyle: .alert)
+                
+                let okAction: UIAlertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+                
+                alertController.addAction(okAction)
+                
+                present(alertController, animated: true) {
+                    () -> Void in
+                    
+                    textField.text = "\(self.bookReadingPage)"
+                }
             }
         }
     }
