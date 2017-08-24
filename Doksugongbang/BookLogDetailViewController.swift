@@ -43,18 +43,6 @@ class BookLogDetailViewController: UIViewController {
     var bookTotalPage: Int = 0
     var bookReadingPage: Int = 0
     
-    let numberFormatter: NumberFormatter = {
-        let numberFormatter = NumberFormatter()
-        numberFormatter.numberStyle = .decimal
-        return numberFormatter
-    }()
-    
-    let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
-        return dateFormatter
-    }()
-    
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
@@ -94,13 +82,13 @@ class BookLogDetailViewController: UIViewController {
             
             guard
                 let startPageString: String = self.startPageTextField.text,
-                let startPageNumber: NSNumber = self.numberFormatter.number(from: startPageString) else {
+                let startPageNumber: NSNumber = CustomNumberFormatter.decimalStyle.number(from: startPageString) else {
                     preconditionFailure("Unexpected Start Page")
             }
             
             guard
                 let endPageString: String = self.endPageTextField.text,
-                let endPageNumber: NSNumber = self.numberFormatter.number(from: endPageString) else {
+                let endPageNumber: NSNumber = CustomNumberFormatter.decimalStyle.number(from: endPageString) else {
                     preconditionFailure("Unexpected End Page")
             }
             
@@ -108,7 +96,7 @@ class BookLogDetailViewController: UIViewController {
             bookLog.endPage = endPageNumber.intValue
             bookLog.logContent = bookLogTextView.text
             bookLog.dateUpdated = Date()
-            bookLog.dateString = dateFormatter.string(from: Date())
+            bookLog.dateString = CustomDateFormatter.longType.string(from: Date())
             
             if self.bookInfo.bookReadingPage < bookLog.endPage {
                 self.bookInfo.bookReadingPage = bookLog.endPage
@@ -162,7 +150,7 @@ extension BookLogDetailViewController: UITextFieldDelegate {
         
         guard
             let pageString: String = textField.text,
-            let pageNumber: NSNumber = self.numberFormatter.number(from: pageString) else {
+            let pageNumber: NSNumber = CustomNumberFormatter.decimalStyle.number(from: pageString) else {
                 textField.text = "\(self.bookReadingPage)"
                 return
         }
@@ -187,13 +175,13 @@ extension BookLogDetailViewController: UITextFieldDelegate {
             
             guard
                 let startPageString: String = self.startPageTextField.text,
-                let startPageNumber: NSNumber = self.numberFormatter.number(from: startPageString) else {
+                let startPageNumber: NSNumber = CustomNumberFormatter.decimalStyle.number(from: startPageString) else {
                     preconditionFailure("Unexpected Start Page")
             }
             
             guard
                 let endPageString: String = self.endPageTextField.text,
-                let endPageNumber: NSNumber = self.numberFormatter.number(from: endPageString) else {
+                let endPageNumber: NSNumber = CustomNumberFormatter.decimalStyle.number(from: endPageString) else {
                     preconditionFailure("Unexpected End Page")
             }
             

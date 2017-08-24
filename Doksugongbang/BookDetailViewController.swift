@@ -68,12 +68,6 @@ class BookDetailViewController: UIViewController {
     
     let realm = try! Realm()
     
-    let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
-        return dateFormatter
-    }()
-    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -212,7 +206,7 @@ class BookDetailViewController: UIViewController {
             self.titleLabel.text = book.title
             self.authorLabel.text = book.author
             self.publisherLabel.text = "\(book.publisher) 펴냄"
-            self.pubdateLabel.text = "\(dateFormatter.string(from: book.pubdate)) 출판"
+            self.pubdateLabel.text = "\(CustomDateFormatter.longType.string(from: book.pubdate)) 출판"
             
             self.store.fetchImage(for: book) {
                 (result) -> Void in

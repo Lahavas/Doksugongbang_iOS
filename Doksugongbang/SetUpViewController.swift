@@ -19,6 +19,14 @@ class SetUpViewController: UIViewController {
 
     // MARK: - Properties
     
+    // MARK: Outlets
+    
+    @IBOutlet var userNameTextField: UITextField!
+    
+    @IBOutlet var alarmTimeTextField: UITextField!
+    @IBOutlet var alarmCheckButton: UIButton!
+    @IBOutlet var alarmSettingButton: UIButton!
+    
     // MARK: User Config
     
     let userDefaults: UserDefaults = UserDefaults.standard

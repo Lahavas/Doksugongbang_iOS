@@ -37,12 +37,6 @@ class BookLogListViewController: UIViewController {
     
     let realm = try! Realm()
     
-    let dateFormatter: DateFormatter = {
-        let dateFormatter: DateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy년 MM월"
-        return dateFormatter
-    }()
-    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -87,7 +81,7 @@ class BookLogListViewController: UIViewController {
             
             if
                 let bookLogDate = bookLog.value(forKey: "dateUpdated") as? Date {
-                let bookLogDateString = self.dateFormatter.string(from: bookLogDate)
+                let bookLogDateString = CustomDateFormatter.mediumType.string(from: bookLogDate)
                 
                 if !(self.dateSectionList.contains(bookLogDateString)) {
                     self.dateSectionList.append(bookLogDateString)

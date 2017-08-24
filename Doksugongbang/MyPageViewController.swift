@@ -48,14 +48,6 @@ class MyPageViewController: UIViewController {
     
     let notificationHelper = UserNotificationHelper.shared
     
-    let dateFormatter: DateFormatter = {
-        let dateFormatter: DateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "a hh시 mm분"
-        dateFormatter.amSymbol = "오전"
-        dateFormatter.pmSymbol = "오후"
-        return dateFormatter
-    }()
-    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -160,7 +152,7 @@ class MyPageViewController: UIViewController {
         
         guard
             let alarmTimeString = self.alarmTimeTextField.text,
-            let alarmTime = self.dateFormatter.date(from: alarmTimeString) else {
+            let alarmTime = CustomDateFormatter.timeType.date(from: alarmTimeString) else {
             preconditionFailure("Unexpected alarm time")
         }
         
@@ -213,6 +205,11 @@ class MyPageViewController: UIViewController {
         }
     }
     
+    @IBAction func dismissDatePicker(_ sender: UITapGestureRecognizer) {
+    
+        self.view.endEditing(true)
+    }
+    
     @IBAction func setUpAlarmTime(_ sender: UIButton) {
     
         self.alarmTimeTextField.becomeFirstResponder()
@@ -225,7 +222,7 @@ class MyPageViewController: UIViewController {
     
     func datePickerValueChanged(_ sender: UIDatePicker) {
         
-        self.alarmTimeTextField.text = dateFormatter.string(from: sender.date)
+        self.alarmTimeTextField.text = CustomDateFormatter.timeType.string(from: sender.date)
         
         // Flag
 //        self.alarmTime = self.alarmTimeTextField.text
@@ -248,7 +245,7 @@ extension MyPageViewController: UITextFieldDelegate {
         
         guard
             let alarmTimeString = alarmTimeTextField.text,
-            let alarmTime = dateFormatter.date(from: alarmTimeString) else {
+            let alarmTime = CustomDateFormatter.timeType.date(from: alarmTimeString) else {
                 preconditionFailure("Unexpected alarm time")
         }
         

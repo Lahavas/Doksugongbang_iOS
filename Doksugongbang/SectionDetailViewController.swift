@@ -28,12 +28,6 @@ class SectionDetailViewController: UIViewController {
     
     let realm = try! Realm()
     
-    let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
-        return dateFormatter
-    }()
-    
     var selectedSection: String! {
         didSet {
             guard let sectionString = self.selectedSection else {
@@ -275,7 +269,7 @@ extension SectionDetailViewController: UITableViewDelegate, UITableViewDataSourc
         cell.titleLabel.text = book.title
         cell.authorLabel.text = book.author
         cell.publisherLabel.text = "\(book.publisher) 펴냄"
-        cell.pubdateLabel.text = "\(self.dateFormatter.string(from: book.pubdate)) 출판"
+        cell.pubdateLabel.text = "\(CustomDateFormatter.longType.string(from: book.pubdate)) 출판"
         self.store.fetchImage(for: book) {
             (result) -> Void in
             

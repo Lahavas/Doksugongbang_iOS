@@ -46,6 +46,9 @@
 		7AF1717F1F4D5FB2009C174F /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1717E1F4D5FB2009C174F /* MyPageViewController.swift */; };
 		7AF171811F4E9593009C174F /* UserNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF171801F4E9593009C174F /* UserNotificationHelper.swift */; };
 		7AF171831F4EA8C9009C174F /* SetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF171821F4EA8C9009C174F /* SetUpViewController.swift */; };
+		7AF171851F4ED464009C174F /* BookFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF171841F4ED464009C174F /* BookFeed.swift */; };
+		7AF1718B1F4EF442009C174F /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1718A1F4EF442009C174F /* CustomDateFormatter.swift */; };
+		7AF1718D1F4EFA96009C174F /* CustomNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1718C1F4EFA96009C174F /* CustomNumberFormatter.swift */; };
 		E230C653DF57FF89C1459E93 /* Pods_Doksugongbang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8FB595F707649C4C5AE039 /* Pods_Doksugongbang.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +120,9 @@
 		7AF1717E1F4D5FB2009C174F /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		7AF171801F4E9593009C174F /* UserNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationHelper.swift; sourceTree = "<group>"; };
 		7AF171821F4EA8C9009C174F /* SetUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUpViewController.swift; sourceTree = "<group>"; };
+		7AF171841F4ED464009C174F /* BookFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookFeed.swift; sourceTree = "<group>"; };
+		7AF1718A1F4EF442009C174F /* CustomDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
+		7AF1718C1F4EFA96009C174F /* CustomNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNumberFormatter.swift; sourceTree = "<group>"; };
 		8D8FB595F707649C4C5AE039 /* Pods_Doksugongbang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Doksugongbang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F9C80F744EC22A9031782D /* Pods_DoksugongbangUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoksugongbangUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC694EA4400D44F3E0F35813 /* Pods-Doksugongbang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doksugongbang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doksugongbang/Pods-Doksugongbang.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,14 +165,15 @@
 			name = Home;
 			sourceTree = "<group>";
 		};
-		26702C211F4AEE44000338EF /* Realm Models */ = {
+		26702C211F4AEE44000338EF /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
 				26C22F081F44105900F8C6C7 /* Book.swift */,
 				266C39C31F488EE9000F64D7 /* BookInfo.swift */,
 				2674D7D71F4974470064E1D7 /* BookLog.swift */,
+				7AF171841F4ED464009C174F /* BookFeed.swift */,
 			);
-			name = "Realm Models";
+			name = "Data Models";
 			sourceTree = "<group>";
 		};
 		26702C221F4AEE63000338EF /* Store Models */ = {
@@ -286,7 +293,7 @@
 		26C22F001F440F9A00F8C6C7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				26702C211F4AEE44000338EF /* Realm Models */,
+				26702C211F4AEE44000338EF /* Data Models */,
 				26702C221F4AEE63000338EF /* Store Models */,
 			);
 			name = Models;
@@ -328,9 +335,10 @@
 		26C22F051F44102800F8C6C7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				26C22F061F44103600F8C6C7 /* AladinAPI.swift */,
-				266C39CB1F4930CC000F64D7 /* Animator.swift */,
-				7AF171801F4E9593009C174F /* UserNotificationHelper.swift */,
+				7AF171861F4EEF12009C174F /* API */,
+				7AF171871F4EEF1C009C174F /* Animation */,
+				7AF171881F4EEF26009C174F /* Notification */,
+				7AF171891F4EEF5E009C174F /* Formatter */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -404,6 +412,39 @@
 				433B15123C68B0DCC8127089 /* Pods-DoksugongbangUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		7AF171861F4EEF12009C174F /* API */ = {
+			isa = PBXGroup;
+			children = (
+				26C22F061F44103600F8C6C7 /* AladinAPI.swift */,
+			);
+			name = API;
+			sourceTree = "<group>";
+		};
+		7AF171871F4EEF1C009C174F /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				266C39CB1F4930CC000F64D7 /* Animator.swift */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
+		7AF171881F4EEF26009C174F /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				7AF171801F4E9593009C174F /* UserNotificationHelper.swift */,
+			);
+			name = Notification;
+			sourceTree = "<group>";
+		};
+		7AF171891F4EEF5E009C174F /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				7AF1718A1F4EF442009C174F /* CustomDateFormatter.swift */,
+				7AF1718C1F4EFA96009C174F /* CustomNumberFormatter.swift */,
+			);
+			name = Formatter;
 			sourceTree = "<group>";
 		};
 		824A4DFA6CD44DB136078F6A /* Frameworks */ = {
@@ -727,6 +768,7 @@
 			files = (
 				266C39C41F488EE9000F64D7 /* BookInfo.swift in Sources */,
 				26C22F2D1F4560B200F8C6C7 /* BookCollectionReusableView.swift in Sources */,
+				7AF1718D1F4EFA96009C174F /* CustomNumberFormatter.swift in Sources */,
 				266C39CE1F494A14000F64D7 /* ReportAfterReadViewController.swift in Sources */,
 				26C22F101F4410DF00F8C6C7 /* AladinConfig.swift in Sources */,
 				7AF171831F4EA8C9009C174F /* SetUpViewController.swift in Sources */,
@@ -749,11 +791,13 @@
 				2674D7D81F4974470064E1D7 /* BookLog.swift in Sources */,
 				2674D7D41F496BF40064E1D7 /* BookReportDetailViewController.swift in Sources */,
 				266C39C11F46C76D000F64D7 /* RatingControl.swift in Sources */,
+				7AF1718B1F4EF442009C174F /* CustomDateFormatter.swift in Sources */,
 				26C22F261F442DCA00F8C6C7 /* MyBookPageViewController.swift in Sources */,
 				267F5FDE1F4ABB970005464B /* BookLogListViewController.swift in Sources */,
 				26C22F151F44117600F8C6C7 /* BarcodeCameraView.swift in Sources */,
 				7AF1717F1F4D5FB2009C174F /* MyPageViewController.swift in Sources */,
 				26C22F201F441E6100F8C6C7 /* SearchBookListViewController.swift in Sources */,
+				7AF171851F4ED464009C174F /* BookFeed.swift in Sources */,
 				26C22F0B1F44107800F8C6C7 /* ImageStore.swift in Sources */,
 				266C39CC1F4930CC000F64D7 /* Animator.swift in Sources */,
 				26C22ED31F440B8600F8C6C7 /* AppDelegate.swift in Sources */,

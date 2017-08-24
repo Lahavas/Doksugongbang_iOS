@@ -28,12 +28,6 @@ class SearchBookListViewController: UIViewController {
     
     let realm = try! Realm()
     
-    let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
-        return dateFormatter
-    }()
-    
     var searchText: String! {
         didSet {
             guard let searchText = self.searchText else {
@@ -202,7 +196,7 @@ extension SearchBookListViewController: UITableViewDelegate, UITableViewDataSour
         cell.titleLabel.text = book.title
         cell.authorLabel.text = book.author
         cell.publisherLabel.text = "\(book.publisher) 펴냄"
-        cell.pubdateLabel.text = "\(self.dateFormatter.string(from: book.pubdate)) 출판"
+        cell.pubdateLabel.text = "\(CustomDateFormatter.longType.string(from: book.pubdate)) 출판"
         self.store.fetchImage(for: book) {
             (result) -> Void in
             
