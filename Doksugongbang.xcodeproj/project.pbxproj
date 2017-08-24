@@ -49,6 +49,7 @@
 		7AF171851F4ED464009C174F /* BookFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF171841F4ED464009C174F /* BookFeed.swift */; };
 		7AF1718B1F4EF442009C174F /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1718A1F4EF442009C174F /* CustomDateFormatter.swift */; };
 		7AF1718D1F4EFA96009C174F /* CustomNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1718C1F4EFA96009C174F /* CustomNumberFormatter.swift */; };
+		7AF1718F1F4EFD28009C174F /* BookLogShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1718E1F4EFD28009C174F /* BookLogShowViewController.swift */; };
 		E230C653DF57FF89C1459E93 /* Pods_Doksugongbang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8FB595F707649C4C5AE039 /* Pods_Doksugongbang.framework */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +124,7 @@
 		7AF171841F4ED464009C174F /* BookFeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookFeed.swift; sourceTree = "<group>"; };
 		7AF1718A1F4EF442009C174F /* CustomDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
 		7AF1718C1F4EFA96009C174F /* CustomNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNumberFormatter.swift; sourceTree = "<group>"; };
+		7AF1718E1F4EFD28009C174F /* BookLogShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookLogShowViewController.swift; sourceTree = "<group>"; };
 		8D8FB595F707649C4C5AE039 /* Pods_Doksugongbang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Doksugongbang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F9C80F744EC22A9031782D /* Pods_DoksugongbangUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoksugongbangUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC694EA4400D44F3E0F35813 /* Pods-Doksugongbang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doksugongbang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doksugongbang/Pods-Doksugongbang.debug.xcconfig"; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			children = (
 				2674D7DA1F49777C0064E1D7 /* BookLogDetailViewController.swift */,
 				267F5FDD1F4ABB970005464B /* BookLogListViewController.swift */,
+				7AF1718E1F4EFD28009C174F /* BookLogShowViewController.swift */,
 			);
 			name = "Book Log";
 			sourceTree = "<group>";
@@ -777,6 +780,7 @@
 				26C22F2A1F4432BD00F8C6C7 /* BookCollectionViewCell.swift in Sources */,
 				266C39C81F492DBC000F64D7 /* ReportBeforeReadViewController.swift in Sources */,
 				26C22F221F44269A00F8C6C7 /* BookDetailViewController.swift in Sources */,
+				7AF1718F1F4EFD28009C174F /* BookLogShowViewController.swift in Sources */,
 				26C22F321F45800700F8C6C7 /* Results.swift in Sources */,
 				26C22F071F44103600F8C6C7 /* AladinAPI.swift in Sources */,
 				267F5FE21F4AC8700005464B /* String.swift in Sources */,

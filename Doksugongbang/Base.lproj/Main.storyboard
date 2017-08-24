@@ -128,7 +128,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4625" y="2781"/>
+            <point key="canvasLocation" x="7263" y="-125"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -345,7 +345,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wjs-LI-CxC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3390" y="-125"/>
+            <point key="canvasLocation" x="3390" y="1791"/>
         </scene>
         <!--Search Book List View Controller-->
         <scene sceneID="Xmx-6d-9pW">
@@ -483,7 +483,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cVL-qf-6k8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4625" y="-125"/>
+            <point key="canvasLocation" x="4625" y="1790"/>
         </scene>
         <!--Book Detail View Controller-->
         <scene sceneID="5m5-OE-bsc">
@@ -748,7 +748,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JFd-cQ-aF6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4625" y="1791"/>
+            <point key="canvasLocation" x="4684" y="-125"/>
         </scene>
         <!--Book Report Detail View Controller-->
         <scene sceneID="OTy-Zf-dMY">
@@ -955,11 +955,12 @@
                         <outlet property="bookReportBeforeView" destination="JDF-OA-bKu" id="rOw-jA-svp"/>
                         <outlet property="bookReportView" destination="U1H-Jq-Shb" id="RgY-Uz-Edx"/>
                         <outlet property="titleLabel" destination="kGz-vl-UpO" id="9Pa-nw-QVq"/>
+                        <segue destination="y82-vs-Cjt" kind="presentation" identifier="ShowLogDetail" id="lN1-Hm-Uae"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ClD-Xx-8nC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5889" y="1895"/>
+            <point key="canvasLocation" x="5889" y="-230"/>
         </scene>
         <!--Report Before Read View Controller-->
         <scene sceneID="tlz-T7-h92">
@@ -1130,7 +1131,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rcA-D2-i3g" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="l7J-PF-S8W" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5889" y="-125"/>
+            <point key="canvasLocation" x="5889" y="1790"/>
         </scene>
         <!--My Page View Controller-->
         <scene sceneID="UIK-Ah-wfD">
@@ -1315,7 +1316,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2104.8000000000002" y="1789.6551724137933"/>
+            <point key="canvasLocation" x="2105" y="-125"/>
         </scene>
         <!--My Book Page View Controller-->
         <scene sceneID="bu4-d1-9Nw">
@@ -1430,7 +1431,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eem-GP-be4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3390" y="1791"/>
+            <point key="canvasLocation" x="3390" y="-125"/>
         </scene>
         <!--Section Detail View Controller-->
         <scene sceneID="qCa-by-nqw">
@@ -1675,11 +1676,120 @@
                     <connections>
                         <outlet property="bookLogTableView" destination="wRT-tq-dAu" id="1pm-aS-0hQ"/>
                         <outlet property="searchBar" destination="hkx-fy-uQ6" id="46o-2s-DnP"/>
+                        <segue destination="y82-vs-Cjt" kind="presentation" identifier="ShowLogDetail" id="Mll-Gk-bxY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dtQ-E8-JUp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3389.5999999999999" y="-1036.7316341829087"/>
+        </scene>
+        <!--Book Log Show View Controller-->
+        <scene sceneID="wer-Pu-QBx">
+            <objects>
+                <viewController id="y82-vs-Cjt" customClass="BookLogShowViewController" customModule="Doksugongbang" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="x3y-qy-aRT"/>
+                        <viewControllerLayoutGuide type="bottom" id="bLq-gE-Zb4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="byi-Tb-CoJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5VD-Ej-xr1">
+                                <rect key="frame" x="24" y="74" width="327" height="24"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HX3-EC-3Ti">
+                                <rect key="frame" x="313" y="36" width="30" height="30"/>
+                                <state key="normal" title="확인"/>
+                                <connections>
+                                    <action selector="addBookLog:" destination="SLR-La-4dC" eventType="touchUpInside" id="ayI-4M-91r"/>
+                                    <action selector="okButtonAction:" destination="y82-vs-Cjt" eventType="touchUpInside" id="Pj5-ik-U6j"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Log" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DdF-nb-y6a">
+                                <rect key="frame" x="24" y="192.5" width="327" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1주차" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIC-Vo-Xvl">
+                                <rect key="frame" x="24" y="102" width="327" height="14.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yzr-hk-edb">
+                                <rect key="frame" x="24" y="132.5" width="111.5" height="44"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="9YE-2x-8mh">
+                                        <rect key="frame" x="0.0" y="0.0" width="111.5" height="18"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="시작 페이지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NyL-0i-FtU">
+                                                <rect key="frame" x="0.0" y="0.0" width="69" height="18"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100p" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTV-rI-xwn">
+                                                <rect key="frame" x="77" y="0.0" width="34.5" height="18"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sv6-IH-UBe">
+                                        <rect key="frame" x="0.0" y="26" width="111.5" height="18"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="끝 페이지" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xnz-In-Suv">
+                                                <rect key="frame" x="0.0" y="0.0" width="69" height="18"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100p" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E36-rt-ubu">
+                                                <rect key="frame" x="77" y="0.0" width="34.5" height="18"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DdF-nb-y6a" firstAttribute="top" secondItem="yzr-hk-edb" secondAttribute="bottom" constant="16" id="33j-Sm-FhZ"/>
+                            <constraint firstItem="yzr-hk-edb" firstAttribute="leading" secondItem="byi-Tb-CoJ" secondAttribute="leadingMargin" constant="8" id="7qe-bQ-4JZ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DdF-nb-y6a" secondAttribute="trailing" constant="8" id="Eu2-Lh-gAr"/>
+                            <constraint firstItem="5VD-Ej-xr1" firstAttribute="leading" secondItem="byi-Tb-CoJ" secondAttribute="leading" constant="24" id="JRA-yJ-aua"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EIC-Vo-Xvl" secondAttribute="trailing" constant="8" id="Kel-as-VDY"/>
+                            <constraint firstItem="bLq-gE-Zb4" firstAttribute="top" relation="greaterThanOrEqual" secondItem="DdF-nb-y6a" secondAttribute="bottom" constant="16" id="Qpb-9e-3KB"/>
+                            <constraint firstItem="DdF-nb-y6a" firstAttribute="leading" secondItem="byi-Tb-CoJ" secondAttribute="leadingMargin" constant="8" id="TwY-gg-CKl"/>
+                            <constraint firstAttribute="trailing" secondItem="5VD-Ej-xr1" secondAttribute="trailing" constant="24" id="V5Y-AR-wy3"/>
+                            <constraint firstItem="yzr-hk-edb" firstAttribute="top" secondItem="EIC-Vo-Xvl" secondAttribute="bottom" constant="16" id="aWP-qk-Ycw"/>
+                            <constraint firstItem="EIC-Vo-Xvl" firstAttribute="top" secondItem="5VD-Ej-xr1" secondAttribute="bottom" constant="4" id="cua-IU-Ycj"/>
+                            <constraint firstItem="HX3-EC-3Ti" firstAttribute="top" secondItem="x3y-qy-aRT" secondAttribute="bottom" constant="16" id="kDj-Z8-eQl"/>
+                            <constraint firstAttribute="trailing" secondItem="HX3-EC-3Ti" secondAttribute="trailing" constant="32" id="l8u-qe-3YT"/>
+                            <constraint firstItem="EIC-Vo-Xvl" firstAttribute="leading" secondItem="byi-Tb-CoJ" secondAttribute="leadingMargin" constant="8" id="nkm-XD-0mI"/>
+                            <constraint firstItem="5VD-Ej-xr1" firstAttribute="top" secondItem="HX3-EC-3Ti" secondAttribute="bottom" constant="8" id="oFC-s2-pB4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bookLogLabel" destination="DdF-nb-y6a" id="tbH-nv-ZFI"/>
+                        <outlet property="bookReadCountLabel" destination="EIC-Vo-Xvl" id="Cog-pu-F7C"/>
+                        <outlet property="bookTitleLabel" destination="5VD-Ej-xr1" id="o9J-6d-5Hf"/>
+                        <outlet property="endPageLabel" destination="E36-rt-ubu" id="eED-QG-yfZ"/>
+                        <outlet property="startPageLabel" destination="OTV-rI-xwn" id="fAu-Jh-cOn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E9v-3B-poD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4625" y="-1039"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="T9s-T7-Z9a">
@@ -1701,7 +1811,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qia-qB-qbM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="950" y="-124"/>
+            <point key="canvasLocation" x="950" y="-125"/>
         </scene>
         <!--Home-->
         <scene sceneID="fcg-Gp-axz">
@@ -1758,7 +1868,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bWN-uS-hWz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2105" y="-125"/>
+            <point key="canvasLocation" x="2105" y="1790"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="E3y-tH-AJz">
@@ -2095,9 +2205,10 @@
         <image name="settingIcon" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pnK-yV-qy5"/>
+        <segue reference="RRs-8h-Uv0"/>
         <segue reference="luG-n0-7sV"/>
+        <segue reference="Mll-Gk-bxY"/>
+        <segue reference="pnK-yV-qy5"/>
         <segue reference="b1t-2d-dqD"/>
-        <segue reference="JBY-Je-x2m"/>
     </inferredMetricsTieBreakers>
 </document>

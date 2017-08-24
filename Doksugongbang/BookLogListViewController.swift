@@ -28,6 +28,7 @@ class BookLogListViewController: UIViewController {
     
     // MARK: Model
     
+    var bookLog: BookLog!
     var bookLogList: [BookLog]!
 
     var dateSectionList: [String]!
@@ -67,6 +68,23 @@ class BookLogListViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        switch segue.identifier ?? "" {
+        case "ShowLogDetail":
+            guard let bookLogShowViewController = segue.destination as? BookLogShowViewController else {
+                preconditionFailure("Unexpected Segue Destination")
+            }
+            
+            bookLogShowViewController.bookLog = self.bookLog
+        default:
+            preconditionFailure("Unexpected segue identifier")
+        }
     }
     
     // MARK: - Methods
@@ -196,5 +214,13 @@ extension BookLogListViewController: UITableViewDelegate, UITableViewDataSource 
         cell.bookLogLabel.text = bookLog.logContent
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let bookLogListInSection = self.bookLogListInSections[indexPath.section]
+        self.bookLog = bookLogListInSection[indexPath.row]
+        
+        self.performSegue(withIdentifier: "ShowLogDetail", sender: self)
     }
 }
