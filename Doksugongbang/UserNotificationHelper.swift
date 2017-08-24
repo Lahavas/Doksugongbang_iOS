@@ -63,8 +63,6 @@ class UserNotificationHelper: NSObject {
             .toArray()
             .count
         
-        print(yesterdayBookLogCount)
-        
         let notificationContent = UNMutableNotificationContent()
         
         notificationContent.body = "어제 기록한 북 로그 : \(yesterdayBookLogCount)개"

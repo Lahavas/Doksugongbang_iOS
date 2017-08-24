@@ -6,6 +6,13 @@
 //  Copyright © 2017년 yeon. All rights reserved.
 //
 
+///////////////////////////////////////////
+//  수정 필요한 부분
+//
+//  1. Splash 화면 및 SetUpViewController 적용 시에 UserDefaults 관련 부분 전부 수정 (// Flag 오픈)
+//
+///////////////////////////////////////////
+
 import UIKit
 import RealmSwift
 import UserNotifications
@@ -28,8 +35,11 @@ class MyPageViewController: UIViewController {
     
     // MARK: User Config
     
+    let userDefaults: UserDefaults = UserDefaults.standard
+    
+    // Flag
     var isAlarmChecked: Bool = false
-    var name: String = "홍길동"
+    var userName: String = "홍길동"
     var alarmTime: String = "오전 07시 00분"
     
     // MARK: Extras
@@ -96,8 +106,20 @@ class MyPageViewController: UIViewController {
     // MARK: - Methods
     
     func setUpUserConfig() {
+
+        // Flag
+//        guard
+//            let isAlarmChecked = self.userDefaults.bool(forKey: "isAlarmChecked"),
+//            let userName = self.userDefaults.string(forKey: "userName"),
+//            let alarmTime = self.userDefaults.string(forKey: "alarmTime") else {
+//                preconditionFailure("User Defaults is empty!")
+//        }
+//        
+//        self.isAlarmChecked = isAlarmChecked
+//        self.userName = userName
+//        self.alarmTime = alarmTime
         
-        self.userNameLabel.text = "\(self.name)님! 환영합니다"
+        self.userNameLabel.text = "\(self.userName)님! 환영합니다"
         
         self.alarmCheckButton.isSelected = self.isAlarmChecked
         self.alarmTimeTextField.text = self.alarmTime
@@ -137,8 +159,8 @@ class MyPageViewController: UIViewController {
     @IBAction func checkAlarm(_ sender: UIButton) {
         
         guard
-            let alarmTimeString = alarmTimeTextField.text,
-            let alarmTime = dateFormatter.date(from: alarmTimeString) else {
+            let alarmTimeString = self.alarmTimeTextField.text,
+            let alarmTime = self.dateFormatter.date(from: alarmTimeString) else {
             preconditionFailure("Unexpected alarm time")
         }
         
@@ -151,10 +173,18 @@ class MyPageViewController: UIViewController {
             
             self.alarmCheckButton.isSelected = false
             
+            // Flag
+//            self.isAlarmChecked = false
+//            self.userDefaults.set(self.isAlarmChecked, forKey: "isAlarmChecked")
+            
             self.notificationHelper.removeScheduleUserNotification()
         } else {
             
             self.alarmCheckButton.isSelected = true
+            
+            // Flag
+//            self.isAlarmChecked = true
+//            self.userDefaults.set(self.isAlarmChecked, forKey: "isAlarmChecked")
             
             self.notificationHelper.center.getNotificationSettings {
                 (notificationSettings) -> Void in
@@ -196,6 +226,10 @@ class MyPageViewController: UIViewController {
     func datePickerValueChanged(_ sender: UIDatePicker) {
         
         self.alarmTimeTextField.text = dateFormatter.string(from: sender.date)
+        
+        // Flag
+//        self.alarmTime = self.alarmTimeTextField.text
+//        self.userDefaults.set(self.alarmTime, forKey: "alarmTime")
     }
     
     @IBAction func showMyBook(_ sender: UIButton) {
