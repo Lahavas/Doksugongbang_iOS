@@ -12,7 +12,16 @@ import RealmSwift
 class ReportBeforeReadViewController: UIViewController {
     
     // MARK: - Properties
+    
     // MARK: Outlets
+    
+    @IBOutlet var coverImageView: UIImageView!
+    @IBOutlet var spinner: UIActivityIndicatorView!
+    
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var authorLabel: UILabel!
+    @IBOutlet var publisherLabel: UILabel!
+    @IBOutlet var pubdateLabel: UILabel!
     
     @IBOutlet var reportTextView: UITextView!
     
@@ -20,24 +29,33 @@ class ReportBeforeReadViewController: UIViewController {
     
     var book: Book!
     
+    let store: BookStore = BookStore.shared
+    
+    // MARK: Report Text View Configuration
+    
+    var reportEdgeInset: UIEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
+    var reportPlaceHolder: String = "이 책을 읽기 전 느낌을 적어주세요!"
+    var reportTextColor: UIColor = UIColor.black
+    var reportPlaceHolderColor: UIColor = UIColor.lightGray
+    
     // MARK: Extras
     
     let realm = try! Realm()
-    
-    let animator: Animator = Animator()
     
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.reportTextView.textContainerInset = self.reportEdgeInset
+        self.reportTextView.delegate = self
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        self.transitioningDelegate = self
-        self.modalPresentationStyle = .custom
+        self.setUpBookImage()
+        self.setUpMainView()
     }
     
     // MARK: - Memory Management
@@ -75,36 +93,83 @@ class ReportBeforeReadViewController: UIViewController {
             self.dismiss(animated: true, completion: nil)
         }
     }
+    
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        
+        self.view.endEditing(true)
+    }
+    
+    // MARK: - Methods
+    
+    func setUpMainView() {
+        
+        if let book = self.book {
+            
+            self.titleLabel.text = book.title
+            self.authorLabel.text = book.author
+            self.publisherLabel.text = "\(book.publisher) 펴냄"
+            self.pubdateLabel.text = "\(CustomDateFormatter.longType.string(from: book.pubdate)) 출판"
+            
+            self.store.fetchImage(for: book) {
+                (result) -> Void in
+                
+                switch result {
+                case let .success(image):
+                    self.update(with: image)
+                case let .failure(error):
+                    print("Error fetching image for photo: \(error)")
+                }
+            }
+            
+            self.reportTextView.text = self.reportPlaceHolder
+            self.reportTextView.textColor = self.reportPlaceHolderColor
+        }
+    }
+    
+    func setUpBookImage() {
+        
+        self.coverImageView.layer.shadowColor = UIColor.gray.cgColor
+        self.coverImageView.layer.shadowOffset = CGSize(width: 3, height: 5)
+        self.coverImageView.layer.shadowOpacity = 1
+        self.coverImageView.layer.shadowRadius = 1.0
+    }
+    
+    func update(with image: UIImage?) {
+        
+        if let imageToDisplay = image {
+            self.spinner.stopAnimating()
+            self.coverImageView.image = imageToDisplay
+        } else {
+            self.spinner.startAnimating()
+            self.coverImageView.image = nil
+        }
+    }
 }
 
 // MARK: -
 
-extension ReportBeforeReadViewController: UIViewControllerTransitioningDelegate {
+extension ReportBeforeReadViewController: UITextViewDelegate {
     
-    // MARK: - View Controller Transitioning Delegate
+    // MARK: - Text View Delegate
     
-    func animationController(forPresented presented: UIViewController,
-                             presenting: UIViewController,
-                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func textViewDidEndEditing(_ textView: UITextView) {
         
-        self.animator.transitionType = .pushFromBottom
-        self.animator.insets = UIEdgeInsets(top: 150, left: 30, bottom: 150, right: 30)
-        self.animator.duration = 0.3
-        return self.animator
+        if textView.text == "" {
+            
+            textView.text = self.reportPlaceHolder
+            textView.textColor = self.reportPlaceHolderColor
+        }
+        
+        textView.resignFirstResponder()
     }
     
-    func animationController(forDismissed dismissed: UIViewController)-> UIViewControllerAnimatedTransitioning? {
+    func textViewDidBeginEditing(_ textView: UITextView) {
         
-        return self.animator
-    }
-    
-    func presentationController(forPresented presented: UIViewController,
-                                presenting: UIViewController?,
-                                source: UIViewController) -> UIPresentationController? {
+        if textView.text == self.reportPlaceHolder {
+            textView.text = ""
+            textView.textColor = self.reportTextColor
+        }
         
-        let presentationController = NNBackDropController(presentedViewController: presented,
-                                                          presentingViewController: source,
-                                                          dismissPresentedControllerOnTap : true)
-        return presentationController
+        textView.becomeFirstResponder()
     }
 }

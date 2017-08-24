@@ -25,12 +25,23 @@ class BookLogShowViewController: UIViewController {
     
     var bookLog: BookLog!
     
+    // MARK: Extras
+    
+    let animator: Animator = Animator()
+    
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.setUpBookLogView()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.transitioningDelegate = self
+        self.modalPresentationStyle = .custom
     }
 
     // MARK: - Memory Management
@@ -65,3 +76,36 @@ class BookLogShowViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 }
+
+// MARK: -
+
+extension BookLogShowViewController: UIViewControllerTransitioningDelegate {
+    
+    // MARK: - View Controller Transitioning Delegate
+    
+    func animationController(forPresented presented: UIViewController,
+                             presenting: UIViewController,
+                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        self.animator.transitionType = .pushFromBottom
+        self.animator.insets = UIEdgeInsets(top: 50, left: 30, bottom: 50, right: 30)
+        self.animator.duration = 0.3
+        return self.animator
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController)-> UIViewControllerAnimatedTransitioning? {
+        
+        return self.animator
+    }
+    
+    func presentationController(forPresented presented: UIViewController,
+                                presenting: UIViewController?,
+                                source: UIViewController) -> UIPresentationController? {
+        
+        let presentationController = NNBackDropController(presentedViewController: presented,
+                                                          presentingViewController: source,
+                                                          dismissPresentedControllerOnTap : true)
+        return presentationController
+    }
+}
+

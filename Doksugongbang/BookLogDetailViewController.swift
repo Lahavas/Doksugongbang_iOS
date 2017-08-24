@@ -11,8 +11,6 @@
 //
 //  1. 진행률 ProgressBar 두기
 //
-//  2. UX적인 부분 검토 (키패드 창, Picker View 등등...)
-//
 ///////////////////////////////////////////
 
 import UIKit
@@ -36,6 +34,13 @@ class BookLogDetailViewController: UIViewController {
     var book: Book!
     var bookInfo: BookInfo!
     
+    // MARK: Log Text View Configuration
+    
+    var reportEdgeInset: UIEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
+    var reportPlaceHolder: String = "이 책의 북로그를 적어주세요!"
+    var reportTextColor: UIColor = UIColor.black
+    var reportPlaceHolderColor: UIColor = UIColor.lightGray
+    
     // MARK: Extras
     
     let realm = try! Realm()
@@ -49,6 +54,9 @@ class BookLogDetailViewController: UIViewController {
         super.viewDidLoad()
 
         self.initBookInfo()
+        
+        self.bookLogTextView.textContainerInset = self.reportEdgeInset
+        self.bookLogTextView.delegate = self
         
         self.startPageTextField.delegate = self
         self.endPageTextField.delegate = self
@@ -130,8 +138,11 @@ class BookLogDetailViewController: UIViewController {
         
         self.titleLabel.text = self.book.title
         
-        self.startPageTextField.text = "\(self.bookReadingPage)"
-        self.endPageTextField.text = "\(self.bookReadingPage)"
+        self.startPageTextField.text = "\(self.bookReadingPage)p"
+        self.endPageTextField.text = "\(self.bookReadingPage)p"
+        
+        self.bookLogTextView.text = self.reportPlaceHolder
+        self.bookLogTextView.textColor = self.reportPlaceHolderColor
     }
 }
 
@@ -202,5 +213,32 @@ extension BookLogDetailViewController: UITextFieldDelegate {
             }
         }
     }
+}
+
+// MARK: -
+
+extension BookLogDetailViewController: UITextViewDelegate {
     
+    // MARK: - Text View Delegate
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        
+        if textView.text == "" {
+            
+            textView.text = self.reportPlaceHolder
+            textView.textColor = self.reportPlaceHolderColor
+        }
+        
+        textView.resignFirstResponder()
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        
+        if textView.text == self.reportPlaceHolder {
+            textView.text = ""
+            textView.textColor = self.reportTextColor
+        }
+        
+        textView.becomeFirstResponder()
+    }
 }
