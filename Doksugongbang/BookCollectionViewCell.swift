@@ -35,14 +35,6 @@ class BookCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Methods
     
-    func setUpBookImage() {
-        
-        self.coverImageView.layer.shadowColor = UIColor.black.cgColor
-        self.coverImageView.layer.shadowOffset = CGSize(width: 1, height: 5)
-        self.coverImageView.layer.shadowOpacity = 1
-        self.coverImageView.layer.shadowRadius = 1.0
-    }
-    
     func update(with image: UIImage?) {
         
         if let imageToDisplay = image {
@@ -54,4 +46,11 @@ class BookCollectionViewCell: UICollectionViewCell {
         }
     }
 
+    func setUpBookImage() {
+        
+        self.coverImageView.layer.shadowColor = UIColor.gray.cgColor
+        self.coverImageView.layer.shadowOffset = CGSize(width: 3, height: 5)
+        self.coverImageView.layer.shadowOpacity = 1
+        self.coverImageView.layer.shadowRadius = 1.0
+    }
 }

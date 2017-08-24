@@ -31,7 +31,6 @@ class ReportBeforeReadViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
     }
     
     override func awakeFromNib() {
@@ -58,6 +57,7 @@ class ReportBeforeReadViewController: UIViewController {
     @IBAction func readingAction(_ sender: UIButton) {
         
         try! realm.write {
+            
             self.book.bookStateEnum = .reading
             self.book.dateUpdatedBookState = Date()
             self.book.bookReadCount += 1
