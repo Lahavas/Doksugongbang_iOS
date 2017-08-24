@@ -49,6 +49,12 @@ class BookLogDetailViewController: UIViewController {
         return numberFormatter
     }()
     
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
+        return dateFormatter
+    }()
+    
     // MARK: - View Life Cycle
 
     override func viewDidLoad() {
@@ -101,6 +107,8 @@ class BookLogDetailViewController: UIViewController {
             bookLog.startPage = startPageNumber.intValue
             bookLog.endPage = endPageNumber.intValue
             bookLog.logContent = bookLogTextView.text
+            bookLog.dateUpdated = Date()
+            bookLog.dateString = dateFormatter.string(from: Date())
             
             if self.bookInfo.bookReadingPage < bookLog.endPage {
                 self.bookInfo.bookReadingPage = bookLog.endPage

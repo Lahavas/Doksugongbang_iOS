@@ -88,7 +88,7 @@ extension ReportBeforeReadViewController: UIViewControllerTransitioningDelegate 
                              source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         self.animator.transitionType = .pushFromBottom
-        self.animator.insets = UIEdgeInsets(top: 100, left: 30, bottom: 100, right: 30)
+        self.animator.insets = UIEdgeInsets(top: 150, left: 30, bottom: 150, right: 30)
         self.animator.duration = 0.3
         return self.animator
     }

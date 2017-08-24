@@ -21,6 +21,7 @@ class BookLog: Object {
     dynamic var logContent: String = ""
     
     dynamic var dateUpdated: Date = Date()
+    dynamic var dateString: String = ""
     
     dynamic var parentBookInfo: BookInfo?
     

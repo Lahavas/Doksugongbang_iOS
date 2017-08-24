@@ -200,7 +200,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vW9-Ap-UNV">
-                                    <rect key="frame" x="256" y="8" width="56" height="34"/>
+                                    <rect key="frame" x="311" y="8" width="56" height="34"/>
                                     <state key="normal" title="모두 보기"/>
                                 </button>
                             </subviews>
@@ -274,7 +274,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XL7-Lq-uZF">
-                                                    <rect key="frame" x="16" y="9.5" width="288" height="24"/>
+                                                    <rect key="frame" x="16" y="9.5" width="343" height="24"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -826,7 +826,7 @@
                                         <constraint firstItem="01b-8f-hQz" firstAttribute="top" secondItem="JDF-OA-bKu" secondAttribute="top" constant="8" id="hGr-LI-4VW"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGz-vl-UpO">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGz-vl-UpO">
                                     <rect key="frame" x="8" y="16" width="273" height="24"/>
                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                     <nil key="textColor"/>
@@ -1151,6 +1151,9 @@
                                         </constraints>
                                         <state key="normal" image="emptyCheckBox"/>
                                         <state key="selected" image="selectedCheckBox"/>
+                                        <connections>
+                                            <action selector="checkAlarm:" destination="3dc-Hq-XDR" eventType="touchUpInside" id="03i-Cm-vtu"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N1y-gi-Itj">
                                         <rect key="frame" x="323" y="38" width="44" height="44"/>
@@ -1159,9 +1162,13 @@
                                             <constraint firstAttribute="width" constant="44" id="p5m-Oe-aXJ"/>
                                         </constraints>
                                         <state key="normal" image="settingIcon"/>
+                                        <connections>
+                                            <action selector="setUpAlarmTime:" destination="3dc-Hq-XDR" eventType="touchUpInside" id="nUe-go-1dL"/>
+                                        </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="13시 30분" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AOc-0Q-KoP">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="오전 7시 30분" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AOc-0Q-KoP">
                                         <rect key="frame" x="56" y="38" width="259" height="44"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -1258,6 +1265,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="t2L-p6-W0h" firstAttribute="top" secondItem="LEb-v3-OHv" secondAttribute="bottom" constant="48" id="1J0-LC-Hcw"/>
                             <constraint firstItem="ssT-ey-eHV" firstAttribute="leading" secondItem="l42-yL-rla" secondAttribute="leading" id="2m0-pX-HVH"/>
@@ -1356,7 +1364,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nv8-bb-dSW">
-                                    <rect key="frame" x="256" y="8" width="56" height="34"/>
+                                    <rect key="frame" x="311" y="8" width="56" height="34"/>
                                     <state key="normal" title="모두 보기"/>
                                 </button>
                             </subviews>
