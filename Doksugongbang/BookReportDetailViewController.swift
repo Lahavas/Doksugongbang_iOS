@@ -9,13 +9,6 @@
 import UIKit
 import RealmSwift
 
-///////////////////////////////////////////
-//  수정 필요한 부분
-//
-//  1. ScrollView 적용
-//
-///////////////////////////////////////////
-
 class BookReportDetailViewController: UIViewController {
 
     // MARK: - Properties
@@ -42,6 +35,10 @@ class BookReportDetailViewController: UIViewController {
     @IBOutlet var bookReportAfterView: UIView!
     @IBOutlet var bookReportBeforeView: UIView!
     @IBOutlet var bookLogTableView: UITableView!
+    
+    // Constraints
+    
+    @IBOutlet var bookReportBeforeViewTopConstraint: NSLayoutConstraint!
     
     // MARK: Models
     
@@ -140,8 +137,20 @@ class BookReportDetailViewController: UIViewController {
         self.bookRating.rating = self.bookInfo.bookRating
         
         if self.bookInfo.bookRating == 0 {
-            self.bookReportAfterReadLabel.text = "아직 책을 다 읽지 않았습니다!"
+            
+            self.bookReportAfterView.isHidden = true
+            
+            self.bookReportBeforeView.translatesAutoresizingMaskIntoConstraints = false
+            self.bookReportBeforeViewTopConstraint = NSLayoutConstraint(item: self.bookReportBeforeView,
+                                                                        attribute: .top,
+                                                                        relatedBy: .equal,
+                                                                        toItem: self.bookCountTextField,
+                                                                        attribute: .bottom,
+                                                                        multiplier: 1.0,
+                                                                        constant: 8.0)
+            self.bookReportBeforeViewTopConstraint.isActive = true
         } else {
+            
             self.bookReportAfterReadLabel.text = self.bookInfo.reportAfterReading
         }
         
@@ -217,6 +226,15 @@ extension BookReportDetailViewController: UITableViewDelegate, UITableViewDataSo
     // MARK: - Table View Data Source
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        
+        if self.dateSectionList.count == 0 {
+            
+            self.bookLogTableView.isHidden = true
+        } else {
+            
+            self.bookLogTableView.isHidden = false
+        }
+        
         return self.dateSectionList.count
     }
     
