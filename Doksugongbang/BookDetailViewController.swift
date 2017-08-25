@@ -248,14 +248,14 @@ class BookDetailViewController: UIViewController {
             self.bookReadProgressView.isHidden = true
             self.detailViewButton.isHidden = false
             
-            self.readingViewHeightConstraint.constant = 80.0
+            self.readingViewHeightConstraint.constant = 120.0
         case .none:
             self.bookStateLabel.text = "아직 읽은 적이 없습니다."
             
             self.bookReadProgressView.isHidden = true
             self.detailViewButton.isHidden = true
             
-            self.readingViewHeightConstraint.constant = 60.0
+            self.readingViewHeightConstraint.constant = 100.0
         }
     }
     
