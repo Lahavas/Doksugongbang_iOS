@@ -72,6 +72,9 @@ class BookReportDetailViewController: UIViewController {
         self.bookLogTableView.delegate = self
         self.bookLogTableView.dataSource = self
         
+        self.bookLogTableView.rowHeight = UITableViewAutomaticDimension
+        self.bookLogTableView.estimatedRowHeight = 140.0
+        
         let readCountPickerView = UIPickerView()
         readCountPickerView.delegate = self
         self.bookCountTextField.inputView = readCountPickerView
@@ -239,8 +242,8 @@ extension BookReportDetailViewController: UITableViewDelegate, UITableViewDataSo
                 preconditionFailure("Unexpected realm model")
         }
         
-        cell.startPageLabel.text = "\(bookLog.startPage)p"
-        cell.endPageLabel.text = "\(bookLog.endPage)p"
+        cell.startPageLabel.text = "\(bookLog.startPage)쪽"
+        cell.endPageLabel.text = "\(bookLog.endPage)쪽"
         
         cell.bookTitleLabel.text = book.title
         cell.bookReadCountLabel.text = "\(bookInfo.bookReadCount)독차"

@@ -49,6 +49,9 @@ class BookLogListViewController: UIViewController {
         
         self.bookLogTableView.delegate = self
         self.bookLogTableView.dataSource = self
+        
+        self.bookLogTableView.rowHeight = UITableViewAutomaticDimension
+        self.bookLogTableView.estimatedRowHeight = 140.0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -206,8 +209,8 @@ extension BookLogListViewController: UITableViewDelegate, UITableViewDataSource 
                 preconditionFailure("Unexpected realm model")
         }
         
-        cell.startPageLabel.text = "\(bookLog.startPage)p"
-        cell.endPageLabel.text = "\(bookLog.endPage)p"
+        cell.startPageLabel.text = "\(bookLog.startPage)쪽"
+        cell.endPageLabel.text = "\(bookLog.endPage)쪽"
         
         cell.bookTitleLabel.text = book.title
         cell.bookReadCountLabel.text = "\(bookInfo.bookReadCount)독차"

@@ -76,21 +76,44 @@ class ReportAfterReadViewController: UIViewController {
     
     @IBAction func readingAction(_ sender: UIButton) {
         
-        try! realm.write {
+        if self.reportTextView.text == "" || self.reportTextView.text == self.reportPlaceHolder {
             
-            guard let bookInfo = self.book.bookInfos.filter("bookReadCount = \(self.book.bookReadCount)").first else {
-                preconditionFailure("Cannot find bookInfo")
+            let alertController: UIAlertController =
+                UIAlertController(title: "이 책의 감상평을 적어주세요", message: nil, preferredStyle: .alert)
+            
+            let okAction: UIAlertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            
+            alertController.addAction(okAction)
+            
+            present(alertController, animated: true, completion: nil)
+        } else if self.ratingControl.rating == 0 {
+            
+            let alertController: UIAlertController =
+                UIAlertController(title: "이 책의 평점을 매겨주세요", message: nil, preferredStyle: .alert)
+            
+            let okAction: UIAlertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            
+            alertController.addAction(okAction)
+            
+            present(alertController, animated: true, completion: nil)
+        } else {
+        
+            try! realm.write {
+                
+                guard let bookInfo = self.book.bookInfos.filter("bookReadCount = \(self.book.bookReadCount)").first else {
+                    preconditionFailure("Cannot find bookInfo")
+                }
+                
+                self.book.bookStateEnum = .read
+                self.book.dateUpdatedBookState = Date()
+                
+                bookInfo.reportAfterReading = self.reportTextView.text
+                bookInfo.bookRating = self.ratingControl.rating
+                
+                realm.add(self.book, update: true)
+                
+                self.dismiss(animated: true, completion: nil)
             }
-            
-            self.book.bookStateEnum = .read
-            self.book.dateUpdatedBookState = Date()
-            
-            bookInfo.reportAfterReading = self.reportTextView.text
-            bookInfo.bookRating = self.ratingControl.rating
-            
-            realm.add(self.book, update: true)
-            
-            self.dismiss(animated: true, completion: nil)
         }
     }
     

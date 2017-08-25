@@ -50,8 +50,8 @@ class BookLogShowViewController: UIViewController {
                 preconditionFailure("Unexpected realm model")
         }
         
-        self.startPageLabel.text = "\(self.bookLog.startPage)p"
-        self.endPageLabel.text = "\(self.bookLog.endPage)p"
+        self.startPageLabel.text = "\(self.bookLog.startPage)쪽"
+        self.endPageLabel.text = "\(self.bookLog.endPage)쪽"
         
         self.bookTitleLabel.text = book.title
         self.bookReadCountLabel.text = "\(bookInfo.bookReadCount)독차"

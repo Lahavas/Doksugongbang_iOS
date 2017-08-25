@@ -36,10 +36,10 @@ class BookLogDetailViewController: UIViewController {
     
     // MARK: Log Text View Configuration
     
-    var reportEdgeInset: UIEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
-    var reportPlaceHolder: String = "이 책의 북 로그를 적어주세요!"
-    var reportTextColor: UIColor = UIColor.black
-    var reportPlaceHolderColor: UIColor = UIColor.lightGray
+    var bookLogEdgeInset: UIEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
+    var bookLogPlaceHolder: String = "이 책의 북 로그를 적어주세요!"
+    var bookLogTextColor: UIColor = UIColor.black
+    var bookLogPlaceHolderColor: UIColor = UIColor.lightGray
     
     // MARK: Extras
     
@@ -55,7 +55,7 @@ class BookLogDetailViewController: UIViewController {
 
         self.initBookInfo()
         
-        self.bookLogTextView.textContainerInset = self.reportEdgeInset
+        self.bookLogTextView.textContainerInset = self.bookLogEdgeInset
         self.bookLogTextView.delegate = self
         
         self.startPageTextField.delegate = self
@@ -85,13 +85,13 @@ class BookLogDetailViewController: UIViewController {
     @IBAction func addBookLog(_ sender: UIButton) {
         
         guard
-            let startPageString: String = self.startPageTextField.text?.removeCharacters(from: "p"),
+            let startPageString: String = self.startPageTextField.text?.removeCharacters(from: "쪽"),
             let startPageNumber: NSNumber = CustomNumberFormatter.decimalStyle.number(from: startPageString) else {
                 preconditionFailure("Unexpected Start Page")
         }
         
         guard
-            let endPageString: String = self.endPageTextField.text?.removeCharacters(from: "p"),
+            let endPageString: String = self.endPageTextField.text?.removeCharacters(from: "쪽"),
             let endPageNumber: NSNumber = CustomNumberFormatter.decimalStyle.number(from: endPageString) else {
                 preconditionFailure("Unexpected End Page")
         }
@@ -100,6 +100,16 @@ class BookLogDetailViewController: UIViewController {
             
             let alertController: UIAlertController =
                 UIAlertController(title: "잘못된 값을 입력하였습니다", message: "시작 페이지보다 높은 값을 입력해주세요", preferredStyle: .alert)
+            
+            let okAction: UIAlertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            
+            alertController.addAction(okAction)
+            
+            present(alertController, animated: true, completion: nil)
+        } else if self.bookLogTextView.text == "" || self.bookLogTextView.text == self.bookLogPlaceHolder {
+            
+            let alertController: UIAlertController =
+                UIAlertController(title: "북 로그를 입력해주세요", message: nil, preferredStyle: .alert)
             
             let okAction: UIAlertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
             
@@ -152,11 +162,11 @@ class BookLogDetailViewController: UIViewController {
         
         self.titleLabel.text = self.book.title
         
-        self.startPageTextField.text = "\(self.bookReadingPage)p"
-        self.endPageTextField.text = "\(self.bookReadingPage)p"
+        self.startPageTextField.text = "\(self.bookReadingPage)쪽"
+        self.endPageTextField.text = "\(self.bookReadingPage)쪽"
         
-        self.bookLogTextView.text = self.reportPlaceHolder
-        self.bookLogTextView.textColor = self.reportPlaceHolderColor
+        self.bookLogTextView.text = self.bookLogPlaceHolder
+        self.bookLogTextView.textColor = self.bookLogPlaceHolderColor
     }
 }
 
@@ -174,9 +184,9 @@ extension BookLogDetailViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         guard
-            let pageString: String = textField.text?.removeCharacters(from: "p"),
+            let pageString: String = textField.text?.removeCharacters(from: "쪽"),
             let pageNumber: NSNumber = CustomNumberFormatter.decimalStyle.number(from: pageString) else {
-                textField.text = "\(self.bookReadingPage)p"
+                textField.text = "\(self.bookReadingPage)쪽"
                 return
         }
         
@@ -192,10 +202,10 @@ extension BookLogDetailViewController: UITextFieldDelegate {
             present(alertController, animated: true) { 
                 () -> Void in
                 
-                textField.text = "\(self.bookReadingPage)p"
+                textField.text = "\(self.bookReadingPage)쪽"
             }
         } else {
-            textField.text = "\(pageNumber)p"
+            textField.text = "\(pageNumber)쪽"
         }
     }
 }
@@ -210,8 +220,8 @@ extension BookLogDetailViewController: UITextViewDelegate {
         
         if textView.text == "" {
             
-            textView.text = self.reportPlaceHolder
-            textView.textColor = self.reportPlaceHolderColor
+            textView.text = self.bookLogPlaceHolder
+            textView.textColor = self.bookLogPlaceHolderColor
         }
         
         textView.resignFirstResponder()
@@ -219,9 +229,9 @@ extension BookLogDetailViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         
-        if textView.text == self.reportPlaceHolder {
+        if textView.text == self.bookLogPlaceHolder {
             textView.text = ""
-            textView.textColor = self.reportTextColor
+            textView.textColor = self.bookLogTextColor
         }
         
         textView.becomeFirstResponder()

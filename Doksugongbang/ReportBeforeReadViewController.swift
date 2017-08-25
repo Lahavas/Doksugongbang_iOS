@@ -74,23 +74,36 @@ class ReportBeforeReadViewController: UIViewController {
     
     @IBAction func readingAction(_ sender: UIButton) {
         
-        try! realm.write {
+        if self.reportTextView.text == "" || self.reportTextView.text == self.reportPlaceHolder {
             
-            self.book.bookStateEnum = .reading
-            self.book.dateUpdatedBookState = Date()
-            self.book.bookReadCount += 1
+            let alertController: UIAlertController =
+                UIAlertController(title: "읽기 전 느낌을 적어주세요", message: nil, preferredStyle: .alert)
             
-            let bookInfo = BookInfo()
-            bookInfo.bookReadCount = self.book.bookReadCount
-            bookInfo.bookTotalPage = self.book.page
-            bookInfo.reportBeforeReading = self.reportTextView.text
+            let okAction: UIAlertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
             
-            bookInfo.parentBook = self.book
-            self.book.bookInfos.append(bookInfo)
+            alertController.addAction(okAction)
             
-            realm.add(self.book, update: true)
+            present(alertController, animated: true, completion: nil)
+        } else {
             
-            self.dismiss(animated: true, completion: nil)
+            try! realm.write {
+                
+                self.book.bookStateEnum = .reading
+                self.book.dateUpdatedBookState = Date()
+                self.book.bookReadCount += 1
+                
+                let bookInfo = BookInfo()
+                bookInfo.bookReadCount = self.book.bookReadCount
+                bookInfo.bookTotalPage = self.book.page
+                bookInfo.reportBeforeReading = self.reportTextView.text
+                
+                bookInfo.parentBook = self.book
+                self.book.bookInfos.append(bookInfo)
+                
+                realm.add(self.book, update: true)
+                
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
     

@@ -185,13 +185,6 @@ class BookDetailViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindToModal(sender: UIStoryboardSegue) {
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) { 
-            self.navigationController?.popToRootViewController(animated: true)
-        }
-    }
-    
     func addBookLog(_ sender: UIBarButtonItem) {
         
         self.performSegue(withIdentifier: "AddBookLog", sender: self)
