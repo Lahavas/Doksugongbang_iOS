@@ -37,10 +37,9 @@ class MyPageViewController: UIViewController {
     
     let userDefaults: UserDefaults = UserDefaults.standard
     
-    // Flag
-    var isAlarmChecked: Bool = false
-    var userName: String = "홍길동"
-    var alarmTime: String = "오전 07시 00분"
+    var isAlarmChecked: Bool!
+    var userName: String!
+    var alarmTime: String!
     
     // MARK: Extras
     
@@ -99,19 +98,17 @@ class MyPageViewController: UIViewController {
     
     func setUpUserConfig() {
 
-        // Flag
-//        guard
-//            let isAlarmChecked = self.userDefaults.bool(forKey: "isAlarmChecked"),
-//            let userName = self.userDefaults.string(forKey: "userName"),
-//            let alarmTime = self.userDefaults.string(forKey: "alarmTime") else {
-//                preconditionFailure("User Defaults is empty!")
-//        }
-//        
-//        self.isAlarmChecked = isAlarmChecked
-//        self.userName = userName
-//        self.alarmTime = alarmTime
+        guard
+            let userName = self.userDefaults.string(forKey: "userName"),
+            let alarmTime = self.userDefaults.string(forKey: "alarmTime") else {
+                preconditionFailure("User Defaults is empty!")
+        }
         
-        self.userNameLabel.text = "\(self.userName)님! 환영합니다"
+        self.isAlarmChecked = self.userDefaults.bool(forKey: "isAlarmChecked")
+        self.userName = userName
+        self.alarmTime = alarmTime
+        
+        self.userNameLabel.text = "\(userName)님! 환영합니다"
         
         self.alarmCheckButton.isSelected = self.isAlarmChecked
         self.alarmTimeTextField.text = self.alarmTime
@@ -129,18 +126,18 @@ class MyPageViewController: UIViewController {
     }
     
     func setUpDoneButton() {
+        
         let toolBar = UIToolbar()
-        toolBar.barStyle = .default
         toolBar.isTranslucent = true
+        toolBar.barStyle = .default
         
         let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(title: "확인",
                                          style: .done,
                                          target: self,
                                          action: #selector(self.doneDatePickerPressed(_:)))
-        doneButton.tintColor = UIColor.black
+        
         toolBar.setItems([space, doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
         toolBar.sizeToFit()
         
         self.alarmTimeTextField.inputAccessoryView = toolBar
@@ -165,18 +162,16 @@ class MyPageViewController: UIViewController {
             
             self.alarmCheckButton.isSelected = false
             
-            // Flag
-//            self.isAlarmChecked = false
-//            self.userDefaults.set(self.isAlarmChecked, forKey: "isAlarmChecked")
+            self.isAlarmChecked = false
+            self.userDefaults.set(self.isAlarmChecked, forKey: "isAlarmChecked")
             
             self.notificationHelper.removeScheduleUserNotification()
         } else {
             
             self.alarmCheckButton.isSelected = true
             
-            // Flag
-//            self.isAlarmChecked = true
-//            self.userDefaults.set(self.isAlarmChecked, forKey: "isAlarmChecked")
+            self.isAlarmChecked = true
+            self.userDefaults.set(self.isAlarmChecked, forKey: "isAlarmChecked")
             
             self.notificationHelper.center.getNotificationSettings {
                 (notificationSettings) -> Void in
@@ -224,9 +219,8 @@ class MyPageViewController: UIViewController {
         
         self.alarmTimeTextField.text = CustomDateFormatter.timeType.string(from: sender.date)
         
-        // Flag
-//        self.alarmTime = self.alarmTimeTextField.text
-//        self.userDefaults.set(self.alarmTime, forKey: "alarmTime")
+        self.alarmTime = self.alarmTimeTextField.text
+        self.userDefaults.set(self.alarmTime, forKey: "alarmTime")
     }
     
     @IBAction func showMyBook(_ sender: UIButton) {

@@ -37,7 +37,7 @@ class BookLogDetailViewController: UIViewController {
     // MARK: Log Text View Configuration
     
     var reportEdgeInset: UIEdgeInsets = UIEdgeInsetsMake(15, 15, 15, 15)
-    var reportPlaceHolder: String = "이 책의 북로그를 적어주세요!"
+    var reportPlaceHolder: String = "이 책의 북 로그를 적어주세요!"
     var reportTextColor: UIColor = UIColor.black
     var reportPlaceHolderColor: UIColor = UIColor.lightGray
     
@@ -84,35 +84,49 @@ class BookLogDetailViewController: UIViewController {
     
     @IBAction func addBookLog(_ sender: UIButton) {
         
-        try! realm.write {
+        guard
+            let startPageString: String = self.startPageTextField.text?.removeCharacters(from: "p"),
+            let startPageNumber: NSNumber = CustomNumberFormatter.decimalStyle.number(from: startPageString) else {
+                preconditionFailure("Unexpected Start Page")
+        }
+        
+        guard
+            let endPageString: String = self.endPageTextField.text?.removeCharacters(from: "p"),
+            let endPageNumber: NSNumber = CustomNumberFormatter.decimalStyle.number(from: endPageString) else {
+                preconditionFailure("Unexpected End Page")
+        }
+        
+        if startPageNumber.intValue > endPageNumber.intValue {
             
-            let bookLog: BookLog = BookLog()
+            let alertController: UIAlertController =
+                UIAlertController(title: "잘못된 값을 입력하였습니다", message: "시작 페이지보다 높은 값을 입력해주세요", preferredStyle: .alert)
             
-            guard
-                let startPageString: String = self.startPageTextField.text,
-                let startPageNumber: NSNumber = CustomNumberFormatter.decimalStyle.number(from: startPageString) else {
-                    preconditionFailure("Unexpected Start Page")
+            let okAction: UIAlertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+            
+            alertController.addAction(okAction)
+            
+            present(alertController, animated: true, completion: nil)
+        } else {
+            
+            try! realm.write {
+                
+                let bookLog: BookLog = BookLog()
+                
+                bookLog.startPage = startPageNumber.intValue
+                bookLog.endPage = endPageNumber.intValue
+                bookLog.logContent = bookLogTextView.text
+                bookLog.dateUpdated = Date()
+                bookLog.dateString = CustomDateFormatter.longType.string(from: Date())
+                
+                if self.bookInfo.bookReadingPage < bookLog.endPage {
+                    self.bookInfo.bookReadingPage = bookLog.endPage
+                }
+                
+                bookLog.parentBookInfo = self.bookInfo
+                self.bookInfo.bookLogs.append(bookLog)
+                
+                self.dismiss(animated: true, completion: nil)
             }
-            
-            guard
-                let endPageString: String = self.endPageTextField.text,
-                let endPageNumber: NSNumber = CustomNumberFormatter.decimalStyle.number(from: endPageString) else {
-                    preconditionFailure("Unexpected End Page")
-            }
-            
-            bookLog.startPage = startPageNumber.intValue
-            bookLog.endPage = endPageNumber.intValue
-            bookLog.logContent = bookLogTextView.text
-            bookLog.dateUpdated = Date()
-            bookLog.dateString = CustomDateFormatter.longType.string(from: Date())
-            
-            if self.bookInfo.bookReadingPage < bookLog.endPage {
-                self.bookInfo.bookReadingPage = bookLog.endPage
-            }
-            bookLog.parentBookInfo = self.bookInfo
-            self.bookInfo.bookLogs.append(bookLog)
-            
-            self.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -160,9 +174,9 @@ extension BookLogDetailViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         guard
-            let pageString: String = textField.text,
+            let pageString: String = textField.text?.removeCharacters(from: "p"),
             let pageNumber: NSNumber = CustomNumberFormatter.decimalStyle.number(from: pageString) else {
-                textField.text = "\(self.bookReadingPage)"
+                textField.text = "\(self.bookReadingPage)p"
                 return
         }
         
@@ -178,39 +192,10 @@ extension BookLogDetailViewController: UITextFieldDelegate {
             present(alertController, animated: true) { 
                 () -> Void in
                 
-                textField.text = "\(self.bookReadingPage)"
+                textField.text = "\(self.bookReadingPage)p"
             }
-        }
-        
-        if self.endPageTextField == textField {
-            
-            guard
-                let startPageString: String = self.startPageTextField.text,
-                let startPageNumber: NSNumber = CustomNumberFormatter.decimalStyle.number(from: startPageString) else {
-                    preconditionFailure("Unexpected Start Page")
-            }
-            
-            guard
-                let endPageString: String = self.endPageTextField.text,
-                let endPageNumber: NSNumber = CustomNumberFormatter.decimalStyle.number(from: endPageString) else {
-                    preconditionFailure("Unexpected End Page")
-            }
-            
-            if startPageNumber.intValue > endPageNumber.intValue {
-                
-                let alertController: UIAlertController =
-                    UIAlertController(title: "잘못된 값을 입력하였습니다", message: "시작 페이지보다 높은 값을 입력해주세요", preferredStyle: .alert)
-                
-                let okAction: UIAlertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
-                
-                alertController.addAction(okAction)
-                
-                present(alertController, animated: true) {
-                    () -> Void in
-                    
-                    textField.text = "\(self.bookReadingPage)"
-                }
-            }
+        } else {
+            textField.text = "\(pageNumber)p"
         }
     }
 }

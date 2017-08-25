@@ -10,6 +10,8 @@ import UIKit
 
 extension String {
     
+    // MARK: - Initialization
+    
     init?(htmlEncodedString: String) {
         
         guard let data = htmlEncodedString.data(using: .utf8) else {
@@ -26,5 +28,16 @@ extension String {
         }
         
         self.init(attributedString.string)
+    }
+    
+    // MARK: - Methods
+    
+    func removeCharacters(from forbiddenChars: CharacterSet) -> String {
+        let passed = self.unicodeScalars.filter { !forbiddenChars.contains($0) }
+        return String(String.UnicodeScalarView(passed))
+    }
+    
+    func removeCharacters(from: String) -> String {
+        return removeCharacters(from: CharacterSet(charactersIn: from))
     }
 }

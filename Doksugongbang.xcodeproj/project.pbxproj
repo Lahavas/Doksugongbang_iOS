@@ -11,7 +11,6 @@
 		266C39C11F46C76D000F64D7 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C39C01F46C76D000F64D7 /* RatingControl.swift */; };
 		266C39C41F488EE9000F64D7 /* BookInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C39C31F488EE9000F64D7 /* BookInfo.swift */; };
 		266C39C81F492DBC000F64D7 /* ReportBeforeReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C39C71F492DBC000F64D7 /* ReportBeforeReadViewController.swift */; };
-		266C39CC1F4930CC000F64D7 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C39CB1F4930CC000F64D7 /* Animator.swift */; };
 		266C39CE1F494A14000F64D7 /* ReportAfterReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266C39CD1F494A14000F64D7 /* ReportAfterReadViewController.swift */; };
 		2674D7D41F496BF40064E1D7 /* BookReportDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2674D7D31F496BF40064E1D7 /* BookReportDetailViewController.swift */; };
 		2674D7D81F4974470064E1D7 /* BookLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2674D7D71F4974470064E1D7 /* BookLog.swift */; };
@@ -43,6 +42,8 @@
 		26C22F2F1F45744A00F8C6C7 /* SectionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C22F2E1F45744A00F8C6C7 /* SectionDetailViewController.swift */; };
 		26C22F321F45800700F8C6C7 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C22F311F45800700F8C6C7 /* Results.swift */; };
 		453F1C60C4175FA230064E2C /* Pods_DoksugongbangUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94F9C80F744EC22A9031782D /* Pods_DoksugongbangUITests.framework */; };
+		7A184D6C1F4FEABB005CEFA1 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A184D6B1F4FEABB005CEFA1 /* ColorUtils.swift */; };
+		7A9AFE6B1F4F55810000564C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AFE6A1F4F55810000564C /* SplashViewController.swift */; };
 		7AF1717F1F4D5FB2009C174F /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1717E1F4D5FB2009C174F /* MyPageViewController.swift */; };
 		7AF171811F4E9593009C174F /* UserNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF171801F4E9593009C174F /* UserNotificationHelper.swift */; };
 		7AF171831F4EA8C9009C174F /* SetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF171821F4EA8C9009C174F /* SetUpViewController.swift */; };
@@ -75,7 +76,6 @@
 		266C39C01F46C76D000F64D7 /* RatingControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		266C39C31F488EE9000F64D7 /* BookInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookInfo.swift; sourceTree = "<group>"; };
 		266C39C71F492DBC000F64D7 /* ReportBeforeReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportBeforeReadViewController.swift; sourceTree = "<group>"; };
-		266C39CB1F4930CC000F64D7 /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		266C39CD1F494A14000F64D7 /* ReportAfterReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportAfterReadViewController.swift; sourceTree = "<group>"; };
 		2674D7D31F496BF40064E1D7 /* BookReportDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookReportDetailViewController.swift; sourceTree = "<group>"; };
 		2674D7D71F4974470064E1D7 /* BookLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookLog.swift; sourceTree = "<group>"; };
@@ -117,6 +117,8 @@
 		694F0BA89DE23C71E93EFBDC /* Pods-DoksugongbangTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoksugongbangTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoksugongbangTests/Pods-DoksugongbangTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6AF105AD2CCD4D68E3EB3C4D /* Pods-DoksugongbangUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoksugongbangUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DoksugongbangUITests/Pods-DoksugongbangUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6D4D7A663CD3A622B1625217 /* Pods-DoksugongbangTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DoksugongbangTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DoksugongbangTests/Pods-DoksugongbangTests.release.xcconfig"; sourceTree = "<group>"; };
+		7A184D6B1F4FEABB005CEFA1 /* ColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
+		7A9AFE6A1F4F55810000564C /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		7ACA1B4D1F4C63AD0032F9D8 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		7AF1717E1F4D5FB2009C174F /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		7AF171801F4E9593009C174F /* UserNotificationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserNotificationHelper.swift; sourceTree = "<group>"; };
@@ -339,9 +341,9 @@
 			isa = PBXGroup;
 			children = (
 				7AF171861F4EEF12009C174F /* API */,
-				7AF171871F4EEF1C009C174F /* Animation */,
 				7AF171881F4EEF26009C174F /* Notification */,
 				7AF171891F4EEF5E009C174F /* Formatter */,
+				7A184D6A1F4FEA92005CEFA1 /* Color */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -357,6 +359,8 @@
 		26C22F111F44114800F8C6C7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7A9AFE6D1F4F5B970000564C /* Set Up */,
+				7A9AFE6C1F4F58850000564C /* Splash */,
 				2674D7D91F49751B0064E1D7 /* Book Log */,
 				2674D7D21F4952E50064E1D7 /* Book Cycle */,
 				266C39C21F46E6BB000F64D7 /* Home */,
@@ -388,7 +392,6 @@
 		26C22F241F442DA300F8C6C7 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
-				7AF171821F4EA8C9009C174F /* SetUpViewController.swift */,
 				26C22F251F442DCA00F8C6C7 /* MyBookPageViewController.swift */,
 				7AF1717E1F4D5FB2009C174F /* MyPageViewController.swift */,
 			);
@@ -417,20 +420,36 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7A184D6A1F4FEA92005CEFA1 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				7A184D6B1F4FEABB005CEFA1 /* ColorUtils.swift */,
+			);
+			name = Color;
+			sourceTree = "<group>";
+		};
+		7A9AFE6C1F4F58850000564C /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				7A9AFE6A1F4F55810000564C /* SplashViewController.swift */,
+			);
+			name = Splash;
+			sourceTree = "<group>";
+		};
+		7A9AFE6D1F4F5B970000564C /* Set Up */ = {
+			isa = PBXGroup;
+			children = (
+				7AF171821F4EA8C9009C174F /* SetUpViewController.swift */,
+			);
+			name = "Set Up";
+			sourceTree = "<group>";
+		};
 		7AF171861F4EEF12009C174F /* API */ = {
 			isa = PBXGroup;
 			children = (
 				26C22F061F44103600F8C6C7 /* AladinAPI.swift */,
 			);
 			name = API;
-			sourceTree = "<group>";
-		};
-		7AF171871F4EEF1C009C174F /* Animation */ = {
-			isa = PBXGroup;
-			children = (
-				266C39CB1F4930CC000F64D7 /* Animator.swift */,
-			);
-			name = Animation;
 			sourceTree = "<group>";
 		};
 		7AF171881F4EEF26009C174F /* Notification */ = {
@@ -773,6 +792,7 @@
 				26C22F2D1F4560B200F8C6C7 /* BookCollectionReusableView.swift in Sources */,
 				7AF1718D1F4EFA96009C174F /* CustomNumberFormatter.swift in Sources */,
 				266C39CE1F494A14000F64D7 /* ReportAfterReadViewController.swift in Sources */,
+				7A9AFE6B1F4F55810000564C /* SplashViewController.swift in Sources */,
 				26C22F101F4410DF00F8C6C7 /* AladinConfig.swift in Sources */,
 				7AF171831F4EA8C9009C174F /* SetUpViewController.swift in Sources */,
 				26C22F1E1F44189B00F8C6C7 /* SearchViewController.swift in Sources */,
@@ -796,6 +816,7 @@
 				2674D7D41F496BF40064E1D7 /* BookReportDetailViewController.swift in Sources */,
 				266C39C11F46C76D000F64D7 /* RatingControl.swift in Sources */,
 				7AF1718B1F4EF442009C174F /* CustomDateFormatter.swift in Sources */,
+				7A184D6C1F4FEABB005CEFA1 /* ColorUtils.swift in Sources */,
 				26C22F261F442DCA00F8C6C7 /* MyBookPageViewController.swift in Sources */,
 				267F5FDE1F4ABB970005464B /* BookLogListViewController.swift in Sources */,
 				26C22F151F44117600F8C6C7 /* BarcodeCameraView.swift in Sources */,
@@ -803,7 +824,6 @@
 				26C22F201F441E6100F8C6C7 /* SearchBookListViewController.swift in Sources */,
 				7AF171851F4ED464009C174F /* BookFeed.swift in Sources */,
 				26C22F0B1F44107800F8C6C7 /* ImageStore.swift in Sources */,
-				266C39CC1F4930CC000F64D7 /* Animator.swift in Sources */,
 				26C22ED31F440B8600F8C6C7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
