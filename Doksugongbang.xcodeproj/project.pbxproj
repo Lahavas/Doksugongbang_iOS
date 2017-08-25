@@ -51,6 +51,9 @@
 		7AF1718B1F4EF442009C174F /* CustomDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1718A1F4EF442009C174F /* CustomDateFormatter.swift */; };
 		7AF1718D1F4EFA96009C174F /* CustomNumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1718C1F4EFA96009C174F /* CustomNumberFormatter.swift */; };
 		7AF1718F1F4EFD28009C174F /* BookLogShowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF1718E1F4EFD28009C174F /* BookLogShowViewController.swift */; };
+		7AF583E11F508FA100013449 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACA1B4D1F4C63AD0032F9D8 /* CloudKit.framework */; };
+		7AF583E71F509E0600013449 /* BookFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF583E61F509E0600013449 /* BookFeedViewController.swift */; };
+		7AF583E91F50A30000013449 /* CloudKitConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF583E81F50A30000013449 /* CloudKitConfig.swift */; };
 		E230C653DF57FF89C1459E93 /* Pods_Doksugongbang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8FB595F707649C4C5AE039 /* Pods_Doksugongbang.framework */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +130,9 @@
 		7AF1718A1F4EF442009C174F /* CustomDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDateFormatter.swift; sourceTree = "<group>"; };
 		7AF1718C1F4EFA96009C174F /* CustomNumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNumberFormatter.swift; sourceTree = "<group>"; };
 		7AF1718E1F4EFD28009C174F /* BookLogShowViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookLogShowViewController.swift; sourceTree = "<group>"; };
+		7AF583E01F508F9B00013449 /* Doksugongbang.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Doksugongbang.entitlements; sourceTree = "<group>"; };
+		7AF583E61F509E0600013449 /* BookFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookFeedViewController.swift; sourceTree = "<group>"; };
+		7AF583E81F50A30000013449 /* CloudKitConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudKitConfig.swift; sourceTree = "<group>"; };
 		8D8FB595F707649C4C5AE039 /* Pods_Doksugongbang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Doksugongbang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F9C80F744EC22A9031782D /* Pods_DoksugongbangUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoksugongbangUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC694EA4400D44F3E0F35813 /* Pods-Doksugongbang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doksugongbang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doksugongbang/Pods-Doksugongbang.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E230C653DF57FF89C1459E93 /* Pods_Doksugongbang.framework in Frameworks */,
+				7AF583E11F508FA100013449 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +270,7 @@
 		26C22ED11F440B8600F8C6C7 /* Doksugongbang */ = {
 			isa = PBXGroup;
 			children = (
+				7AF583E01F508F9B00013449 /* Doksugongbang.entitlements */,
 				26C22F301F457FF500F8C6C7 /* Extensions */,
 				26C22F001F440F9A00F8C6C7 /* Models */,
 				26C22F121F44115800F8C6C7 /* Views */,
@@ -352,6 +360,7 @@
 			isa = PBXGroup;
 			children = (
 				26C22F0F1F4410DF00F8C6C7 /* AladinConfig.swift */,
+				7AF583E81F50A30000013449 /* CloudKitConfig.swift */,
 			);
 			name = Configurations;
 			sourceTree = "<group>";
@@ -359,6 +368,7 @@
 		26C22F111F44114800F8C6C7 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7AF583E51F509DF100013449 /* BookFeed */,
 				7A9AFE6D1F4F5B970000564C /* Set Up */,
 				7A9AFE6C1F4F58850000564C /* Splash */,
 				2674D7D91F49751B0064E1D7 /* Book Log */,
@@ -469,6 +479,14 @@
 			name = Formatter;
 			sourceTree = "<group>";
 		};
+		7AF583E51F509DF100013449 /* BookFeed */ = {
+			isa = PBXGroup;
+			children = (
+				7AF583E61F509E0600013449 /* BookFeedViewController.swift */,
+			);
+			name = BookFeed;
+			sourceTree = "<group>";
+		};
 		824A4DFA6CD44DB136078F6A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,6 +577,14 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 8YUW62G748;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					26C22EE21F440B8700F8C6C7 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -811,10 +837,12 @@
 				26C22F2F1F45744A00F8C6C7 /* SectionDetailViewController.swift in Sources */,
 				2674D7DB1F49777C0064E1D7 /* BookLogDetailViewController.swift in Sources */,
 				267F5FE01F4ABF910005464B /* BookLogListTableViewCell.swift in Sources */,
+				7AF583E71F509E0600013449 /* BookFeedViewController.swift in Sources */,
 				26C22F171F4411B400F8C6C7 /* BookListTableViewCell.swift in Sources */,
 				2674D7D81F4974470064E1D7 /* BookLog.swift in Sources */,
 				2674D7D41F496BF40064E1D7 /* BookReportDetailViewController.swift in Sources */,
 				266C39C11F46C76D000F64D7 /* RatingControl.swift in Sources */,
+				7AF583E91F50A30000013449 /* CloudKitConfig.swift in Sources */,
 				7AF1718B1F4EF442009C174F /* CustomDateFormatter.swift in Sources */,
 				7A184D6C1F4FEABB005CEFA1 /* ColorUtils.swift in Sources */,
 				26C22F261F442DCA00F8C6C7 /* MyBookPageViewController.swift in Sources */,
@@ -979,6 +1007,7 @@
 			baseConfigurationReference = CC694EA4400D44F3E0F35813 /* Pods-Doksugongbang.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Doksugongbang/Doksugongbang.entitlements;
 				DEVELOPMENT_TEAM = 8YUW62G748;
 				INFOPLIST_FILE = Doksugongbang/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -993,6 +1022,7 @@
 			baseConfigurationReference = 1896972F0BE9D03A12EAF718 /* Pods-Doksugongbang.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Doksugongbang/Doksugongbang.entitlements;
 				DEVELOPMENT_TEAM = 8YUW62G748;
 				INFOPLIST_FILE = Doksugongbang/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import CloudKit
+import MobileCoreServices
 
 class ReportAfterReadViewController: UIViewController {
     
@@ -40,6 +42,13 @@ class ReportAfterReadViewController: UIViewController {
     var reportTextColor: UIColor = UIColor.black
     var reportPlaceHolderColor: UIColor = UIColor.lightGray
     
+    // MARK: CloudKit
+    
+    let container = CKContainer.default()
+    var publicDatabase: CKDatabase!
+    var currentRecord: CKRecord!
+    var recordId: CKRecordID!
+    
     // MARK: Extras
     
     let realm = try! Realm()
@@ -51,6 +60,9 @@ class ReportAfterReadViewController: UIViewController {
         
         self.reportTextView.textContainerInset = self.reportEdgeInset
         self.reportTextView.delegate = self
+        
+        self.publicDatabase = container.publicCloudDatabase
+        self.recordId = CKRecordID(recordName: "\(UUID().uuidString)")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,6 +124,8 @@ class ReportAfterReadViewController: UIViewController {
                 
                 realm.add(self.book, update: true)
                 
+                self.uploadPublicInCloudKit(bookInfo)
+                
                 self.dismiss(animated: true, completion: nil)
             }
         }
@@ -167,6 +181,34 @@ class ReportAfterReadViewController: UIViewController {
             self.spinner.startAnimating()
             self.coverImageView.image = nil
         }
+    }
+    
+    func uploadPublicInCloudKit(_ bookInfo: BookInfo) {
+        
+        let bookFeedRecord = CKRecord(recordType: CloudKitConfig.recordType, recordID: recordId)
+        
+        guard let userName = UserDefaults.standard.string(forKey: "userName") else {
+            preconditionFailure("User Defaults is empty!")
+        }
+        
+        bookFeedRecord.setObject(userName as CKRecordValue, forKey: "userName")
+        bookFeedRecord.setObject(self.book.title as CKRecordValue, forKey: "bookTitle")
+        bookFeedRecord.setObject(bookInfo.reportAfterReading as CKRecordValue, forKey: "bookReport")
+        bookFeedRecord.setObject(bookInfo.bookRating as CKRecordValue, forKey: "bookRating")
+        bookFeedRecord.setObject(self.book.isbn as CKRecordValue?, forKey: "bookIsbn")
+        
+        let modifyRecordOperation = CKModifyRecordsOperation(recordsToSave: [bookFeedRecord], recordIDsToDelete: nil)
+        
+        modifyRecordOperation.timeoutIntervalForRequest = 10
+        modifyRecordOperation.timeoutIntervalForResource = 10
+        
+        modifyRecordOperation.modifyRecordsCompletionBlock = {
+            (records, recordIDs, error) -> Void in
+            
+            self.currentRecord = bookFeedRecord
+        }
+        
+        publicDatabase.add(modifyRecordOperation)
     }
 }
 

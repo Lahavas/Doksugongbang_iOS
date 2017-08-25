@@ -18,12 +18,6 @@ class UserNotificationHelper: NSObject {
     
     static let shared = UserNotificationHelper()
     
-    let dateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy년 MM월 dd일"
-        return dateFormatter
-    }()
-    
     let yesterday: Date = {
         
         guard let yesterday: Date = Calendar.current.date(byAdding: .day, value: -1, to: Date()) else {
@@ -59,7 +53,7 @@ class UserNotificationHelper: NSObject {
         
         let yesterdayBookLogCount: Int = realm
             .objects(BookLog.self)
-            .filter("dateString = '\(dateFormatter.string(from: self.yesterday))'")
+            .filter("dateString = '\(CustomDateFormatter.longType.string(from: self.yesterday))'")
             .toArray()
             .count
         
