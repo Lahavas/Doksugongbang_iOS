@@ -146,6 +146,8 @@ class BookReportDetailViewController: UIViewController {
         }
         
         self.bookReportBeforeReadLabel.text = self.bookInfo.reportBeforeReading
+        
+        self.setUpBookLogList()
     }
     
     func setUpBookLogList() {
