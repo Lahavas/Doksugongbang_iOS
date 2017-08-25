@@ -1,19 +1,24 @@
 //
-//  BookListTableViewCell.swift
+//  BookFeedListTableViewCell.swift
 //  Doksugongbang
 //
-//  Created by Yeon on 2017. 8. 16..
+//  Created by Jaeho on 2017. 8. 26..
 //  Copyright © 2017년 yeon. All rights reserved.
 //
 
 import UIKit
 
-class BookListTableViewCell: UITableViewCell {
+class BookFeedListTableViewCell: UITableViewCell {
 
     // MARK: - Properties
     
     // MARK: Outlets
     
+    // User Config and Date
+    @IBOutlet var userNameLabel: UILabel!
+    @IBOutlet var dateUpdatedLabel: UILabel!
+    
+    // Main View
     @IBOutlet var coverImageView: UIImageView!
     @IBOutlet var spinner: UIActivityIndicatorView!
     
@@ -25,6 +30,10 @@ class BookListTableViewCell: UITableViewCell {
     @IBOutlet var likeButton: UIButton!
     @IBOutlet var bookButton: UIButton!
     
+    // Book Report
+    @IBOutlet var bookRating: RatingControl!
+    @IBOutlet var bookReportLabel: UILabel!
+
     // MARK: Models
     
     var book: Book!
@@ -44,7 +53,7 @@ class BookListTableViewCell: UITableViewCell {
         self.setUpBookImage()
         self.update(with: nil)
     }
-    
+
     // MARK: - Methods
     
     func update(with image: UIImage?) {

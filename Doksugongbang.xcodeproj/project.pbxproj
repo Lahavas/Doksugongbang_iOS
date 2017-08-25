@@ -54,6 +54,7 @@
 		7AF583E11F508FA100013449 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ACA1B4D1F4C63AD0032F9D8 /* CloudKit.framework */; };
 		7AF583E71F509E0600013449 /* BookFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF583E61F509E0600013449 /* BookFeedViewController.swift */; };
 		7AF583EB1F50AD9D00013449 /* CloudKitConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF583EA1F50AD9D00013449 /* CloudKitConfig.swift */; };
+		7AF583ED1F50AF1E00013449 /* BookFeedListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF583EC1F50AF1E00013449 /* BookFeedListTableViewCell.swift */; };
 		E230C653DF57FF89C1459E93 /* Pods_Doksugongbang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D8FB595F707649C4C5AE039 /* Pods_Doksugongbang.framework */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +134,7 @@
 		7AF583E01F508F9B00013449 /* Doksugongbang.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Doksugongbang.entitlements; sourceTree = "<group>"; };
 		7AF583E61F509E0600013449 /* BookFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookFeedViewController.swift; sourceTree = "<group>"; };
 		7AF583EA1F50AD9D00013449 /* CloudKitConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloudKitConfig.swift; path = Configurations/CloudKitConfig.swift; sourceTree = "<group>"; };
+		7AF583EC1F50AF1E00013449 /* BookFeedListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookFeedListTableViewCell.swift; sourceTree = "<group>"; };
 		8D8FB595F707649C4C5AE039 /* Pods_Doksugongbang.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Doksugongbang.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94F9C80F744EC22A9031782D /* Pods_DoksugongbangUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DoksugongbangUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC694EA4400D44F3E0F35813 /* Pods-Doksugongbang.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Doksugongbang.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Doksugongbang/Pods-Doksugongbang.debug.xcconfig"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				26C22F161F4411B400F8C6C7 /* BookListTableViewCell.swift */,
+				7AF583EC1F50AF1E00013449 /* BookFeedListTableViewCell.swift */,
 				26C22F181F4411D100F8C6C7 /* QuickSearchTableViewCell.swift */,
 				267F5FDF1F4ABF910005464B /* BookLogListTableViewCell.swift */,
 			);
@@ -814,6 +817,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AF583ED1F50AF1E00013449 /* BookFeedListTableViewCell.swift in Sources */,
 				266C39C41F488EE9000F64D7 /* BookInfo.swift in Sources */,
 				26C22F2D1F4560B200F8C6C7 /* BookCollectionReusableView.swift in Sources */,
 				7AF1718D1F4EFA96009C174F /* CustomNumberFormatter.swift in Sources */,

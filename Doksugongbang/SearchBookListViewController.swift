@@ -141,13 +141,6 @@ class SearchBookListViewController: UIViewController {
             performSegue(withIdentifier: "ReportBeforeRead", sender: self)
         }
     }
-    
-    @IBAction func unwindToModal(sender: UIStoryboardSegue) {
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.navigationController?.popToRootViewController(animated: true)
-        }
-    }
 }
 
 // MARK: -

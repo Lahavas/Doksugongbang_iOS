@@ -340,7 +340,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3fB-84-fcm" id="mBC-M2-yJ2">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XL7-Lq-uZF">
@@ -401,10 +401,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookListTableViewCell" rowHeight="160" id="CNj-AQ-DP2" customClass="BookListTableViewCell" customModule="Doksugongbang" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="160"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CNj-AQ-DP2" id="yOH-j8-g0V">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZo-bD-kVr">
@@ -936,7 +936,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gB5-TH-tQh" id="RWa-xM-4PM">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="139.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="BookLog" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bhR-Rs-gUE">
@@ -1687,10 +1687,10 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookListTableViewCell" rowHeight="160" id="QMf-qx-UkN" customClass="BookListTableViewCell" customModule="Doksugongbang" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="160"/>
+                                <rect key="frame" x="0.0" y="56" width="375" height="160"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QMf-qx-UkN" id="TDb-Bb-9R2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGC-NE-4XE">
@@ -1840,7 +1840,7 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="140"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7nT-DE-4YR" id="3gn-jS-yLk">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="139.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AF4-jf-GtN">
@@ -2092,7 +2092,7 @@
                     <connections>
                         <segue destination="T19-yk-tFl" kind="relationship" relationship="viewControllers" id="AtG-ez-5PK"/>
                         <segue destination="Mxv-fE-glc" kind="relationship" relationship="viewControllers" id="PM9-Ly-TIX"/>
-                        <segue destination="BI1-TB-eYI" kind="relationship" relationship="viewControllers" id="V2F-QH-02D"/>
+                        <segue destination="y1B-L1-yHQ" kind="relationship" relationship="viewControllers" id="V2F-QH-02D"/>
                         <segue destination="oEY-fT-Y5t" kind="relationship" relationship="viewControllers" id="m4g-Ts-LbG"/>
                         <segue destination="6Jk-r6-9dx" kind="relationship" relationship="viewControllers" id="75g-WU-aEX"/>
                     </connections>
@@ -2158,20 +2158,20 @@
             </objects>
             <point key="canvasLocation" x="2105" y="793"/>
         </scene>
-        <!--Feed-->
+        <!--Book Feed View Controller-->
         <scene sceneID="E3y-tH-AJz">
             <objects>
                 <viewController id="BI1-TB-eYI" customClass="BookFeedViewController" customModule="Doksugongbang" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="360" sectionHeaderHeight="28" sectionFooterHeight="28" id="K5w-zm-dvO">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="360" sectionHeaderHeight="18" sectionFooterHeight="18" id="K5w-zm-dvO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="400" id="cFU-Bd-2Zd">
-                                <rect key="frame" x="0.0" y="28" width="375" height="400"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookFeedListTableViewCell" rowHeight="400" id="cFU-Bd-2Zd" customClass="BookFeedListTableViewCell" customModule="Doksugongbang" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="400"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cFU-Bd-2Zd" id="tZP-od-fqp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="399.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="399"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="홍길동 님이 이 책을 읽었습니다!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSV-zR-Nnl">
@@ -2180,14 +2180,8 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감상평 내용" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5VV-pK-px9">
-                                            <rect key="frame" x="8" y="218.5" width="359" height="18"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THb-da-1w3" customClass="RatingControl" customModule="Doksugongbang" customModuleProvider="target">
-                                            <rect key="frame" x="247" y="367.5" width="120" height="24"/>
+                                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THb-da-1w3" customClass="RatingControl" customModule="Doksugongbang" customModuleProvider="target">
+                                            <rect key="frame" x="247" y="271.5" width="120" height="24"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="size" keyPath="starSize">
@@ -2195,8 +2189,14 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="감상평 내용" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5VV-pK-px9">
+                                            <rect key="frame" x="8" y="245.5" width="359" height="18"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QBN-Fn-VQo">
-                                            <rect key="frame" x="0.0" y="42.5" width="375" height="160"/>
+                                            <rect key="frame" x="0.0" y="69.5" width="375" height="160"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6OI-SU-cmj">
                                                     <rect key="frame" x="8" y="10" width="100" height="140"/>
@@ -2302,33 +2302,58 @@
                                                 <constraint firstItem="BiR-kT-CLF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="t1j-qg-qYl" secondAttribute="bottom" constant="4" id="yJh-qA-yKA"/>
                                             </constraints>
                                         </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017년 01월 01일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZpF-mg-e6r">
+                                            <rect key="frame" x="8" y="39" width="359" height="14.5"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="QBN-Fn-VQo" firstAttribute="top" secondItem="iSV-zR-Nnl" secondAttribute="bottom" constant="8" id="2pg-oX-xTT"/>
+                                        <constraint firstItem="ZpF-mg-e6r" firstAttribute="leading" secondItem="tZP-od-fqp" secondAttribute="leading" constant="8" id="3sz-HF-mx0"/>
                                         <constraint firstAttribute="trailing" secondItem="iSV-zR-Nnl" secondAttribute="trailing" constant="8" id="5vD-K1-rYr"/>
+                                        <constraint firstItem="ZpF-mg-e6r" firstAttribute="top" secondItem="iSV-zR-Nnl" secondAttribute="bottom" constant="4" id="6ZQ-R7-E44"/>
                                         <constraint firstItem="iSV-zR-Nnl" firstAttribute="top" secondItem="tZP-od-fqp" secondAttribute="top" constant="8" id="HBb-OO-k6b"/>
                                         <constraint firstAttribute="trailing" secondItem="5VV-pK-px9" secondAttribute="trailing" constant="8" id="LdS-t3-RRD"/>
+                                        <constraint firstAttribute="trailing" secondItem="ZpF-mg-e6r" secondAttribute="trailing" constant="8" id="LyB-Qt-yVb"/>
                                         <constraint firstAttribute="trailing" secondItem="QBN-Fn-VQo" secondAttribute="trailing" id="M6n-VA-maY"/>
-                                        <constraint firstAttribute="bottom" secondItem="THb-da-1w3" secondAttribute="bottom" constant="8" id="SNe-U1-yfm"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="THb-da-1w3" secondAttribute="bottom" constant="8" id="SNe-U1-yfm"/>
                                         <constraint firstItem="QBN-Fn-VQo" firstAttribute="leading" secondItem="tZP-od-fqp" secondAttribute="leading" id="Vxd-vy-Rrx"/>
-                                        <constraint firstItem="THb-da-1w3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="5VV-pK-px9" secondAttribute="bottom" constant="8" id="YQP-zn-AOn"/>
+                                        <constraint firstItem="THb-da-1w3" firstAttribute="top" secondItem="5VV-pK-px9" secondAttribute="bottom" constant="8" id="YQP-zn-AOn"/>
                                         <constraint firstItem="iSV-zR-Nnl" firstAttribute="leading" secondItem="tZP-od-fqp" secondAttribute="leading" constant="8" id="YdR-Rs-RVP"/>
+                                        <constraint firstItem="QBN-Fn-VQo" firstAttribute="top" secondItem="ZpF-mg-e6r" secondAttribute="bottom" constant="16" id="ljz-yu-q0k"/>
                                         <constraint firstItem="5VV-pK-px9" firstAttribute="leading" secondItem="tZP-od-fqp" secondAttribute="leading" constant="8" id="oUP-ky-UIe"/>
                                         <constraint firstAttribute="trailing" secondItem="THb-da-1w3" secondAttribute="trailing" constant="8" id="ubr-2I-NH4"/>
                                         <constraint firstItem="5VV-pK-px9" firstAttribute="top" secondItem="QBN-Fn-VQo" secondAttribute="bottom" constant="16" id="vTd-Ml-Dgo"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="authorLabel" destination="sap-0f-7Mh" id="3c2-V2-AdP"/>
+                                    <outlet property="bookButton" destination="HhA-n9-fny" id="h2i-XF-CmG"/>
+                                    <outlet property="bookRating" destination="THb-da-1w3" id="oFg-xi-UJJ"/>
+                                    <outlet property="bookReportLabel" destination="5VV-pK-px9" id="Dz9-9w-MqT"/>
+                                    <outlet property="coverImageView" destination="Xus-5A-KtO" id="1Mt-Ve-JAq"/>
+                                    <outlet property="dateUpdatedLabel" destination="ZpF-mg-e6r" id="zEy-AX-uho"/>
+                                    <outlet property="likeButton" destination="i6V-z6-x4m" id="JGk-uK-5OM"/>
+                                    <outlet property="pubdateLabel" destination="t1j-qg-qYl" id="qDl-68-dWc"/>
+                                    <outlet property="publisherLabel" destination="wPQ-Gf-mzb" id="rwe-y8-lel"/>
+                                    <outlet property="spinner" destination="8Dy-aC-FQP" id="cYQ-1z-mO1"/>
+                                    <outlet property="titleLabel" destination="ARS-TF-M2G" id="lnO-5j-pri"/>
+                                    <outlet property="userNameLabel" destination="iSV-zR-Nnl" id="Waq-UY-baE"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Feed" id="aU7-2T-PEf"/>
+                    <navigationItem key="navigationItem" id="Mc0-SC-Rym"/>
                     <connections>
                         <outlet property="bookFeedTableView" destination="K5w-zm-dvO" id="7RL-i2-Fhi"/>
+                        <segue destination="bNm-MB-Zsj" kind="presentation" identifier="ReportAfterRead" id="BNI-MW-icA"/>
+                        <segue destination="gLo-o7-4CT" kind="presentation" identifier="ReportBeforeRead" id="ZiV-Hd-1ns"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="upM-63-FtB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2105" y="-1956"/>
+            <point key="canvasLocation" x="4625" y="2722"/>
         </scene>
         <!--Set Up View Controller-->
         <scene sceneID="1DX-Be-RCZ">
@@ -2486,6 +2511,25 @@
             </objects>
             <point key="canvasLocation" x="2105" y="-1036"/>
         </scene>
+        <!--Feed-->
+        <scene sceneID="w5Q-wN-Hqx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="y1B-L1-yHQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Feed" id="aU7-2T-PEf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="m5U-bI-xpf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BI1-TB-eYI" kind="relationship" relationship="rootViewController" id="kvB-7p-A59"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="muA-pE-muV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2105" y="2723"/>
+        </scene>
     </scenes>
     <resources>
         <image name="HomeIcon" width="30" height="30"/>
@@ -2501,10 +2545,10 @@
         <image name="settingIcon" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Mll-Gk-bxY"/>
+        <segue reference="iV3-H5-v40"/>
         <segue reference="pnK-yV-qy5"/>
-        <segue reference="luG-n0-7sV"/>
-        <segue reference="RRs-8h-Uv0"/>
-        <segue reference="b1t-2d-dqD"/>
-        <segue reference="lN1-Hm-Uae"/>
+        <segue reference="ZiV-Hd-1ns"/>
+        <segue reference="BNI-MW-icA"/>
     </inferredMetricsTieBreakers>
 </document>
