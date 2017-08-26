@@ -86,7 +86,9 @@ class BookFeedViewController: UIViewController {
                     self.queryBookFeed(result: result)
                 }
                 
-                self.bookFeedTableView.reloadData()
+                DispatchQueue.main.async {
+                    self.bookFeedTableView.reloadData()
+                }
             } else {
                 
                 preconditionFailure("Unexpected results")
