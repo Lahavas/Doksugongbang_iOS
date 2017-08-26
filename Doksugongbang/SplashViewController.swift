@@ -56,13 +56,4 @@ class SplashViewController: UIViewController {
             appDelegate.window?.makeKeyAndVisible()
         }
     }
-    
-    func fetchRecord(_ recordID: CKRecordID) -> Void
-    {
-        CKContainer.default().publicCloudDatabase.fetch(withRecordID: recordID) {
-            (record, error) -> Void in
-            
-            return
-        }
-    }
 }

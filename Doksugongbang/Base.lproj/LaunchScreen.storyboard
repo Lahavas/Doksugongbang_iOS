@@ -21,18 +21,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyBook" translatesAutoresizingMaskIntoConstraints="NO" id="GmG-yv-ZwA">
-                                <rect key="frame" x="115.5" y="261.5" width="144" height="144"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="144" id="6ce-eE-pE1"/>
-                                    <constraint firstAttribute="height" constant="144" id="YJh-Kz-Z0c"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CoverBookImage" translatesAutoresizingMaskIntoConstraints="NO" id="9Ar-Cd-ffi">
+                                <rect key="frame" x="130" y="176.5" width="114" height="114"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="독수공방" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SI4-Ed-coO">
+                                <rect key="frame" x="0.0" y="330.5" width="375" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="GmG-yv-ZwA" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ZCj-dR-ikj"/>
-                            <constraint firstItem="GmG-yv-ZwA" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="t5R-kH-7Op"/>
+                            <constraint firstItem="SI4-Ed-coO" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Bxy-nv-K0l"/>
+                            <constraint firstAttribute="trailing" secondItem="SI4-Ed-coO" secondAttribute="trailing" id="Hdf-S4-3kP"/>
+                            <constraint firstItem="SI4-Ed-coO" firstAttribute="top" secondItem="9Ar-Cd-ffi" secondAttribute="bottom" constant="40" id="QLo-0b-9iv"/>
+                            <constraint firstItem="9Ar-Cd-ffi" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="U8x-QP-ysE"/>
+                            <constraint firstItem="9Ar-Cd-ffi" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-100" id="VPr-Sd-aFF"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -42,6 +47,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="emptyBook" width="25" height="25"/>
+        <image name="CoverBookImage" width="114" height="114"/>
     </resources>
 </document>

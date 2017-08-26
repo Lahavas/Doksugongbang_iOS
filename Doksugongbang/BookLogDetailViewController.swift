@@ -27,6 +27,10 @@ class BookLogDetailViewController: UIViewController {
     @IBOutlet var startPageTextField: UITextField!
     @IBOutlet var endPageTextField: UITextField!
     
+    @IBOutlet var bookReadProgressView: UIProgressView!
+    @IBOutlet var firstPageLabel: UILabel!
+    @IBOutlet var lastPageLabel: UILabel!
+    
     @IBOutlet var bookLogTextView: UITextView!
     
     // MARK: Model
@@ -153,6 +157,12 @@ class BookLogDetailViewController: UIViewController {
             self.bookInfo = bookInfo
             self.bookTotalPage = bookInfo.bookTotalPage
             self.bookReadingPage = bookInfo.bookReadingPage
+                
+            let progressRating: Float = Float(bookInfo.bookReadingPage) / Float(bookInfo.bookTotalPage)
+            self.bookReadProgressView.setProgress(progressRating, animated: true)
+            
+            self.firstPageLabel.text = "0쪽"
+            self.lastPageLabel.text = "\(bookInfo.bookTotalPage)쪽"
         } else {
             preconditionFailure("Cannot find bookInfo")
         }

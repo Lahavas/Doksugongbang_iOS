@@ -39,6 +39,8 @@ class BookDetailViewController: UIViewController {
     @IBOutlet var bookStateLabel: UILabel!
     @IBOutlet var bookCountLabel: UILabel!
     @IBOutlet var bookReadProgressView: UIProgressView!
+    @IBOutlet var firstPageLabel: UILabel!
+    @IBOutlet var lastPageLabel: UILabel!
     
     @IBOutlet var detailViewButton: UIButton!
     
@@ -239,11 +241,16 @@ class BookDetailViewController: UIViewController {
                 
                 let progressRating: Float = Float(bookInfo.bookReadingPage) / Float(bookInfo.bookTotalPage)
                 self.bookReadProgressView.setProgress(progressRating, animated: true)
+                
+                self.firstPageLabel.text = "0쪽"
+                self.lastPageLabel.text = "\(bookInfo.bookTotalPage)쪽"
             }
         case .read:
             self.bookStateLabel.text = "이미 읽은 책입니다."
             
             self.bookReadProgressView.isHidden = true
+            self.firstPageLabel.isHidden = true
+            self.lastPageLabel.isHidden = true
             self.detailViewButton.isHidden = false
             
             self.readingViewHeightConstraint.constant = 120.0
@@ -251,6 +258,8 @@ class BookDetailViewController: UIViewController {
             self.bookStateLabel.text = "아직 읽은 적이 없습니다."
             
             self.bookReadProgressView.isHidden = true
+            self.firstPageLabel.isHidden = true
+            self.lastPageLabel.isHidden = true
             self.detailViewButton.isHidden = true
             
             self.readingViewHeightConstraint.constant = 100.0
