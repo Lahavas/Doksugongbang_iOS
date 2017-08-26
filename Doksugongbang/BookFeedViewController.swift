@@ -69,7 +69,7 @@ class BookFeedViewController: UIViewController {
         
         let query: CKQuery = {
             let predicate: NSPredicate = NSPredicate(value: true)
-            let query: CKQuery = CKQuery(recordType: CloudKitConfig.recordType, predicate: predicate)
+            let query: CKQuery = CKQuery(recordType: CloudKitConfig.bookFeedRecordType, predicate: predicate)
             query.sortDescriptors = [NSSortDescriptor.init(key: "creationDate", ascending: false)]
             return query
         }()

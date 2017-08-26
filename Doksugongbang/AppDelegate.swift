@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import RealmSwift
 import CloudKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,7 +29,85 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.shared.statusBarStyle = .default
         
+        // Config User Notification
+        
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {
+            (authorized, error) -> Void in
+            
+            if authorized {
+                application.registerForRemoteNotifications()
+            }
+        }
+        
+        if let options: NSDictionary = launchOptions as NSDictionary? {
+            let remoteNotification = options[UIApplicationLaunchOptionsKey.remoteNotification]
+            
+            if let notification = remoteNotification {
+                
+                self.application(application, didReceiveRemoteNotification: notification as! [AnyHashable : Any]) {
+                    (result) -> Void in
+                }
+            }
+        }
+        
         return true
+    }
+
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        
+        let publicDatabase: CKDatabase = CKContainer.default().publicCloudDatabase
+        
+        let realm = try! Realm()
+        
+        let bookList = realm
+            .objects(Book.self)
+            .filter("isFavorite = True")
+            .toArray()
+        
+        for book in bookList {
+            
+            guard
+                let userName: String = UserDefaults.standard.string(forKey: "userName"),
+                let bookIsbn: String = book.isbn else {
+                    preconditionFailure("User Defaults is empty!")
+            }
+            
+            let predicate: NSPredicate = NSPredicate(format: "bookIsbn = %@", bookIsbn)
+            
+            let subscription = CKQuerySubscription(recordType: CloudKitConfig.bookFeedRecordType,
+                                                   predicate: predicate,
+                                                   options: .firesOnRecordCreation)
+            
+            let notificationInfo = CKNotificationInfo()
+            notificationInfo.shouldBadge = true
+            notificationInfo.alertBody = "\(userName) 님께서 \(book.title) 을 읽고 감상평을 남겨주셨습니다!"
+            
+            subscription.notificationInfo = notificationInfo
+            
+            publicDatabase.save(subscription) {
+                (subscription, error) -> Void in
+                
+                return
+            }
+        }
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        let viewController: SplashViewController = self.window?.rootViewController as! SplashViewController
+        
+        let notification: CKNotification = CKNotification(fromRemoteNotificationDictionary: userInfo as! [String : NSObject])
+        
+        if (notification.notificationType == CKNotificationType.query) {
+            
+            let queryNotification = notification as! CKQueryNotification
+            
+            let recordID = queryNotification.recordID
+            
+            viewController.fetchRecord(recordID!)
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -50,6 +130,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+}
+
+// MARK: -
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    // MARK: - User Notification Center Delegate
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+        completionHandler([.alert, .sound, .badge])
     }
 }
 

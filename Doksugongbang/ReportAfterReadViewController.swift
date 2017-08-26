@@ -124,7 +124,7 @@ class ReportAfterReadViewController: UIViewController {
                 
                 realm.add(self.book, update: true)
                 
-                self.uploadPublicInCloudKit(bookInfo)
+                self.uploadBookFeedInCloudKit(bookInfo)
                 
                 self.dismiss(animated: true, completion: nil)
             }
@@ -183,9 +183,9 @@ class ReportAfterReadViewController: UIViewController {
         }
     }
     
-    func uploadPublicInCloudKit(_ bookInfo: BookInfo) {
+    func uploadBookFeedInCloudKit(_ bookInfo: BookInfo) {
         
-        let bookFeedRecord = CKRecord(recordType: CloudKitConfig.recordType, recordID: recordId)
+        let bookFeedRecord = CKRecord(recordType: CloudKitConfig.bookFeedRecordType, recordID: recordId)
         
         guard let userName = UserDefaults.standard.string(forKey: "userName") else {
             preconditionFailure("User Defaults is empty!")

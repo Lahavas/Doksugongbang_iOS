@@ -147,13 +147,6 @@ class SectionDetailViewController: UIViewController {
         }
     }
     
-    @IBAction func unwindToModal(sender: UIStoryboardSegue) {
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.navigationController?.popToRootViewController(animated: true)
-        }
-    }
-    
     // MARK: - Methods
     
     func setUpSelectedSectionBookList() {

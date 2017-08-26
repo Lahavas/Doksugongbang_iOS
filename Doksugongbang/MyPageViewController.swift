@@ -54,7 +54,6 @@ class MyPageViewController: UIViewController {
 
         self.title = "내 정보"
         
-        UNUserNotificationCenter.current().delegate = self
         self.alarmTimeTextField.delegate = self
         
         let timePicker = UIDatePicker()
@@ -275,18 +274,6 @@ extension MyPageViewController: UITextFieldDelegate {
                 }
             }
         }
-    }
-}
-
-// MARK: -
-
-extension MyPageViewController: UNUserNotificationCenterDelegate {
-    
-    // MARK: - User Notification Center Delegate
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        completionHandler([.alert])
     }
 }
 

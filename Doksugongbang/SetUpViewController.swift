@@ -41,7 +41,6 @@ class SetUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UNUserNotificationCenter.current().delegate = self
         self.alarmTimeTextField.delegate = self
         
         let timePicker = UIDatePicker()
@@ -238,17 +237,5 @@ extension SetUpViewController: UITextFieldDelegate {
                 }
             }
         }
-    }
-}
-
-// MARK: -
-
-extension SetUpViewController: UNUserNotificationCenterDelegate {
-    
-    // MARK: - User Notification Center Delegate
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        
-        completionHandler([.alert])
     }
 }

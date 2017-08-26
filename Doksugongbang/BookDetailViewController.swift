@@ -266,7 +266,7 @@ class BookDetailViewController: UIViewController {
             self.descriptionLabel.text = book.bookDescription
         }
     }
-
+    
     func setUpBookImage() {
         
         self.coverImageView.layer.shadowColor = UIColor.gray.cgColor

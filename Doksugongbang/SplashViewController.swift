@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CloudKit
 
 class SplashViewController: UIViewController {
 
@@ -53,6 +54,15 @@ class SplashViewController: UIViewController {
             
             appDelegate.window?.rootViewController = startController
             appDelegate.window?.makeKeyAndVisible()
+        }
+    }
+    
+    func fetchRecord(_ recordID: CKRecordID) -> Void
+    {
+        CKContainer.default().publicCloudDatabase.fetch(withRecordID: recordID) {
+            (record, error) -> Void in
+            
+            return
         }
     }
 }
