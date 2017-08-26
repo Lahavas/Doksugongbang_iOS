@@ -14,7 +14,8 @@ class BookFeed: NSObject {
     
     var userName: String = ""
     
-    var book: Book = Book()
+    var bookTitle: String = ""
+    var bookIsbn: String = ""
     
     var bookReport: String = ""
     var bookRating: Int = 0
@@ -23,11 +24,14 @@ class BookFeed: NSObject {
     
     // MARK: - Initialization
     
-    init(userName: String, book: Book, bookRating: Int, bookReport: String, dateUpdated: Date) {
+    init(userName: String, bookTitle: String, bookIsbn: String,
+         bookRating: Int, bookReport: String, dateUpdated: Date) {
         
         self.userName = userName
         
-        self.book = book
+        self.bookTitle = bookTitle
+        self.bookIsbn = bookIsbn
+        
         self.bookReport = bookReport
         self.bookRating = bookRating
         

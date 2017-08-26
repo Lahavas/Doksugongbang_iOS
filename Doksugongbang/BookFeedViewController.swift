@@ -21,8 +21,6 @@ class BookFeedViewController: UIViewController {
     
     // MARK: Models
     
-    var book: Book = Book()
-    
     var bookFeedList: [BookFeed] = []
     
     let store: BookStore = BookStore.shared
@@ -47,15 +45,15 @@ class BookFeedViewController: UIViewController {
         self.bookFeedTableView.dataSource = self
         
         self.bookFeedTableView.rowHeight = UITableViewAutomaticDimension
-        self.bookFeedTableView.estimatedRowHeight = 400.0
+        self.bookFeedTableView.estimatedRowHeight = 200.0
         
         self.publicDatabase = container.publicCloudDatabase
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
-        self.queryBookFeed()
+        
+        self.setUpBookFeedList()
     }
 
     // MARK: - Memory Management
@@ -65,84 +63,30 @@ class BookFeedViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        switch segue.identifier ?? "" {
-        case "ReportBeforeRead":
-            guard let reportBeforeReadViewController = segue.destination as? ReportBeforeReadViewController else {
-                preconditionFailure("Unexpected Segue Destination")
-            }
-            
-            reportBeforeReadViewController.book = self.book
-        case "ReportAfterRead":
-            guard let reportAfterReadViewController = segue.destination as? ReportAfterReadViewController else {
-                preconditionFailure("Unexpected Segue Destination")
-            }
-            
-            reportAfterReadViewController.book = self.book
-        default:
-            preconditionFailure("Unexpected Segue Identifier")
-        }
-    }
-    
     // MARK: - Methods
     
-    func queryBookFeed() {
+    func setUpBookFeedList() {
         
-        let predicate: NSPredicate = NSPredicate(value: true)
-        
-        let query: CKQuery = CKQuery(recordType: CloudKitConfig.recordType, predicate: predicate)
+        let query: CKQuery = {
+            let predicate: NSPredicate = NSPredicate(value: true)
+            let query: CKQuery = CKQuery(recordType: CloudKitConfig.recordType, predicate: predicate)
+            query.sortDescriptors = [NSSortDescriptor.init(key: "creationDate", ascending: false)]
+            return query
+        }()
         
         publicDatabase.perform(query, inZoneWith: nil) {
             (results, error) -> Void in
             
             if let results = results {
                 
+                self.bookFeedList.removeAll(keepingCapacity: true)
+                
                 for result in results {
                     
-                    let userName: String = result.object(forKey: "userName") as! String
-                    let bookTitle: String = result.object(forKey: "bookTitle") as! String
-                    let bookIsbn: String = result.object(forKey: "bookIsbn") as! String
-                    let bookRating: Int = result.object(forKey: "bookRating") as! Int
-                    let bookReport: String = result.object(forKey: "bookReport") as! String
-                    
-                    guard let dateUpdated: Date = result.creationDate else {
-                        preconditionFailure("Unexpected date")
-                    }
-                    
-                    var bookLookUpURL: URL {
-                        
-                        return AladinAPI.aladinApiURL(method: .itemLookUp,
-                                                      parameters: ["itemIdType": "ISBN13",
-                                                                   "itemId": bookIsbn])
-                    }
-                    
-                    self.store.fetchBook(url: bookLookUpURL) {
-                        (bookResult) -> Void in
-                        
-                        switch bookResult {
-                        case let .success(book):
-                            
-                            if let existingBook = Book.isExist(book: book) {
-                                self.book = existingBook
-                            }
-                            
-                            let bookFeed: BookFeed = BookFeed(userName: userName,
-                                                              book: self.book,
-                                                              bookRating: bookRating,
-                                                              bookReport: bookReport,
-                                                              dateUpdated: dateUpdated)
-                            
-                            self.bookFeedList.append(bookFeed)
-                            self.bookFeedTableView.reloadData()
-                        case let .failure(error):
-                            print(error)
-                        }
-                    }
+                    self.queryBookFeed(result: result)
                 }
+                
+                self.bookFeedTableView.reloadData()
             } else {
                 
                 preconditionFailure("Unexpected results")
@@ -150,60 +94,26 @@ class BookFeedViewController: UIViewController {
         }
     }
     
-    // MARK: - Actions
-    
-    func likeButtonAction(_ sender: UIButton) {
+    func queryBookFeed(result: CKRecord) {
         
-        let button: UIButton = sender
+        let userName: String = result.object(forKey: "userName") as! String
+        let bookTitle: String = result.object(forKey: "bookTitle") as! String
+        let bookIsbn: String = result.object(forKey: "bookIsbn") as! String
+        let bookRating: Int = result.object(forKey: "bookRating") as! Int
+        let bookReport: String = result.object(forKey: "bookReport") as! String
         
-        guard
-            let stackView = button.superview,
-            let contentView = stackView.superview,
-            let cell = contentView.superview as? BookFeedListTableViewCell else {
-                preconditionFailure("Unexpected sender")
+        guard let dateUpdated: Date = result.creationDate else {
+            preconditionFailure("Unexpected date")
         }
         
-        let selectedBook: Book = cell.book
+        let bookFeed: BookFeed = BookFeed(userName: userName,
+                                          bookTitle: bookTitle,
+                                          bookIsbn: bookIsbn,
+                                          bookRating: bookRating,
+                                          bookReport: bookReport,
+                                          dateUpdated: dateUpdated)
         
-        if selectedBook.isFavorite == false {
-            
-            try! realm.write {
-                selectedBook.isFavorite = true
-                selectedBook.dateUpdatedFavorite = Date()
-                realm.add(selectedBook, update: true)
-                button.isSelected = true
-            }
-        } else {
-            
-            try! realm.write {
-                selectedBook.isFavorite = false
-                selectedBook.dateUpdatedFavorite = Date()
-                realm.add(selectedBook, update: true)
-                button.isSelected = false
-            }
-        }
-        
-        self.bookFeedTableView.reloadData()
-    }
-    
-    func bookButtonAction(_ sender: UIButton) {
-        
-        let button: UIButton = sender
-        
-        guard
-            let stackView = button.superview,
-            let contentView = stackView.superview,
-            let cell = contentView.superview as? BookListTableViewCell else {
-                preconditionFailure("Unexpected sender")
-        }
-        
-        self.book = cell.book
-        
-        if self.book.bookStateEnum == .reading {
-            performSegue(withIdentifier: "ReportAfterRead", sender: self)
-        } else {
-            performSegue(withIdentifier: "ReportBeforeRead", sender: self)
-        }
+        self.bookFeedList.append(bookFeed)
     }
 }
 
@@ -239,43 +149,7 @@ extension BookFeedViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.bookReportLabel.text = bookFeed.bookReport
         cell.bookRating.rating = bookFeed.bookRating
-        
-        cell.book = bookFeed.book
-        
-        cell.likeButton.addTarget(self,
-                                  action: #selector(self.likeButtonAction(_:)),
-                                  for: .touchUpInside)
-        
-        cell.bookButton.addTarget(self,
-                                  action: #selector(self.bookButtonAction(_:)),
-                                  for: .touchUpInside)
-        
-        cell.titleLabel.text = book.title
-        cell.authorLabel.text = book.author
-        cell.publisherLabel.text = "\(book.publisher) 펴냄"
-        cell.pubdateLabel.text = "\(CustomDateFormatter.longType.string(from: book.pubdate)) 출판"
-        self.store.fetchImage(for: book) {
-            (result) -> Void in
-            
-            switch result {
-            case let .success(image):
-                cell.update(with: image)
-            case let .failure(error):
-                print("Error fetching image for photo: \(error)")
-            }
-        }
-        
-        if book.isFavorite == false {
-            cell.likeButton.isSelected = false
-        } else {
-            cell.likeButton.isSelected = true
-        }
-        
-        if book.bookStateEnum == .reading {
-            cell.bookButton.isSelected = true
-        } else {
-            cell.bookButton.isSelected = false
-        }
+        cell.titleLabel.text = bookFeed.bookTitle
         
         return cell
     }
