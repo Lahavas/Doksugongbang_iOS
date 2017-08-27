@@ -40,6 +40,10 @@ class BookReportDetailViewController: UIViewController {
     
     @IBOutlet var bookReportBeforeViewTopConstraint: NSLayoutConstraint!
     
+    @IBOutlet var bookReportAfterViewLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var bookReportAfterViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet var bookReportAfterViewTrailingConstraint: NSLayoutConstraint!
+    
     // MARK: Models
     
     var book: Book!

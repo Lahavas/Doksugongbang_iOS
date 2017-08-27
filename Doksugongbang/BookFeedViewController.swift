@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import CloudKit
 import MobileCoreServices
 
@@ -29,10 +28,6 @@ class BookFeedViewController: UIViewController {
     
     let container = CKContainer.default()
     var publicDatabase: CKDatabase!
-    
-    // MARK: Extras
-    
-    let realm = try! Realm()
     
     // MARK: - View Life Cycle
     
