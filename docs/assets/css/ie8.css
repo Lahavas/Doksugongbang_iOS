@@ -1,31 +1,31 @@
 /*
-	Spectral by HTML5 UP
+	Directive by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-/* Icon */
+/* Basic */
 
-	.icon.major {
-		border: none;
+	hr {
+		border-top: solid 1px #cccccc;
 	}
 
-		.icon.major:before {
-			font-size: 3em;
+	blockquote {
+		border-left: solid 0.5em #cccccc;
+	}
+
+/* Section/Article */
+
+	header.major {
+		border-color: #cccccc;
+	}
+
+		header.major p {
+			border-top: solid 1px #cccccc;
 		}
 
-/* Form */
-
-	label {
-		color: #2E3842;
-	}
-
-	input[type="text"],
-	input[type="password"],
-	input[type="email"],
-	select,
-	textarea {
-		border: solid 1px #dfdfdf;
+	footer.major {
+		border-color: #cccccc;
 	}
 
 /* Button */
@@ -33,63 +33,95 @@
 	input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
-	button,
 	.button {
-		border: solid 2px #dfdfdf;
+		position: relative;
+		-ms-behavior: url("assets/js/ie/PIE.htc");
 	}
 
-		input[type="submit"].special,
-		input[type="reset"].special,
-		input[type="button"].special,
-		button.special,
-		.button.special {
-			border: 0 !important;
+		input[type="submit"].alt,
+		input[type="reset"].alt,
+		input[type="button"].alt,
+		.button.alt {
+			border: solid 1px #cccccc;
 		}
 
-/* Page Wrapper + Menu */
+/* Form */
 
-	#menu {
-		display: none;
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	select,
+	textarea {
+		position: relative;
+		border: solid 1px #cccccc;
+		-ms-behavior: url("assets/js/ie/PIE.htc");
 	}
 
-	body.is-menu-visible #menu {
-		display: block;
+/* Image */
+
+	.image {
+		border: 0;
+		display: inline-block;
+		position: relative;
+	}
+
+		.image:after {
+			display: none;
+		}
+
+/* Box */
+
+	.box {
+		border: solid 1px #cccccc;
 	}
 
 /* Header */
 
-	#header nav > ul > li > a.menuToggle:after {
-		display: none;
-	}
-
-/* Banner + Wrapper (style4) */
-
-	#banner,
-	.wrapper.style4 {
+	#header {
+		background-image: url("../../images/header.jpg") !important;
+		background-size: cover !important;
+		background-position: scroll !important;
 		-ms-behavior: url("assets/js/ie/backgroundsize.min.htc");
+		padding: 8em 0 !important;
+		color: #ffffff;
 	}
 
-		#banner:before,
-		.wrapper.style4:before {
-			display: none;
+		#header a {
+			color: inherit;
 		}
 
-/* Banner */
+		#header:before {
+			content: '';
+			background-image: url("images/overlay.png");
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			display: block;
+			z-index: 0;
+		}
 
-	#banner .more {
-		height: 4em;
+		#header > * {
+			position: relative;
+			z-index: 1;
+		}
+
+		#header .logo {
+			-ms-behavior: url("assets/js/ie/PIE.htc");
+		}
+
+/* Footer */
+
+	#footer {
+		background-image: none !important;
+		margin-top: 0 !important;
+		padding: 4em 0 !important;
+		color: #ffffff;
 	}
-
-		#banner .more:after {
-			display: none;
-		}
 
 /* Main */
 
-	#main > header {
-		-ms-behavior: url("assets/js/ie/backgroundsize.min.htc");
+	#main {
+		padding: 4em 0;
 	}
-
-		#main > header:before {
-			display: none;
-		}

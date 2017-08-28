@@ -4,35 +4,39 @@
 @import 'libs/skel';
 
 /*
-	Spectral by HTML5 UP
+	Directive by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-/* Icon */
+$color-border-ie: #cccccc;
 
-	.icon {
+/* Basic */
+
+	hr {
+		border-top: solid 1px $color-border-ie;
+	}
+
+	blockquote {
+		border-left: solid 0.5em $color-border-ie;
+	}
+
+/* Section/Article */
+
+	header {
 		&.major {
-			border: none;
+			border-color: $color-border-ie;
 
-			&:before {
-				font-size: 3em;
+			p {
+				border-top: solid 1px $color-border-ie;
 			}
 		}
 	}
 
-/* Form */
-
-	label {
-		color: _palette(accent7, fg-bold);
-	}
-
-	input[type="text"],
-	input[type="password"],
-	input[type="email"],
-	select,
-	textarea {
-		border: solid 1px _palette(accent7, border);
+	footer {
+		&.major {
+			border-color: $color-border-ie;
+		}
 	}
 
 /* Button */
@@ -40,76 +44,92 @@
 	input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
-	button,
 	.button {
-		border: solid 2px _palette(accent7, border);
+		position: relative;
+		-ms-behavior: url('assets/js/ie/PIE.htc');
 
-		&.special {
-			border: 0 !important;
+		&.alt {
+			border: solid 1px $color-border-ie;
 		}
 	}
 
-/* Page Wrapper + Menu */
+/* Form */
 
-	#menu {
-		display: none;
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	select,
+	textarea {
+		position: relative;
+		border: solid 1px $color-border-ie;
+		-ms-behavior: url('assets/js/ie/PIE.htc');
 	}
 
-	body.is-menu-visible {
-		#menu {
-			display: block;
+/* Image */
+
+	.image {
+		border: 0;
+		display: inline-block;
+		position: relative;
+
+		&:after {
+			display: none;
 		}
+	}
+
+/* Box */
+
+	.box {
+		border: solid 1px $color-border-ie;
 	}
 
 /* Header */
 
 	#header {
-		nav {
-			> ul {
-				> li {
-					> a {
-						&.menuToggle {
-							&:after {
-								display: none;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
-/* Banner + Wrapper (style4) */
-
-	#banner,
-	.wrapper.style4 {
+		background-image: url('../../images/header.jpg') !important;
+		background-size: cover !important;
+		background-position: scroll !important;
 		-ms-behavior: url('assets/js/ie/backgroundsize.min.htc');
+		padding: 8em 0 !important;
+		color: _palette(accent2, fg-bold);
+
+		a {
+			color: inherit;
+		}
 
 		&:before {
-			display: none;
+			content: '';
+			background-image: url('images/overlay.png');
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			display: block;
+			z-index: 0;
+		}
+
+		> * {
+			position: relative;
+			z-index: 1;
+		}
+
+		.logo {
+			-ms-behavior: url('assets/js/ie/PIE.htc');
 		}
 	}
 
-/* Banner */
+/* Footer */
 
-	#banner {
-		.more {
-			height: 4em;
-
-			&:after {
-				display: none;
-			}
-		}
+	#footer {
+		background-image: none !important;
+		margin-top: 0 !important;
+		padding: 4em 0 !important;
+		color: _palette(accent1, fg-bold);
 	}
 
 /* Main */
 
 	#main {
-		> header {
-			-ms-behavior: url('assets/js/ie/backgroundsize.min.htc');
-
-			&:before {
-				display: none;
-			}
-		}
+		padding: 4em 0;
 	}
