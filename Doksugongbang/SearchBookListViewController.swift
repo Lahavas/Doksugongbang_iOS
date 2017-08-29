@@ -50,6 +50,12 @@ class SearchBookListViewController: UIViewController {
         self.searchBookListTableView.estimatedRowHeight = 160
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.searchBookListTableView.reloadData()
+    }
+    
     // MARK: - Memory Management
 
     override func didReceiveMemoryWarning() {
