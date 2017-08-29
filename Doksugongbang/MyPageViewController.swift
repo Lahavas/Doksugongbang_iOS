@@ -6,13 +6,6 @@
 //  Copyright © 2017년 yeon. All rights reserved.
 //
 
-///////////////////////////////////////////
-//  수정 필요한 부분
-//
-//  1. Splash 화면 및 SetUpViewController 적용 시에 UserDefaults 관련 부분 전부 수정 (// Flag 오픈)
-//
-///////////////////////////////////////////
-
 import UIKit
 import RealmSwift
 import UserNotifications
@@ -33,6 +26,10 @@ class MyPageViewController: UIViewController {
     @IBOutlet var readingBookCountLabel: UILabel!
     @IBOutlet var readBookCountLabel: UILabel!
     
+    @IBOutlet var favoriteBookView: UIView!
+    @IBOutlet var readingBookView: UIView!
+    @IBOutlet var readBookView: UIView!
+    
     // MARK: User Config
     
     let userDefaults: UserDefaults = UserDefaults.standard
@@ -44,6 +41,9 @@ class MyPageViewController: UIViewController {
     // MARK: Extras
     
     let realm = try! Realm()
+    
+    var sections: [String] = [ "읽고 싶은 책", "읽고 있는 책", "다 읽은 책" ]
+    var selectedSection: String?
     
     let notificationHelper = UserNotificationHelper.shared
     
@@ -88,6 +88,12 @@ class MyPageViewController: UIViewController {
         switch segue.identifier ?? "" {
         case "ShowMyBookPage":
             print("Show My Book Page")
+        case "ShowSection":
+            guard let sectionDetailViewController = segue.destination as? SectionDetailViewController else {
+                preconditionFailure("Unexpected destination: \(segue.destination)")
+            }
+            
+            sectionDetailViewController.selectedSection = self.selectedSection
         default:
             preconditionFailure("Unexpected Segue Identifier")
         }
@@ -203,6 +209,24 @@ class MyPageViewController: UIViewController {
     
         self.view.endEditing(true)
     }
+    
+    @IBAction func showReadSection(_ sender: UITapGestureRecognizer) {
+        
+        switch sender.view!{
+        case self.favoriteBookView:
+            self.selectedSection = self.sections[0]
+            self.performSegue(withIdentifier: "ShowSection", sender: self)
+        case self.readingBookView:
+            self.selectedSection = self.sections[1]
+            self.performSegue(withIdentifier: "ShowSection", sender: self)
+        case self.readBookView:
+            self.selectedSection = self.sections[2]
+            self.performSegue(withIdentifier: "ShowSection", sender: self)
+        default:
+            preconditionFailure("Unexpected Sender")
+        }
+    }
+    
     
     @IBAction func setUpAlarmTime(_ sender: UIButton) {
     

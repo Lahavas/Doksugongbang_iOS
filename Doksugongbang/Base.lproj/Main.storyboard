@@ -1513,36 +1513,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ssT-ey-eHV">
                                 <rect key="frame" x="0.0" y="336" width="375" height="160"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="읽고 싶은 책" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aru-WD-oV8">
-                                        <rect key="frame" x="0.0" y="20" width="125" height="21"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="읽고 있는 책" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SC-Gl-Xfc">
-                                        <rect key="frame" x="125" y="20" width="125" height="21"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다 읽은 책" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Q-80-fDH">
-                                        <rect key="frame" x="250" y="20" width="125" height="21"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0권" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9n-bF-zwp">
-                                        <rect key="frame" x="0.0" y="57" width="125" height="20.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0권" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ru5-pQ-NY0">
-                                        <rect key="frame" x="125" y="57" width="125" height="20.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hie-5Y-Tew">
                                         <rect key="frame" x="295" y="114" width="56" height="30"/>
                                         <state key="normal" title="모두 보기"/>
@@ -1550,36 +1520,116 @@
                                             <action selector="showMyBook:" destination="3dc-Hq-XDR" eventType="touchUpInside" id="xdJ-7I-5mg"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0권" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEF-9k-HqQ">
-                                        <rect key="frame" x="250" y="57" width="125" height="20.5"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OrV-lz-1aA">
+                                        <rect key="frame" x="125" y="15" width="125" height="80"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="읽고 있는 책" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9SC-Gl-Xfc">
+                                                <rect key="frame" x="0.0" y="5" width="125" height="21"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0권" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ru5-pQ-NY0">
+                                                <rect key="frame" x="0.0" y="41" width="125" height="20.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="9SC-Gl-Xfc" secondAttribute="trailing" id="9n6-Ex-ceA"/>
+                                            <constraint firstItem="9SC-Gl-Xfc" firstAttribute="top" secondItem="OrV-lz-1aA" secondAttribute="top" constant="5" id="Miv-y3-0rD"/>
+                                            <constraint firstItem="Ru5-pQ-NY0" firstAttribute="leading" secondItem="OrV-lz-1aA" secondAttribute="leading" id="bBf-0a-Thi"/>
+                                            <constraint firstItem="9SC-Gl-Xfc" firstAttribute="leading" secondItem="OrV-lz-1aA" secondAttribute="leading" id="nyj-KB-7Ro"/>
+                                            <constraint firstAttribute="trailing" secondItem="Ru5-pQ-NY0" secondAttribute="trailing" id="ser-YB-nIJ"/>
+                                            <constraint firstItem="Ru5-pQ-NY0" firstAttribute="top" secondItem="9SC-Gl-Xfc" secondAttribute="bottom" constant="15" id="y4m-LP-Xom"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="BRM-7f-xyt" appends="YES" id="iLB-57-KoJ"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u6b-Dt-pix">
+                                        <rect key="frame" x="0.0" y="15" width="125" height="80"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0권" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9n-bF-zwp">
+                                                <rect key="frame" x="0.0" y="41" width="125" height="20.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="읽고 싶은 책" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aru-WD-oV8">
+                                                <rect key="frame" x="0.0" y="5" width="125" height="21"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="o9n-bF-zwp" firstAttribute="leading" secondItem="u6b-Dt-pix" secondAttribute="leading" id="3hQ-qU-P3c"/>
+                                            <constraint firstItem="Aru-WD-oV8" firstAttribute="top" secondItem="u6b-Dt-pix" secondAttribute="top" constant="5" id="8wM-qO-eS3"/>
+                                            <constraint firstItem="o9n-bF-zwp" firstAttribute="top" secondItem="Aru-WD-oV8" secondAttribute="bottom" constant="15" id="BTJ-f9-sc2"/>
+                                            <constraint firstAttribute="trailing" secondItem="Aru-WD-oV8" secondAttribute="trailing" id="SO5-CY-aYR"/>
+                                            <constraint firstItem="Aru-WD-oV8" firstAttribute="leading" secondItem="u6b-Dt-pix" secondAttribute="leading" id="Ynw-FD-fcO"/>
+                                            <constraint firstAttribute="trailing" secondItem="o9n-bF-zwp" secondAttribute="trailing" id="ovW-wu-HH6"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="C4J-Xj-5eg" appends="YES" id="3L4-Tf-fmw"/>
+                                        </connections>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xt4-M7-BOd">
+                                        <rect key="frame" x="250" y="15" width="125" height="80"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="다 읽은 책" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z7Q-80-fDH">
+                                                <rect key="frame" x="0.0" y="5" width="125" height="21"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0권" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEF-9k-HqQ">
+                                                <rect key="frame" x="0.0" y="41" width="125" height="20.5"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="Z7Q-80-fDH" firstAttribute="leading" secondItem="xt4-M7-BOd" secondAttribute="leading" id="9vA-4m-qgi"/>
+                                            <constraint firstItem="uEF-9k-HqQ" firstAttribute="top" secondItem="Z7Q-80-fDH" secondAttribute="bottom" constant="15" id="ByZ-El-bCy"/>
+                                            <constraint firstAttribute="trailing" secondItem="Z7Q-80-fDH" secondAttribute="trailing" id="ncu-AS-yZB"/>
+                                            <constraint firstItem="Z7Q-80-fDH" firstAttribute="top" secondItem="xt4-M7-BOd" secondAttribute="top" constant="5" id="r1n-Z5-L8e"/>
+                                            <constraint firstAttribute="trailing" secondItem="uEF-9k-HqQ" secondAttribute="trailing" id="utU-HO-9Vy"/>
+                                            <constraint firstItem="uEF-9k-HqQ" firstAttribute="leading" secondItem="xt4-M7-BOd" secondAttribute="leading" id="xha-dh-hcJ"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="LCg-rF-FFx" appends="YES" id="LOZ-ec-WUT"/>
+                                        </connections>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="Aru-WD-oV8" firstAttribute="leading" secondItem="ssT-ey-eHV" secondAttribute="leading" id="35q-hH-bEw"/>
+                                    <constraint firstAttribute="height" secondItem="u6b-Dt-pix" secondAttribute="height" multiplier="2" id="43A-nQ-3xm"/>
+                                    <constraint firstAttribute="width" secondItem="xt4-M7-BOd" secondAttribute="width" multiplier="3" id="4ec-P8-2Uv"/>
                                     <constraint firstAttribute="trailing" secondItem="Hie-5Y-Tew" secondAttribute="trailing" constant="24" id="5Ai-oc-i0s"/>
-                                    <constraint firstItem="uEF-9k-HqQ" firstAttribute="trailing" secondItem="Z7Q-80-fDH" secondAttribute="trailing" id="7Vx-gh-bMo"/>
-                                    <constraint firstAttribute="trailing" secondItem="Z7Q-80-fDH" secondAttribute="trailing" id="9Zr-w8-vcu"/>
-                                    <constraint firstItem="uEF-9k-HqQ" firstAttribute="top" secondItem="Ru5-pQ-NY0" secondAttribute="top" id="Ers-EV-GA9"/>
-                                    <constraint firstAttribute="width" secondItem="9SC-Gl-Xfc" secondAttribute="width" multiplier="3" id="ITy-5W-yQd"/>
-                                    <constraint firstItem="9SC-Gl-Xfc" firstAttribute="top" secondItem="ssT-ey-eHV" secondAttribute="top" constant="20" id="MfH-Gi-2KJ"/>
-                                    <constraint firstItem="Ru5-pQ-NY0" firstAttribute="trailing" secondItem="9SC-Gl-Xfc" secondAttribute="trailing" id="OSO-Ti-mTb"/>
-                                    <constraint firstItem="o9n-bF-zwp" firstAttribute="leading" secondItem="Aru-WD-oV8" secondAttribute="leading" id="Ysy-CT-YpD"/>
-                                    <constraint firstItem="Z7Q-80-fDH" firstAttribute="top" secondItem="9SC-Gl-Xfc" secondAttribute="top" id="ZFK-wo-QP1"/>
-                                    <constraint firstItem="o9n-bF-zwp" firstAttribute="trailing" secondItem="Aru-WD-oV8" secondAttribute="trailing" id="cgc-e4-deq"/>
-                                    <constraint firstItem="Ru5-pQ-NY0" firstAttribute="top" secondItem="9SC-Gl-Xfc" secondAttribute="bottom" constant="16" id="iAt-fT-qyH"/>
-                                    <constraint firstItem="Ru5-pQ-NY0" firstAttribute="leading" secondItem="9SC-Gl-Xfc" secondAttribute="leading" id="mfr-2g-Pa3"/>
-                                    <constraint firstAttribute="width" secondItem="Z7Q-80-fDH" secondAttribute="width" multiplier="3" id="pve-X0-QSf"/>
-                                    <constraint firstItem="uEF-9k-HqQ" firstAttribute="leading" secondItem="Z7Q-80-fDH" secondAttribute="leading" id="sjG-du-Dra"/>
-                                    <constraint firstItem="9SC-Gl-Xfc" firstAttribute="centerX" secondItem="ssT-ey-eHV" secondAttribute="centerX" id="uLS-l5-Tk5"/>
-                                    <constraint firstAttribute="width" secondItem="Aru-WD-oV8" secondAttribute="width" multiplier="3" id="vnM-nk-YdV"/>
+                                    <constraint firstItem="xt4-M7-BOd" firstAttribute="top" secondItem="OrV-lz-1aA" secondAttribute="top" id="Cc3-Nz-xio"/>
+                                    <constraint firstItem="OrV-lz-1aA" firstAttribute="top" secondItem="ssT-ey-eHV" secondAttribute="top" constant="15" id="Eic-b0-qXs"/>
+                                    <constraint firstItem="u6b-Dt-pix" firstAttribute="leading" secondItem="ssT-ey-eHV" secondAttribute="leading" id="I6C-N8-Qh1"/>
+                                    <constraint firstAttribute="width" secondItem="OrV-lz-1aA" secondAttribute="width" multiplier="3" id="K2c-9A-owA"/>
+                                    <constraint firstItem="OrV-lz-1aA" firstAttribute="centerX" secondItem="ssT-ey-eHV" secondAttribute="centerX" id="ODn-IK-fvM"/>
+                                    <constraint firstAttribute="trailing" secondItem="xt4-M7-BOd" secondAttribute="trailing" id="aAq-Pq-lso"/>
+                                    <constraint firstItem="OrV-lz-1aA" firstAttribute="leading" secondItem="u6b-Dt-pix" secondAttribute="trailing" id="bv8-jT-sgh"/>
+                                    <constraint firstAttribute="height" secondItem="OrV-lz-1aA" secondAttribute="height" multiplier="2" id="crM-zX-2hr"/>
+                                    <constraint firstAttribute="height" secondItem="xt4-M7-BOd" secondAttribute="height" multiplier="2" id="eRp-YA-3hv"/>
+                                    <constraint firstItem="u6b-Dt-pix" firstAttribute="top" secondItem="OrV-lz-1aA" secondAttribute="top" id="iu2-KR-8Ze"/>
+                                    <constraint firstAttribute="width" secondItem="u6b-Dt-pix" secondAttribute="width" multiplier="3" id="vXj-7W-Wce"/>
+                                    <constraint firstItem="xt4-M7-BOd" firstAttribute="leading" secondItem="OrV-lz-1aA" secondAttribute="trailing" id="vuH-fj-rzo"/>
                                     <constraint firstAttribute="bottom" secondItem="Hie-5Y-Tew" secondAttribute="bottom" constant="16" id="wCh-mg-Hag"/>
-                                    <constraint firstItem="o9n-bF-zwp" firstAttribute="top" secondItem="Ru5-pQ-NY0" secondAttribute="top" id="wu7-B7-2fX"/>
                                     <constraint firstAttribute="height" constant="160" id="yfC-4X-2bs"/>
-                                    <constraint firstItem="Aru-WD-oV8" firstAttribute="top" secondItem="9SC-Gl-Xfc" secondAttribute="top" id="zK0-37-uIc"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1604,16 +1654,35 @@
                         <outlet property="alarmSettingButton" destination="N1y-gi-Itj" id="pwU-fN-a3d"/>
                         <outlet property="alarmTimeTextField" destination="AOc-0Q-KoP" id="rAr-E7-SIU"/>
                         <outlet property="favoriteBookCountLabel" destination="o9n-bF-zwp" id="1ic-fd-OyW"/>
+                        <outlet property="favoriteBookView" destination="u6b-Dt-pix" id="7hD-ae-in6"/>
                         <outlet property="readBookCountLabel" destination="uEF-9k-HqQ" id="NwN-cT-KxW"/>
+                        <outlet property="readBookView" destination="xt4-M7-BOd" id="HPS-76-Qcw"/>
                         <outlet property="readingBookCountLabel" destination="Ru5-pQ-NY0" id="7Ve-2R-jNG"/>
+                        <outlet property="readingBookView" destination="OrV-lz-1aA" id="Y2U-S8-lsM"/>
                         <outlet property="userNameLabel" destination="LEb-v3-OHv" id="jBU-Su-exH"/>
                         <segue destination="GMe-5V-D3A" kind="show" identifier="ShowMyBookPage" id="rLF-xy-jKu"/>
+                        <segue destination="3VF-TJ-MuV" kind="show" identifier="ShowSection" id="n8f-dh-HRp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H0G-SM-Loq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="V0G-Xn-0Te">
                     <connections>
                         <action selector="dismissDatePicker:" destination="3dc-Hq-XDR" id="E2x-8H-G71"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="C4J-Xj-5eg">
+                    <connections>
+                        <action selector="showReadSection:" destination="3dc-Hq-XDR" id="KBV-dg-YKA"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="BRM-7f-xyt">
+                    <connections>
+                        <action selector="showReadSection:" destination="3dc-Hq-XDR" id="Pm0-kV-48X"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="LCg-rF-FFx">
+                    <connections>
+                        <action selector="showReadSection:" destination="3dc-Hq-XDR" id="CC3-vl-yZb"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -2507,7 +2576,7 @@
         <image name="settingIcon" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="PXh-Jv-Mbk"/>
+        <segue reference="n8f-dh-HRp"/>
         <segue reference="luG-n0-7sV"/>
         <segue reference="b1t-2d-dqD"/>
         <segue reference="RRs-8h-Uv0"/>
