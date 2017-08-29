@@ -99,27 +99,45 @@ class SearchBookListViewController: UIViewController {
                 preconditionFailure("Unexpected sender")
         }
         
-        let selectedBook: Book = cell.book
-        
-        if selectedBook.isFavorite == false {
-            
-            try! realm.write {
-                selectedBook.isFavorite = true
-                selectedBook.dateUpdatedFavorite = Date()
-                realm.add(selectedBook, update: true)
-                button.isSelected = true
+        if let isbnString = cell.book.isbn {
+            var bookLookUpURL: URL {
+                
+                return AladinAPI.aladinApiURL(method: .itemLookUp,
+                                              parameters: ["itemIdType": "ISBN13",
+                                                           "itemId": isbnString])
             }
-        } else {
             
-            try! realm.write {
-                selectedBook.isFavorite = false
-                selectedBook.dateUpdatedFavorite = Date()
-                realm.add(selectedBook, update: true)
-                button.isSelected = false
+            self.store.fetchBook(url: bookLookUpURL) {
+                (bookResult) -> Void in
+                
+                switch bookResult {
+                case let .success(book):
+                    self.book = book
+                    
+                    if self.book.isFavorite == false {
+                        
+                        try! self.realm.write {
+                            self.book.isFavorite = true
+                            self.book.dateUpdatedFavorite = Date()
+                            self.realm.add(self.book, update: true)
+                            button.isSelected = true
+                        }
+                    } else {
+                        
+                        try! self.realm.write {
+                            self.book.isFavorite = false
+                            self.book.dateUpdatedFavorite = Date()
+                            self.realm.add(self.book, update: true)
+                            button.isSelected = false
+                        }
+                    }
+                    
+                    self.searchBookListTableView.reloadData()
+                case let .failure(error):
+                    print(error)
+                }
             }
         }
-        
-        self.searchBookListTableView.reloadData()
     }
     
     func bookButtonAction(_ sender: UIButton) {
@@ -133,12 +151,30 @@ class SearchBookListViewController: UIViewController {
                 preconditionFailure("Unexpected sender")
         }
         
-        self.book = cell.book
-        
-        if self.book.bookStateEnum == .reading {
-            performSegue(withIdentifier: "ReportAfterRead", sender: self)
-        } else {
-            performSegue(withIdentifier: "ReportBeforeRead", sender: self)
+        if let isbnString = cell.book.isbn {
+            var bookLookUpURL: URL {
+                
+                return AladinAPI.aladinApiURL(method: .itemLookUp,
+                                              parameters: ["itemIdType": "ISBN13",
+                                                           "itemId": isbnString])
+            }
+            
+            self.store.fetchBook(url: bookLookUpURL) {
+                (bookResult) -> Void in
+                
+                switch bookResult {
+                case let .success(book):
+                    self.book = book
+                    
+                    if self.book.bookStateEnum == .reading {
+                        self.performSegue(withIdentifier: "ReportAfterRead", sender: self)
+                    } else {
+                        self.performSegue(withIdentifier: "ReportBeforeRead", sender: self)
+                    }
+                case let .failure(error):
+                    print(error)
+                }
+            }
         }
     }
 }

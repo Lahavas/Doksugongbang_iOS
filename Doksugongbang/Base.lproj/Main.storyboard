@@ -2507,10 +2507,10 @@
         <image name="settingIcon" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="PXh-Jv-Mbk"/>
         <segue reference="luG-n0-7sV"/>
         <segue reference="b1t-2d-dqD"/>
         <segue reference="RRs-8h-Uv0"/>
         <segue reference="lN1-Hm-Uae"/>
-        <segue reference="pnK-yV-qy5"/>
     </inferredMetricsTieBreakers>
 </document>
