@@ -44,6 +44,9 @@ class BookReportDetailViewController: UIViewController {
     @IBOutlet var bookReportAfterViewTopConstraint: NSLayoutConstraint!
     @IBOutlet var bookReportAfterViewTrailingConstraint: NSLayoutConstraint!
     
+    @IBOutlet var bookLogTableViewHeightConstraint: NSLayoutConstraint!
+    
+    
     // MARK: Models
     
     var book: Book!
@@ -272,6 +275,8 @@ extension BookReportDetailViewController: UITableViewDelegate, UITableViewDataSo
         cell.bookTitleLabel.text = book.title
         cell.bookReadCountLabel.text = "\(bookInfo.bookReadCount)독차"
         cell.bookLogLabel.text = bookLog.logContent
+     
+        self.bookLogTableViewHeightConstraint.constant = tableView.contentSize.height
         
         return cell
     }
