@@ -104,42 +104,63 @@ class SectionDetailViewController: UIViewController {
                 preconditionFailure("Unexpected sender")
         }
         
-        if let isbnString = cell.book.isbn {
-            var bookLookUpURL: URL {
+        if let existingBook = Book.isExist(book: cell.book) {
+            
+            if existingBook.isFavorite == false {
                 
-                return AladinAPI.aladinApiURL(method: .itemLookUp,
-                                              parameters: ["itemIdType": "ISBN13",
-                                                           "itemId": isbnString])
+                try! self.realm.write {
+                    existingBook.isFavorite = true
+                    existingBook.dateUpdatedFavorite = Date()
+                    self.realm.add(existingBook, update: true)
+                    button.isSelected = true
+                }
+            } else {
+                
+                try! self.realm.write {
+                    existingBook.isFavorite = false
+                    existingBook.dateUpdatedFavorite = Date()
+                    self.realm.add(existingBook, update: true)
+                    button.isSelected = false
+                }
             }
             
-            self.store.fetchBook(url: bookLookUpURL) {
-                (bookResult) -> Void in
-                
-                switch bookResult {
-                case let .success(book):
-                    self.book = book
+            guard let indexPath = self.sectionBookListTableView.indexPath(for: cell) else {
+                preconditionFailure("Unexpected cell")
+            }
+            
+            self.sectionBookListTableView.reloadRows(at: [indexPath], with: .automatic)
+        } else {
+            
+            if let isbnString = cell.book.isbn {
+                var bookLookUpURL: URL {
                     
-                    if self.book.isFavorite == false {
+                    return AladinAPI.aladinApiURL(method: .itemLookUp,
+                                                  parameters: ["itemIdType": "ISBN13",
+                                                               "itemId": isbnString])
+                }
+                
+                self.store.fetchBook(url: bookLookUpURL) {
+                    (bookResult) -> Void in
+                    
+                    switch bookResult {
+                    case let .success(book):
                         
                         try! self.realm.write {
-                            self.book.isFavorite = true
-                            self.book.dateUpdatedFavorite = Date()
-                            self.realm.add(self.book, update: true)
+                            book.isFavorite = true
+                            book.dateUpdatedFavorite = Date()
+                            self.realm.add(book, update: true)
                             button.isSelected = true
                         }
-                    } else {
                         
-                        try! self.realm.write {
-                            self.book.isFavorite = false
-                            self.book.dateUpdatedFavorite = Date()
-                            self.realm.add(self.book, update: true)
-                            button.isSelected = false
+                        guard let indexPath = self.sectionBookListTableView.indexPath(for: cell) else {
+                            preconditionFailure("Unexpected cell")
                         }
+                        
+                        self.sectionBookListTableView.reloadRows(at: [indexPath], with: .automatic)
+
+                    case let .failure(error):
+                        print(error)
                     }
-                    
-                    self.sectionBookListTableView.reloadData()
-                case let .failure(error):
-                    print(error)
                 }
             }
         }
@@ -156,28 +177,42 @@ class SectionDetailViewController: UIViewController {
                 preconditionFailure("Unexpected sender")
         }
         
-        if let isbnString = cell.book.isbn {
-            var bookLookUpURL: URL {
-                
-                return AladinAPI.aladinApiURL(method: .itemLookUp,
-                                              parameters: ["itemIdType": "ISBN13",
-                                                           "itemId": isbnString])
-            }
+        if let existingBook = Book.isExist(book: cell.book) {
             
-            self.store.fetchBook(url: bookLookUpURL) {
-                (bookResult) -> Void in
+            self.book = cell.book
+            
+            if cell.book.bookStateEnum == .reading {
+                self.performSegue(withIdentifier: "ReportAfterRead", sender: self)
+            } else {
+                self.performSegue(withIdentifier: "ReportBeforeRead", sender: self)
+            }
+        } else {
+            
+            if let isbnString = cell.book.isbn {
                 
-                switch bookResult {
-                case let .success(book):
-                    self.book = book
+                var bookLookUpURL: URL {
                     
-                    if self.book.bookStateEnum == .reading {
-                        self.performSegue(withIdentifier: "ReportAfterRead", sender: self)
-                    } else {
-                        self.performSegue(withIdentifier: "ReportBeforeRead", sender: self)
+                    return AladinAPI.aladinApiURL(method: .itemLookUp,
+                                                  parameters: ["itemIdType": "ISBN13",
+                                                               "itemId": isbnString])
+                }
+                
+                self.store.fetchBook(url: bookLookUpURL) {
+                    (bookResult) -> Void in
+                    
+                    switch bookResult {
+                    case let .success(book):
+                        
+                        self.book = book
+                        
+                        if book.bookStateEnum == .reading {
+                            self.performSegue(withIdentifier: "ReportAfterRead", sender: self)
+                        } else {
+                            self.performSegue(withIdentifier: "ReportBeforeRead", sender: self)
+                        }
+                    case let .failure(error):
+                        print(error)
                     }
-                case let .failure(error):
-                    print(error)
                 }
             }
         }

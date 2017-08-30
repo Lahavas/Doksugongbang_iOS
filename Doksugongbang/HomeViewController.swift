@@ -6,14 +6,6 @@
 //  Copyright © 2017년 yeon. All rights reserved.
 //
 
-///////////////////////////////////////////
-//  수정 필요한 부분
-//
-//  1. TableView 두 번 리로드되는 부분 (두번 통신하기 때문, Notification을 통해 둘 다 충족될때 한번만 리로드로 수정 필요)
-//
-///////////////////////////////////////////
-
-
 import UIKit
 import RealmSwift
 
@@ -34,6 +26,9 @@ class HomeViewController: UIViewController {
     
     var bookList: [[Book]] = Array(repeating: Array(repeating: Book(), count:0), count: 3)
     var book: Book!
+    
+    var isBestSellerReceived: Bool = false
+    var isNewItemReceived: Bool = false
     
     // MARK: - View Life Cycle
     
@@ -95,9 +90,9 @@ class HomeViewController: UIViewController {
         self.performSegue(withIdentifier: "ShowSection", sender: self)
     }
     
-    // MARK: - Private Methods
+    // MARK: - Methods
     
-    private func setUpBookList() {
+    func setUpBookList() {
         
         for section in 0..<sections.count {
             
@@ -123,7 +118,8 @@ class HomeViewController: UIViewController {
                     case let .success(bookList):
                         self.bookList[section] = bookList
                         DispatchQueue.main.async {
-                            self.bookCollectionView.reloadData()
+                            self.isBestSellerReceived = true
+                            self.reloadBooCollectionView()
                         }
                     case let .failure(error):
                         print(error)
@@ -144,7 +140,8 @@ class HomeViewController: UIViewController {
                     case let .success(bookList):
                         self.bookList[section] = bookList
                         DispatchQueue.main.async {
-                            self.bookCollectionView.reloadData()
+                            self.isNewItemReceived = true
+                            self.reloadBooCollectionView()
                         }
                     case let .failure(error):
                         print(error)
@@ -153,6 +150,17 @@ class HomeViewController: UIViewController {
             default:
                 preconditionFailure("Index out of range")
             }
+        }
+    }
+    
+    func reloadBooCollectionView() {
+        
+        if self.isBestSellerReceived == true && self.isNewItemReceived == true {
+            
+            self.bookCollectionView.reloadData()
+            
+            self.isBestSellerReceived = false
+            self.isNewItemReceived = false
         }
     }
 }
@@ -266,9 +274,4 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         return cell
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        
-//        return CGSize(width: view.frame.width, height: 180.0)
-//    }
 }

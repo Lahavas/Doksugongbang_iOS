@@ -144,8 +144,8 @@ class BookReportDetailViewController: UIViewController {
         self.bookRating.rating = self.bookInfo.bookRating
         
         if self.bookInfo.bookRating == 0 {
-            
-            self.bookReportAfterView.isHidden = true
+        
+            self.bookReportAfterView.removeFromSuperview()
             
             self.bookReportBeforeView.translatesAutoresizingMaskIntoConstraints = false
             self.bookReportBeforeViewTopConstraint = NSLayoutConstraint(item: self.bookReportBeforeView,
@@ -157,6 +157,26 @@ class BookReportDetailViewController: UIViewController {
                                                                         constant: 8.0)
             self.bookReportBeforeViewTopConstraint.isActive = true
         } else {
+            
+            self.bookReportView.addSubview(self.bookReportAfterView)
+            
+            self.bookReportBeforeViewTopConstraint.isActive = false
+            
+            self.bookReportAfterView.translatesAutoresizingMaskIntoConstraints = false
+                
+            self.bookReportAfterViewTopConstraint.isActive = true
+            self.bookReportAfterViewLeadingConstraint.isActive = true
+            self.bookReportAfterViewTrailingConstraint.isActive = true
+            
+            self.bookReportBeforeView.translatesAutoresizingMaskIntoConstraints = false
+            self.bookReportBeforeViewTopConstraint = NSLayoutConstraint(item: self.bookReportBeforeView,
+                                                                        attribute: .top,
+                                                                        relatedBy: .equal,
+                                                                        toItem: self.bookReportAfterView,
+                                                                        attribute: .bottom,
+                                                                        multiplier: 1.0,
+                                                                        constant: 8.0)
+            self.bookReportBeforeViewTopConstraint.isActive = true
             
             self.bookReportAfterReadLabel.text = self.bookInfo.reportAfterReading
         }

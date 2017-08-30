@@ -216,9 +216,13 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
+        self.toggleSearchViewState(.showQuickSearch)
+        
         guard let searchText = searchBar.text else {
             preconditionFailure("Unexpected Search Text")
         }
+        
+        self.searchText = searchText
         
         var bookSearchURL: URL {
             
