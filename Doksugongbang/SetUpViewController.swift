@@ -6,13 +6,6 @@
 //  Copyright © 2017년 yeon. All rights reserved.
 //
 
-///////////////////////////////////////////
-//  수정 필요한 부분
-//
-//  1. 여기 스플래시 넣었을 경우 MyPage 수정
-//
-///////////////////////////////////////////
-
 import UIKit
 import UserNotifications
 

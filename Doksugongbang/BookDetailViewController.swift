@@ -6,13 +6,6 @@
 //  Copyright © 2017년 yeon. All rights reserved.
 //
 
-///////////////////////////////////////////
-//  수정 필요한 부분
-//
-//  1. 진행률 ProgressBar 수정
-//
-///////////////////////////////////////////
-
 import UIKit
 import RealmSwift
 import SafariServices

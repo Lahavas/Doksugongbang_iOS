@@ -9,13 +9,6 @@
 import UIKit
 import RealmSwift
 
-///////////////////////////////////////////
-//  수정 필요한 부분
-//
-//  1. TableView와 SearchBar 분리 (캘린더 버튼 및 스크롤 시에 SearchBar 보이는거 유무부 설정)
-//
-///////////////////////////////////////////
-
 class BookLogListViewController: UIViewController {
 
     // MARK: - Properties

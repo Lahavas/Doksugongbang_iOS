@@ -2249,7 +2249,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="xTM-7q-YHQ" kind="presentation" identifier="" animates="NO" id="uBi-T3-tSr"/>
+                        <segue destination="xTM-7q-YHQ" kind="presentation" identifier="SettingPage" animates="NO" id="uBi-T3-tSr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8pd-LM-ANl" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2556,7 +2556,7 @@
                         <outlet property="alarmSettingButton" destination="blv-dv-2Ci" id="sYx-cv-rBS"/>
                         <outlet property="alarmTimeTextField" destination="CSC-F9-rxi" id="zeH-CR-fU9"/>
                         <outlet property="userNameTextField" destination="1CJ-uc-8ZC" id="YwF-Rf-vDO"/>
-                        <segue destination="4SP-RK-S5b" kind="presentation" identifier="" animates="NO" id="etm-Lk-d9r"/>
+                        <segue destination="4SP-RK-S5b" kind="presentation" identifier="StartPage" animates="NO" id="etm-Lk-d9r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7o9-D1-Pfa" userLabel="First Responder" sceneMemberID="firstResponder"/>

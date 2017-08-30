@@ -35,9 +35,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Realm Browser file 위치
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
-        
         self.title = "홈 화면"
         
         self.bookCollectionView.delegate = self
