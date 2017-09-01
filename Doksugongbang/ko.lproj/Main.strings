@@ -1,0 +1,333 @@
+
+/* Class = "UILabel"; text = "읽기 전 느낀 점"; ObjectID = "01b-8f-hQz"; */
+"01b-8f-hQz.text" = "읽기 전 느낀 점";
+
+/* Class = "UIButton"; normalTitle = "등록"; ObjectID = "04G-0N-Iwr"; */
+"04G-0N-Iwr.normalTitle" = "등록";
+
+/* Class = "UILabel"; text = "상세 정보"; ObjectID = "3be-Mb-NIi"; */
+"3be-Mb-NIi.text" = "상세 정보";
+
+/* Class = "UILabel"; text = "Publisher"; ObjectID = "4wW-3Z-c1C"; */
+"4wW-3Z-c1C.text" = "Publisher";
+
+/* Class = "UITabBarItem"; title = "내 정보"; ObjectID = "57l-vA-r6R"; */
+"57l-vA-r6R.title" = "내 정보";
+
+/* Class = "UILabel"; text = "알람 시간을 설정해주세요"; ObjectID = "5Ka-V9-f3g"; */
+"5Ka-V9-f3g.text" = "알람 시간을 설정해주세요";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "5VD-Ej-xr1"; */
+"5VD-Ej-xr1.text" = "Title";
+
+/* Class = "UILabel"; text = "감상평 내용"; ObjectID = "5VV-pK-px9"; */
+"5VV-pK-px9.text" = "감상평 내용";
+
+/* Class = "UILabel"; text = "BookLog"; ObjectID = "6f7-y4-SVq"; */
+"6f7-y4-SVq.text" = "BookLog";
+
+/* Class = "UILabel"; text = "책 기록"; ObjectID = "7CB-Us-cF6"; */
+"7CB-Us-cF6.text" = "책 기록";
+
+/* Class = "UIButton"; normalTitle = "취소"; ObjectID = "7JS-3q-pRA"; */
+"7JS-3q-pRA.normalTitle" = "취소";
+
+/* Class = "UILabel"; text = "100쪽"; ObjectID = "7kF-G7-9vM"; */
+"7kF-G7-9vM.text" = "100쪽";
+
+/* Class = "UILabel"; text = "읽고 있는 책"; ObjectID = "9SC-Gl-Xfc"; */
+"9SC-Gl-Xfc.text" = "읽고 있는 책";
+
+/* Class = "UILabel"; text = "이름을 입력해주세요"; ObjectID = "9SY-mQ-1aB"; */
+"9SY-mQ-1aB.text" = "이름을 입력해주세요";
+
+/* Class = "UILabel"; text = "읽고 있는 중"; ObjectID = "9f6-WJ-I3c"; */
+"9f6-WJ-I3c.text" = "읽고 있는 중";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "AF4-jf-GtN"; */
+"AF4-jf-GtN.text" = "Title";
+
+/* Class = "UITextField"; text = "오전 7시 30분"; ObjectID = "AOc-0Q-KoP"; */
+"AOc-0Q-KoP.text" = "오전 7시 30분";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "ARS-TF-M2G"; */
+"ARS-TF-M2G.text" = "Title";
+
+/* Class = "UILabel"; text = "바코드 입력"; ObjectID = "AXC-41-P4E"; */
+"AXC-41-P4E.text" = "바코드 입력";
+
+/* Class = "UILabel"; text = "읽기 전 느낀 점 내용"; ObjectID = "Aqi-0E-d4S"; */
+"Aqi-0E-d4S.text" = "읽기 전 느낀 점 내용";
+
+/* Class = "UILabel"; text = "읽고 싶은 책"; ObjectID = "Aru-WD-oV8"; */
+"Aru-WD-oV8.text" = "읽고 싶은 책";
+
+/* Class = "UITextField"; text = "오전 7시 30분"; ObjectID = "CSC-F9-rxi"; */
+"CSC-F9-rxi.text" = "오전 7시 30분";
+
+/* Class = "UITabBarItem"; title = "홈 화면"; ObjectID = "DA4-bK-5vc"; */
+"DA4-bK-5vc.title" = "홈 화면";
+
+/* Class = "UILabel"; text = "Book Log"; ObjectID = "DdF-nb-y6a"; */
+"DdF-nb-y6a.text" = "Book Log";
+
+/* Class = "UILabel"; text = "100쪽"; ObjectID = "E36-rt-ubu"; */
+"E36-rt-ubu.text" = "100쪽";
+
+/* Class = "UILabel"; text = "1독차"; ObjectID = "EIC-Vo-Xvl"; */
+"EIC-Vo-Xvl.text" = "1독차";
+
+/* Class = "UILabel"; text = "Author"; ObjectID = "EsW-Md-mgs"; */
+"EsW-Md-mgs.text" = "Author";
+
+/* Class = "UIButton"; normalTitle = "확인"; ObjectID = "HX3-EC-3Ti"; */
+"HX3-EC-3Ti.normalTitle" = "확인";
+
+/* Class = "UIButton"; normalTitle = "모두 보기"; ObjectID = "Hie-5Y-Tew"; */
+"Hie-5Y-Tew.normalTitle" = "모두 보기";
+
+/* Class = "UIButton"; normalTitle = "책 구매하기"; ObjectID = "ImS-Cd-R21"; */
+"ImS-Cd-R21.normalTitle" = "책 구매하기";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "JWI-EA-TFm"; */
+"JWI-EA-TFm.text" = "Title";
+
+/* Class = "UILabel"; text = "Author"; ObjectID = "Jpn-yT-LYq"; */
+"Jpn-yT-LYq.text" = "Author";
+
+/* Class = "UILabel"; text = "~"; ObjectID = "Ju3-gG-IxY"; */
+"Ju3-gG-IxY.text" = "~";
+
+/* Class = "UILabel"; text = "Publisher"; ObjectID = "KBD-K7-39G"; */
+"KBD-K7-39G.text" = "Publisher";
+
+/* Class = "UILabel"; text = "Author"; ObjectID = "KRw-6G-agI"; */
+"KRw-6G-agI.text" = "Author";
+
+/* Class = "UILabel"; text = "알람 시간을 설정해주세요"; ObjectID = "KiV-Hs-Qhi"; */
+"KiV-Hs-Qhi.text" = "알람 시간을 설정해주세요";
+
+/* Class = "UILabel"; text = "홍길동님! 환영합니다"; ObjectID = "LEb-v3-OHv"; */
+"LEb-v3-OHv.text" = "홍길동님! 환영합니다";
+
+/* Class = "UINavigationItem"; title = "독서 시작"; ObjectID = "M5q-dh-ha8"; */
+"M5q-dh-ha8.title" = "독서 시작";
+
+/* Class = "UIButton"; normalTitle = "취소"; ObjectID = "MVM-qm-KcL"; */
+"MVM-qm-KcL.normalTitle" = "취소";
+
+/* Class = "UILabel"; text = "100쪽"; ObjectID = "N21-lh-VRs"; */
+"N21-lh-VRs.text" = "100쪽";
+
+/* Class = "UILabel"; text = "Author"; ObjectID = "NNm-8w-rGN"; */
+"NNm-8w-rGN.text" = "Author";
+
+/* Class = "UIButton"; normalTitle = "모두 보기"; ObjectID = "Nv8-bb-dSW"; */
+"Nv8-bb-dSW.normalTitle" = "모두 보기";
+
+/* Class = "UILabel"; text = "100쪽"; ObjectID = "OTV-rI-xwn"; */
+"OTV-rI-xwn.text" = "100쪽";
+
+/* Class = "UILabel"; text = "읽은 뒤 평가"; ObjectID = "OZU-hj-pgW"; */
+"OZU-hj-pgW.text" = "읽은 뒤 평가";
+
+/* Class = "UILabel"; text = "100쪽"; ObjectID = "Oc0-Ae-xTc"; */
+"Oc0-Ae-xTc.text" = "100쪽";
+
+/* Class = "UILabel"; text = "1독차"; ObjectID = "Q8R-MH-HVe"; */
+"Q8R-MH-HVe.text" = "1독차";
+
+/* Class = "UILabel"; text = "100쪽"; ObjectID = "QL6-iH-p2r"; */
+"QL6-iH-p2r.text" = "100쪽";
+
+/* Class = "UILabel"; text = "Section"; ObjectID = "RYl-8G-chc"; */
+"RYl-8G-chc.text" = "Section";
+
+/* Class = "UILabel"; text = "Page"; ObjectID = "Rb6-3E-dBW"; */
+"Rb6-3E-dBW.text" = "Page";
+
+/* Class = "UILabel"; text = "읽은 뒤 평가"; ObjectID = "RjR-cm-VUc"; */
+"RjR-cm-VUc.text" = "읽은 뒤 평가";
+
+/* Class = "UILabel"; text = "0권"; ObjectID = "Ru5-pQ-NY0"; */
+"Ru5-pQ-NY0.text" = "0권";
+
+/* Class = "UILabel"; text = "독수공방"; ObjectID = "Sd1-RS-mHz"; */
+"Sd1-RS-mHz.text" = "독수공방";
+
+/* Class = "UILabel"; text = "1독차"; ObjectID = "TDC-Ub-PPd"; */
+"TDC-Ub-PPd.text" = "1독차";
+
+/* Class = "UILabel"; text = "100쪽"; ObjectID = "TQd-s5-al8"; */
+"TQd-s5-al8.text" = "100쪽";
+
+/* Class = "UILabel"; text = "끝 페이지"; ObjectID = "U8E-qt-alC"; */
+"U8E-qt-alC.text" = "끝 페이지";
+
+/* Class = "UILabel"; text = "Book Description"; ObjectID = "VBF-Cx-gbz"; */
+"VBF-Cx-gbz.text" = "Book Description";
+
+/* Class = "UILabel"; text = "~"; ObjectID = "VFz-d6-Hom"; */
+"VFz-d6-Hom.text" = "~";
+
+/* Class = "UIButton"; normalTitle = "등록"; ObjectID = "WOR-9C-nlN"; */
+"WOR-9C-nlN.normalTitle" = "등록";
+
+/* Class = "UILabel"; text = "Publisher"; ObjectID = "XJe-iJ-hbF"; */
+"XJe-iJ-hbF.text" = "Publisher";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "XL7-Lq-uZF"; */
+"XL7-Lq-uZF.text" = "Title";
+
+/* Class = "UILabel"; text = "환영합니다!"; ObjectID = "Ytr-VI-SPz"; */
+"Ytr-VI-SPz.text" = "환영합니다!";
+
+/* Class = "UILabel"; text = "다 읽은 책"; ObjectID = "Z7Q-80-fDH"; */
+"Z7Q-80-fDH.text" = "다 읽은 책";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Zef-9w-NOH"; */
+"Zef-9w-NOH.text" = "Title";
+
+/* Class = "UILabel"; text = "2017년 01월 01일"; ObjectID = "ZpF-mg-e6r"; */
+"ZpF-mg-e6r.text" = "2017년 01월 01일";
+
+/* Class = "UITabBarItem"; title = "북 피드"; ObjectID = "aU7-2T-PEf"; */
+"aU7-2T-PEf.title" = "북 피드";
+
+/* Class = "UITabBarItem"; title = "북 로그"; ObjectID = "auk-h5-Wxe"; */
+"auk-h5-Wxe.title" = "북 로그";
+
+/* Class = "UILabel"; text = "BookLog"; ObjectID = "bhR-Rs-gUE"; */
+"bhR-Rs-gUE.text" = "BookLog";
+
+/* Class = "UIButton"; normalTitle = "등록"; ObjectID = "c8s-kZ-DVT"; */
+"c8s-kZ-DVT.normalTitle" = "등록";
+
+/* Class = "UILabel"; text = "Author"; ObjectID = "cru-kY-HkV"; */
+"cru-kY-HkV.text" = "Author";
+
+/* Class = "UILabel"; text = "Pubdate"; ObjectID = "dMW-uQ-XX1"; */
+"dMW-uQ-XX1.text" = "Pubdate";
+
+/* Class = "UIButton"; normalTitle = "취소"; ObjectID = "eCl-Wv-zsg"; */
+"eCl-Wv-zsg.normalTitle" = "취소";
+
+/* Class = "UILabel"; text = "감상평 내용"; ObjectID = "eVc-nk-ai8"; */
+"eVc-nk-ai8.text" = "감상평 내용";
+
+/* Class = "UINavigationItem"; title = "북로그 등록"; ObjectID = "el2-l4-o0N"; */
+"el2-l4-o0N.title" = "북로그 등록";
+
+/* Class = "UILabel"; text = "Publisher"; ObjectID = "fSj-0f-REE"; */
+"fSj-0f-REE.text" = "Publisher";
+
+/* Class = "UILabel"; text = "Pubdate"; ObjectID = "fsh-d0-f1u"; */
+"fsh-d0-f1u.text" = "Pubdate";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "hgv-tc-575"; */
+"hgv-tc-575.text" = "Title";
+
+/* Class = "UISearchBar"; placeholder = "북 로그 검색"; ObjectID = "hkx-fy-uQ6"; */
+"hkx-fy-uQ6.placeholder" = "북 로그 검색";
+
+/* Class = "UISearchBar"; hkx-fy-uQ6.scopeButtonTitles[0] = "책 제목"; ObjectID = "hkx-fy-uQ6"; */
+"hkx-fy-uQ6.scopeButtonTitles[0]" = "책 제목";
+
+/* Class = "UISearchBar"; hkx-fy-uQ6.scopeButtonTitles[1] = "북 로그"; ObjectID = "hkx-fy-uQ6"; */
+"hkx-fy-uQ6.scopeButtonTitles[1]" = "북 로그";
+
+/* Class = "UILabel"; text = "홍길동 님이 이 책을 읽었습니다!"; ObjectID = "iSV-zR-Nnl"; */
+"iSV-zR-Nnl.text" = "홍길동 님이 이 책을 읽었습니다!";
+
+/* Class = "UILabel"; text = "Category"; ObjectID = "iqc-Ff-CuG"; */
+"iqc-Ff-CuG.text" = "Category";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "k2r-Uf-8bZ"; */
+"k2r-Uf-8bZ.text" = "Title";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "kGz-vl-UpO"; */
+"kGz-vl-UpO.text" = "Title";
+
+/* Class = "UILabel"; text = "Pubdate"; ObjectID = "kT4-wW-p2p"; */
+"kT4-wW-p2p.text" = "Pubdate";
+
+/* Class = "UILabel"; text = "~"; ObjectID = "mqx-nP-NHp"; */
+"mqx-nP-NHp.text" = "~";
+
+/* Class = "UILabel"; text = "100쪽"; ObjectID = "n3W-So-LYZ"; */
+"n3W-So-LYZ.text" = "100쪽";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "nNj-XJ-QOX"; */
+"nNj-XJ-QOX.text" = "Title";
+
+/* Class = "UIButton"; normalTitle = "자세히 보기"; ObjectID = "nwU-1U-YkR"; */
+"nwU-1U-YkR.normalTitle" = "자세히 보기";
+
+/* Class = "UINavigationItem"; title = "독서 종료"; ObjectID = "o5A-U2-uLr"; */
+"o5A-U2-uLr.title" = "독서 종료";
+
+/* Class = "UILabel"; text = "0권"; ObjectID = "o9n-bF-zwp"; */
+"o9n-bF-zwp.text" = "0권";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "oRO-bp-oEk"; */
+"oRO-bp-oEk.text" = "Title";
+
+/* Class = "UILabel"; text = "시작 페이지"; ObjectID = "q4K-nw-Gm7"; */
+"q4K-nw-Gm7.text" = "시작 페이지";
+
+/* Class = "UINavigationItem"; title = "북로그 상세 보기"; ObjectID = "q9U-W3-VXD"; */
+"q9U-W3-VXD.title" = "북로그 상세 보기";
+
+/* Class = "UISearchBar"; placeholder = "책, 저자, 출판사 검색"; ObjectID = "qlV-tY-MSQ"; */
+"qlV-tY-MSQ.placeholder" = "책, 저자, 출판사 검색";
+
+/* Class = "UISearchBar"; qlV-tY-MSQ.scopeButtonTitles[0] = "Title"; ObjectID = "qlV-tY-MSQ"; */
+"qlV-tY-MSQ.scopeButtonTitles[0]" = "Title";
+
+/* Class = "UISearchBar"; qlV-tY-MSQ.scopeButtonTitles[1] = "Title"; ObjectID = "qlV-tY-MSQ"; */
+"qlV-tY-MSQ.scopeButtonTitles[1]" = "Title";
+
+/* Class = "UILabel"; text = "Publisher"; ObjectID = "qmn-EB-9p4"; */
+"qmn-EB-9p4.text" = "Publisher";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "qyd-XO-n3e"; */
+"qyd-XO-n3e.text" = "Title";
+
+/* Class = "UILabel"; text = "0독차"; ObjectID = "rV9-cB-Xdf"; */
+"rV9-cB-Xdf.text" = "0독차";
+
+/* Class = "UITabBarItem"; title = "검색"; ObjectID = "s0S-Xj-jcv"; */
+"s0S-Xj-jcv.title" = "검색";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "sCh-ta-lV2"; */
+"sCh-ta-lV2.text" = "Title";
+
+/* Class = "UITextField"; text = "1독차"; ObjectID = "sas-zr-Dn8"; */
+"sas-zr-Dn8.text" = "1독차";
+
+/* Class = "UIButton"; normalTitle = "등록"; ObjectID = "tPy-gQ-6U4"; */
+"tPy-gQ-6U4.normalTitle" = "등록";
+
+/* Class = "UILabel"; text = "0권"; ObjectID = "uEF-9k-HqQ"; */
+"uEF-9k-HqQ.text" = "0권";
+
+/* Class = "UILabel"; text = "0쪽"; ObjectID = "uls-06-Kns"; */
+"uls-06-Kns.text" = "0쪽";
+
+/* Class = "UIButton"; normalTitle = "모두 보기"; ObjectID = "vW9-Ap-UNV"; */
+"vW9-Ap-UNV.normalTitle" = "모두 보기";
+
+/* Class = "UILabel"; text = "Section"; ObjectID = "x1f-So-eiJ"; */
+"x1f-So-eiJ.text" = "Section";
+
+/* Class = "UILabel"; text = "0쪽"; ObjectID = "x4G-XT-hgD"; */
+"x4G-XT-hgD.text" = "0쪽";
+
+/* Class = "UILabel"; text = "Pubdate"; ObjectID = "z3B-Ik-iem"; */
+"z3B-Ik-iem.text" = "Pubdate";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "zLS-dU-Lop"; */
+"zLS-dU-Lop.text" = "Title";
+
+/* Class = "UILabel"; text = "Pubdate"; ObjectID = "zhC-Kl-sGl"; */
+"zhC-Kl-sGl.text" = "Pubdate";
